@@ -15,8 +15,8 @@ passport.deserializeUser((id,done) => {
 	});	
 });
 
-passport.use(
-	new GoogleStrategy({
+
+var strategy = new GoogleStrategy({
 		clientID: keys.google.clientID,
     	clientSecret: keys.google.clientSecret,
     	callbackURL: "/auth/google/redirect",
@@ -26,14 +26,15 @@ passport.use(
 		console.log("accessToken: " + accessToken);
 		console.log("refreshToken: " + refreshToken);
 		// console.log("profile: " + JSON.stringify(profile, null, 4));
-
+		CalendarList(accessToken);
 		User.findOne({googleId:profile.id}).then((currentUser) => {
 			if(currentUser){
 				//already have the user
 				console.log('user is ',currentUser);
+				RefreshToken(currentUser.refreshToken);
+
 				done(null,currentUser);
-			}else{
-				//The user is fuckin disappear
+			}else{				
 				//save in mongoDB	
 				new User({
 					accessToken:accessToken,
@@ -49,7 +50,8 @@ passport.use(
 			}
 		});	  	
 	})
-)
+passport.use(strategy);
+refresh.use(strategy);
 
 //https://mlab.com/databases/nn-oauth-test/collections/users?q=&f=&s=&pageNum=0&pageSize=10
 
@@ -58,7 +60,6 @@ function CalendarList(accessToken){
 
 	google_calendar.events.list('primary', (err, calendarList) => {
 	    if (err) return console.log('The API returned an error: ' + err);
-	    console.log("Lord Voldemort fuckin sucess");
 	    console.log(calendarList);
 	});
 }
@@ -68,6 +69,7 @@ function RefreshToken(refreshToken){
 	  	if (err) return console.log('The refreshToken returned an error: ' + err);
 	  	console.log("new accessToken: " + accessToken);
 		console.log("new refreshToken: " + refreshToken);
+		CalendarList(accessToken);
 	});
 }
 
