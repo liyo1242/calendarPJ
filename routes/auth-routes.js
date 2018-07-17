@@ -1,4 +1,4 @@
-// welcome to this cute Router ~~~~~ 
+// welcome to this cute Router ~~~~~
 const router = require('express').Router();
 const passport = require('passport');
 const SCOPES = ['https://www.googleapis.com/auth/userinfo.profile','https://www.googleapis.com/auth/calendar','https://www.googleapis.com/auth/calendar.readonly'];
@@ -7,9 +7,9 @@ router.get('/login',(req,res)=>{
 	res.render('login');
 });
 
-router.get('/logout',(req,res) => {
-	res.send("logging out");
-})
+// router.get('/logout',(req,res) => {
+// 	res.send("logging out");
+// })
 
 router.get('/google',passport.authenticate('google',{accessType: 'offline',scope: SCOPES})
 );
@@ -25,7 +25,7 @@ router.get('/google',passport.authenticate('google',{accessType: 'offline',scope
 
 router.get('/google/redirect',passport.authenticate('google'),
   (req, res) => {
-    //res.send('JOJO is good and' + req.user);
+    console.log("google-redirect req = " + JSON.stringify(req.user));
     res.redirect('/profile/');
   }
 );

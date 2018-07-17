@@ -1,0 +1,233 @@
+@import "partials/mixins";
+@import "partials/function";
+@import "partials/variables";
+@for $i from 1 through 6 {
+	.col-#{$i} {
+		width: $i * 2em;
+	}
+}
+
+// $speakers: jojo-one, jojo-two, jojo-three;
+// @each $speaker in $speakers {
+// 	.#{$speaker}-profile {
+// 		background-image: url('/#{$speaker}.png');
+// 	}
+// }
+
+$font-sizes: (tiny: 8px, small: 11px, medium: 13px, large: 18px);
+@each $name, $size in $font-sizes {
+	.#{$name} {
+		font-size: $size;
+	}
+}
+
+// $j: 8;
+// @while $j >= 2 {
+// 	.picture-#{$j} {
+// 		width: $j * 10%;
+// 	}
+// 	$j: $j - 2;
+// }
+
+@include google-font("Alegreya+Sans");
+@include google-font("Titillium+Web");
+
+@include fancy-links;
+
+body {
+  font-family: $text-font;
+  font-size: em(18px);
+  color:$text-color;
+  background-color: $body-background-color;
+  padding-top:20px;
+  padding-right:50px;
+  padding-left:50px;
+  @include large-screens {
+  	font-size: 125%;
+  }
+}
+
+input {
+
+}
+
+.error{
+	color:red;
+}
+
+.critical-error{
+	@extend .error;
+	bottom: 1px solid red;
+	font-weight: bold;
+
+}
+
+h1, h2, h3, h4 {
+	font-family: $headline-font;
+  color:$secondary-color;
+}
+
+h2{
+	@include large-text;
+}
+
+p {
+  font-family: $text-font;
+}
+
+a {
+	color: $link-color;
+
+	@include blue-beans {
+		color:#877954;
+	}
+
+	&:hover{
+		color: darken($link-color,15%);
+	}
+}
+
+%highlight {
+	font-style: italic;
+}
+
+.sub-title {
+	@extend %highlight;
+	@extend .foo !optional;
+	font-size: em(20px);
+}
+
+.rightAlign { text-align:right}
+.leftAlign { text-align:left}
+.centerAlign { text-align:center}
+
+.warning-button{
+	@include warning;
+	padding: 8px 12px;
+}
+//  =============  button  start
+.btn {
+	display: inline-block;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	transition: all 200ms ease-in;
+	cursor: pointer;
+
+	&--primary {
+		background: $button-bg-color;
+		color: $button-text-color;
+		box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+		border-radius: 2px;
+		padding: 12px 36px;
+
+		&:hover { 
+			background: darken($button-bg-color, 4%);
+		}
+
+		&:active {
+			background: $button-bg-color;
+			box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+		}
+	}
+
+	&--inside {
+		margin-left: -96px;
+	}
+}
+
+//  =============  button  end
+//  ============= textbox
+.form {	
+	&__field {
+		width: 360px;
+		background: #fff;
+		color: $input-text-color;
+		font: inherit;
+		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+		border: 0;
+		outline: 0;
+		padding: 22px 18px;
+	}
+}
+//  ============= textbox end
+// .cta-button {
+// 	@extend .warning-button;
+// 	@include rounded;
+// 	font-weight: bold;
+// }
+
+@include apply-to-ie-6 {
+	body{
+		font-size:125%;
+	}
+}
+
+#header {
+	@include box(8px,1px solid #999);
+	@include box-shadow(2px 0px 4px #999,1px 1px 6px $secondary-color);
+	height: $header-height;
+	background-color: $theme-color;
+}
+  #main-menu {
+  	li{
+		display: inline;
+  	}
+
+	a{
+		text-decoration:none;
+		color: $menu-item-color;
+		border-bottom: 1px solid transparentize(#fefefe,1);
+		padding: 6px 8px;
+		transition:border-bottom 1s;
+		transition-timing-function:ease-in-out;
+
+		&:hover{
+			border-bottom:1px solid opacify(#fefefe,.5);
+		}
+	}
+  }
+
+#main {
+	width: $content-width;
+	@include large-screens {
+		width:auto;
+		max-width:$content-width;
+	}
+	margin-left: auto;
+	margin-right: auto;
+  #content {
+  	float: left;
+  	width: 6*$col;
+  }
+
+  #sidebar {
+  	float: right;
+  	width: 2*$col;
+
+  	li{
+  		list-style-type: none;
+  		padding: em(16px) em(20px);
+  		border-bottom: 1px dashed #999;
+
+  		&:hover{
+  			background-color: #efefef;
+  		}
+  	}
+
+  }
+}
+
+
+#footer {
+	clear: both;
+	height: $footer-height;
+	background-color: $ternary-color;
+
+	@include rogers-rovers {
+		border-top: 5px solid darken($ternary-color, 15%);
+	}
+}

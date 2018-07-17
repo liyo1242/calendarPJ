@@ -7,8 +7,11 @@ const mongoose = require('mongoose');
 const key = require('./config/key');
 const cookiesSession = require('cookie-session');
 const passport = require('passport');
+// var expressVue = require("express-vue");
 
 app.set('view engine','ejs');
+
+app.use(express.static(__dirname + '/app')); //靜態資料夾
 
 mongoose.connect(key.mongodb.dbURL,() => {
 	console.log('connected to mongoDB');
@@ -19,6 +22,8 @@ app.use(cookiesSession({
     keys:[key.session.cookieKey]
 }))
 
+app.use(require("body-parser").json()); // fetch req data
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -27,14 +32,14 @@ app.use('/auth',authRoutes);
 app.use('/profile',profileRoutes);
 
 app.get('/',(req,res) => {
-	res.render('home');
+	res.render('login');
 });
 
 app.listen(process.env.PORT || 3000,() => {
 	console.log('app now listening for requests on port 3000');
 });
 
-//npm install 
+//npm install
     // "cookie-session": "^2.0.0-beta.3" //session cookie~~ 這我做著玩的
 	// "ejs": "^2.5.9",			   // js模板引擎	
     // "express": "^4.16.3",

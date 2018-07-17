@@ -12,7 +12,7 @@ passport.serializeUser((user,done) => {
 passport.deserializeUser((id,done) => {
 	User.findById(id).then((user) => {
 		done(null,user);
-	});	
+	});
 });
 
 
@@ -22,20 +22,20 @@ var strategy = new GoogleStrategy({
     	callbackURL: "/auth/google/redirect",
     	passReqToCallback: true
 	},(req, accessToken, refreshToken, params, profile, done) => {
-		console.log("params: " + JSON.stringify(params, null, 4));
+		// console.log("params: " + JSON.stringify(params, null, 4));
 		console.log("accessToken: " + accessToken);
 		console.log("refreshToken: " + refreshToken);
 		// console.log("profile: " + JSON.stringify(profile, null, 4));
-		CalendarList(accessToken);
+		//CalendarList(accessToken);
 		User.findOne({googleId:profile.id}).then((currentUser) => {
 			if(currentUser){
 				//already have the user
-				console.log('user is ',currentUser);
-				RefreshToken(currentUser.refreshToken);
+				console.log('already user is ',currentUser.username);
+				//RefreshToken(currentUser.refreshToken);
 
 				done(null,currentUser);
-			}else{				
-				//save in mongoDB	
+			}else{
+				//save in mongoDB
 				new User({
 					accessToken:accessToken,
 					refreshToken:refreshToken,
@@ -44,12 +44,14 @@ var strategy = new GoogleStrategy({
 				})
 				.save()
 				.then((newUser) => {
-					console.log('new user created:' + newUser);
+					console.log('new user created:');
 					done(null,newUser);
-				});	
+				});
 			}
-		});	  	
+		});
 	})
+
+
 passport.use(strategy);
 refresh.use(strategy);
 
@@ -60,20 +62,23 @@ function CalendarList(accessToken){
 
 	google_calendar.events.list('primary', (err, calendarList) => {
 	    if (err) return console.log('The API returned an error: ' + err);
-	    console.log(calendarList);
+	    // console.log(calendarList.summary);
+
+	    console.log(calendarList.items[2]);
+	    return calendarList.items[2];
 	});
 }
 
 function RefreshToken(refreshToken){
 	refresh.requestNewAccessToken('google', refreshToken, function(err, accessToken, refreshToken) {
-	  	if (err) return console.log('The refreshToken returned an error: ' + err);
-	  	console.log("new accessToken: " + accessToken);
-		console.log("new refreshToken: " + refreshToken);
-		CalendarList(accessToken);
+		  	if (err) return console.log('The refreshToken returned an error: ' + err);
+		  	console.log("new accessToken: " + accessToken);
+			console.log("new refreshToken: " + refreshToken);
+			CalendarList(accessToken);
 	});
 }
 
-// note : refreshToken is only provided on the first authorization from the user 
+// note : refreshToken is only provided on the first authorization from the user
 // if you forget to save ,your next time node app.js(testing an OAuth2 integration) will display refreshToken:undefine
 // the bad google will not return the refresh_token again :D
 // so please find a place to save the small poor refreshToken
