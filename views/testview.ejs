@@ -8,6 +8,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     	<link rel="stylesheet" type="text/css" href="/styles/css/main.css">
 		<link href="/styles/css/calendarorganizer.min.css" rel="stylesheet" />
+		<link href="/picker/picker.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -16,9 +17,52 @@
 				<div id="calendarContainer"></div>
 				<div id="organizerContainer"></div>
 			</div>
-			<button class="btn btn-info btnpos"> 預約叫車 </button>
+			<button class="btn btn-info btnpos" data-toggle="modal" data-target="#exampleModal"> 預約叫車 </button>
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Add something</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <form>
+			          <div class="form-group">
+			          	<div class="input-group mb-3">
+				            <div class="input-group-prepend">
+							    <span class="input-group-text">START</span>
+							</div>
+							<input id="startDate"type="text" class="form-control js-date-picker" value="2018/10/24">
+							<input id="startTime" type="text" class="form-control js-time-picker" value="02:56">
+				        </div>
+				        <div class="input-group mb-3">
+				            <div class="input-group-prepend">
+							    <span class="input-group-text">END</span>
+							</div>
+							<input id="endDate" type="text" class="form-control js-date-picker" value="2018/10/24">
+							<input id="endTime" type="text" class="form-control js-time-picker" value="02:56">
+				        </div>
+				      </div>
+			          <div class="form-group">
+			            <label for="message-text" class="col-form-label">Message:</label>
+			            <textarea class="form-control" id="message-text"></textarea>
+			          </div>
+			        </form>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary" id="woofbtn">4+ woof</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 		</div>
-
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+		<script src="/picker/picker.js"></script>
 		<script src="/scripts/calendarorganizer.min.js"></script>
 		<script src="/scripts/calendarDynamically.js"></script>
 	</body>

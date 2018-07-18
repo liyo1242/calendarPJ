@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.1.1",
-    "bootstrap-vue": "^2.0.0-rc.11",
     "cookie-session": "^2.0.0-beta.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
@@ -21,9 +20,11 @@
     "mongoose": "^5.0.15",
     "node-sass": "^4.9.2",
     "nodemon": "^1.17.3",
+    "npm": "^6.2.0",
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
-    "passport-oauth2-refresh": "^1.0.0"
+    "passport-oauth2-refresh": "^1.0.0",
+    "pickerjs": "^1.0.0-beta"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
