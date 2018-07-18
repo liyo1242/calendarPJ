@@ -58,31 +58,35 @@ woofbtn.addEventListener('click', (e) => {
 	};
 	console.log('button inside');
 
+	if(eventtext.value != "" && endT > startT ){
+		console.log('right');
+		fetch('/profile/quickAdd', {
+		  method: 'POST', // or 'PUT'
+		  body: JSON.stringify(data), // data can be `string` or {object}!
+		  headers: new Headers({
+	  	  	'Content-Type': 'application/json'
+	  	  })
+		})
+		.then((res) => {
+			if(res.ok) {
+				console.log('click ok');
+				dataWithAjax(function(data) {
+					// initializing a new organizer object, that will use an html container to create itself
+					organizer = new Organizer("organizerContainer", // id of html container for calendar
+						calendar, // defining the calendar that the organizer is related
+						data // small part of the data of type object
+					);
+				});
+				return;
+			}
+			throw new Error('failed');
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+	}
 
-	fetch('/profile/quickAdd', {
-	  method: 'POST', // or 'PUT'
-	  body: JSON.stringify(data), // data can be `string` or {object}!
-	  headers: new Headers({
-  	  	'Content-Type': 'application/json'
-  	  })
-	})
-	.then((res) => {
-		if(res.ok) {
-			console.log('click ok');
-			dataWithAjax(function(data) {
-				// initializing a new organizer object, that will use an html container to create itself
-				organizer = new Organizer("organizerContainer", // id of html container for calendar
-					calendar, // defining the calendar that the organizer is related
-					data // small part of the data of type object
-				);
-			});
-			return;
-		}
-		throw new Error('failed');
-	})
-	.catch((err) => {
-		console.log(err);
-	});
+	eventtext.value = "";
 })
 // initializing a new calendar object, that will use an html container to create itself
 calendar = new Calendar("calendarContainer", // id of html container for calendar
