@@ -13,7 +13,7 @@ app.set('view engine','ejs');
 
 app.use(express.static(__dirname + '/app')); //靜態資料夾
 
-app.use('/picker', express.static('node_modules/pickerjs/dist'));
+app.use('/picker', express.static(__dirname + 'node_modules/pickerjs/dist'));
 
 mongoose.connect(key.mongodb.dbURL,() => {
 	console.log('connected to mongoDB');
