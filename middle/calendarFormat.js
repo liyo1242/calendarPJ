@@ -3,7 +3,7 @@ module.exports.dataFormat = (req, res, next) => {
     // req.calendarList
   req.calendarList.forEach(function(element, index) {
     console.log(`number ${index} element `);
-    console.log(element.summary);
+    console.log(element);
     var bufferDate = {
         start:{
             Year : "",
@@ -56,7 +56,8 @@ module.exports.dataFormat = (req, res, next) => {
                     newdata[y][m][d].push({
                         startTime: (d == bufferDate.start.Day) ? (bufferDate.start.Time) : ("00:00"),
                         endTime: (d == bufferDate.end.Day) ? (bufferDate.end.Time) : ("23:59"),
-                        text: element.summary
+                        text: element.summary,
+                        id:element.id
                     });
                 }
             }

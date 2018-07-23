@@ -320,6 +320,92 @@ $font_2: sans-serif;
     bottom: 10px;
     width: 100px;
 }
+// slide-class
+$white: #fff;
+$black_19: rgba(0,0,0,0.19);
+$black_23: rgba(0,0,0,0.23);
+$UpdatebtnColor: #4ADBB7;
+$DeletebtnColor: #CD1E1E;
+
+%extend_woof {
+	position: absolute;
+	top: 0;
+	content: '';
+	width: 2000px;
+	height: 100%;
+}
+
+
+.item-list {
+	overflow: hidden;
+	.item {
+		position: relative;
+		width: 100%;
+		background: $white;
+		margin-top: 5px;
+		> div {
+			padding: 10px;
+			//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			box-shadow: 0 10px 20px $black_19, 0 6px 6px $black_23;
+		}
+		.action-u {
+			position: absolute;
+			width: 80px;
+			height: 100%;
+			top: 0;
+			border: 0;
+			color: $white;
+			outline: none;
+			background: $UpdatebtnColor;
+			&:first-child::before {
+				@extend %extend_woof;
+				right: 80px;
+			}
+			&:last-child::before {
+				@extend %extend_woof;
+				left: 80px;
+			}
+			&:first-child {
+				left: -80px;
+			}
+			&:last-child {
+				right: -80px;
+			}
+		}
+		.action-u::before {
+			background: $UpdatebtnColor;
+		}
+		.action-d {
+			position: absolute;
+			width: 80px;
+			height: 100%;
+			top: 0;
+			border: 0;
+			color: $white;
+			outline: none;
+			background: $DeletebtnColor;
+			&:first-child::before {
+				@extend %extend_woof;
+				right: 80px;
+			}
+			&:last-child::before {
+				@extend %extend_woof;
+				left: 80px;
+			}
+			&:first-child {
+				left: -80px;
+			}
+			&:last-child {
+				right: -80px;
+			}
+		}
+		.action-d::before {
+			background: $DeletebtnColor;
+		}
+	}
+}
+
+// ================================
 
 @media only screen and(max-width: 620px) {
 	.calendar.medium {

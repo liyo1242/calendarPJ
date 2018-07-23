@@ -60,6 +60,31 @@ module.exports.calendarEventInsert = (req, res, next) => {
 	});
 }
 
+module.exports.calendarEventUpdate = (req, res, next) => {
+	console.log('calendarEventupdate middleware coming');
+	google_calendar.events.update('primary', eventId, {
+        'end': { 'dateTime': req.body.end },
+    	'start': { 'dateTime': req.body.start },
+        'summary': req.body.summary
+    }, (err, newCal) => {
+	    if (err) {
+	    	console.log('The API returned an error: ' + JSON.stringify(err));
+		}
+		next();
+	});
+}
+
+module.exports.calendarEventDelete = (req, res, next) => {
+	console.log('calendarEventdelete middleware coming');
+	google_calendar.events.delete('primary', eventId
+		, (err, newCal) => {
+	    if (err) {
+	    	console.log('The API returned an error: ' + JSON.stringify(err));
+		}
+		next();
+	});
+}
+
 // function CalendarList(accessToken){
 // 	var google_calendar = new gcal.GoogleCalendar(accessToken);
 

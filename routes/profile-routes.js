@@ -29,4 +29,20 @@ router.post('/quickAdd', refreshTokenMiddle.calendarEventInsert, (req, res) => {
   res.sendStatus(200); //sucess in
 });
 
+router.post('/delete', refreshTokenMiddle.calendarEventDelete, (req, res) => {
+
+  console.log('backend get data = ' + req.body.event);
+  console.log("success click server ");
+  // insert eventdata to google server !!!!
+  res.sendStatus(200); //sucess in
+});
+
+router.post('/update', refreshTokenMiddle.calendarEventUpdate, (req, res) => {
+
+  console.log('backend get data = ' + req.body.event);
+  console.log("success click server ");
+  // insert eventdata to google server !!!!
+  res.sendStatus(200); //sucess in
+});
+
 module.exports = router;
