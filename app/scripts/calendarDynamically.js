@@ -96,8 +96,8 @@ calendar = new Calendar("calendarContainer", // id of html container for calenda
 		3 // maximum length of the calendar labels
 	],
 	[
-		"#343a4080", // primary color
-		"#343a4080", // primary dark color
+		"#A2A0A0", // primary color
+		"#A2A0A0", // primary dark color
 		"#ffffff", // text color
 		"#ffecb3" // text dark color
 	]
