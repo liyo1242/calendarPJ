@@ -43,8 +43,8 @@ $font_2: sans-serif;
 		.day.active::before {
 			width: 18px;
 			height: 18px;
-			bottom: 10px;
-			right: 10px;
+			// bottom: 10px;
+			// right: 10px;
 		}
 	}
 	&.large {
@@ -58,10 +58,18 @@ $font_2: sans-serif;
 		}
 	}
 }
+.yearandmonth {
+	height: calc(10%);
+}
 .year {
-	width: calc(100%);
+	width: calc(10%);
 	display: flex;
-	flex-direction: row;
+	float: left;
+	height: 100%;
+	background-image: url(list.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	//flex-direction: row;
 	justify-content: center;
 	padding: 5px;
 	font-size: 14px;
@@ -83,12 +91,13 @@ $font_2: sans-serif;
 }
 .month {
 	z-index: 1;
-	width: calc(100%);
+	width: calc(90%);
 	display: flex;
-	flex-direction: row;
+	float: left;
+	height: 100%;
+	//flex-direction: row;
 	justify-content: center;
 	padding: 20px 5px;
-	font-size: 40px;
 	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 	box-shadow: 0 1px 4px $color_bunker_12_approx;
 	> span {
@@ -127,6 +136,7 @@ $font_2: sans-serif;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
+	// line-height: 4;
 	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 	box-shadow: 0 2px 6px -2px $color_bunker_21_approx;
 }
@@ -134,7 +144,7 @@ $font_2: sans-serif;
 	width: 100%;
 	flex: 1;
 	display: flex;
-	flex-direction: row;
+	flex-direction: row; 
 }
 .container {
 	width: 100%;
@@ -181,7 +191,7 @@ $font_2: sans-serif;
 		content: "";
 		position: absolute;
 		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-		border-radius: 100%;
+		//border-radius: 100%;
 		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 		box-shadow: 0 2px 4px $color_bunker_21_approx;
 	}
@@ -405,16 +415,33 @@ $DeletebtnColor: #CD1E1E;
 	}
 }
 
+//========================= new to display inline word
+.dayEvent {
+	// background-color: rgba(0, 123, 255, 0.5);
+    height: 65%;
+    width: 100%;
+    position: absolute;
+    font-size: 10px;
+    bottom: 0px;
+    left: 0;
+
+    > div {
+		margin: 2px;
+	    background-color: #D6ABD6;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	    color: #FFFFFF;
+	}
+}
+
 // ================================
 
 @media only screen and(max-width: 620px) {
 	.calendar.medium {
 		width: 100vw;
-		height: auto;
 	}
 	.events.medium {
 		width: 100vw;
-		height: auto;
 	}
 	.container {
 		width: 100%;

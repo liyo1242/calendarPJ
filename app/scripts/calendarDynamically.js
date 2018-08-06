@@ -92,12 +92,12 @@ woofbtn.addEventListener('click', (e) => {
 calendar = new Calendar("calendarContainer", // id of html container for calendar
 	"medium", // size of calendar, can be small | medium | large
 	[
-		"Sunday", // left most day of calendar labels
+		"日", // left most day of calendar labels
 		3 // maximum length of the calendar labels
 	],
 	[
-		"#826FF4", // primary color
-		"#7C98FC", // primary dark color
+		"#343a4080", // primary color
+		"#343a4080", // primary dark color
 		"#ffffff", // text color
 		"#ffecb3" // text dark color
 	]
