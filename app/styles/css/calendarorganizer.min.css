@@ -327,11 +327,18 @@
   bottom: 0px;
   left: 0; }
   .dayEvent > div {
+    height: 30%;
     margin: 2px;
     background-color: #D6ABD6;
     text-overflow: ellipsis;
     overflow: hidden;
     color: #FFFFFF; }
+  .dayEvent > button {
+    height: 30%;
+    width: 100%;
+    text-align: left;
+    font-size: 8px;
+    padding: 0; }
 
 @media only screen and (max-width: 620px) {
   .calendar.medium {

@@ -433,6 +433,14 @@ $DeletebtnColor: #CD1E1E;
 	    overflow: hidden;
 	    color: #FFFFFF;
 	}
+
+	> button {
+		height: 30%;
+	    width: 100%;
+	    text-align: left;
+	    font-size: 8px;
+	    padding:0;
+	}
 }
 
 // ================================
