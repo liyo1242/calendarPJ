@@ -45,6 +45,10 @@ $( ".btnpos" ).click( function() {
     $(".btnpos").toggleClass('btnposflip');
 });
 
+$('#exampleModal').on('hidden.bs.modal', function () {
+    $(".btnpos").toggleClass('btnposflip');
+})
+
 const woofbtn = document.getElementById('woofbtn');
 
 woofbtn.addEventListener('click', (e) => {
