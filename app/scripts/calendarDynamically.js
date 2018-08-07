@@ -40,6 +40,11 @@ var serverData = createDummyData(); // use to test ajax
 // stating variables in order for them to be global
 var calendar, organizer;
 
+
+$( ".btnpos" ).click( function() {
+    $(".btnpos").toggleClass('btnposflip');
+});
+
 const woofbtn = document.getElementById('woofbtn');
 
 woofbtn.addEventListener('click', (e) => {
