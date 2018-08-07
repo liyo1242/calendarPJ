@@ -40,14 +40,36 @@ var serverData = createDummyData(); // use to test ajax
 // stating variables in order for them to be global
 var calendar, organizer;
 
+//============================================
 
-$( ".btnpos" ).click( function() {
+$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this);
+  modal.find('#message-text').text(recipient);
+  //modal.find('.modal-body input').val(recipient)
+})
+
+// circle plus btn ===============
+
+$( ".btnpos" ).click(function() {
     $(".btnpos").toggleClass('btnposflip');
 });
 
 $('#exampleModal').on('hidden.bs.modal', function () {
     $(".btnpos").toggleClass('btnposflip');
+    dataWithAjax(function(data) {
+		// initializing a new organizer object, that will use an html container to create itself
+		organizer = new Organizer("organizerContainer", // id of html container for calendar
+			calendar, // defining the calendar that the organizer is related
+			data // small part of the data of type object
+		);
+	});
 })
+
+//=================================
 
 const woofbtn = document.getElementById('woofbtn');
 

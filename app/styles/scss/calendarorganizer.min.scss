@@ -341,7 +341,7 @@ $font_2: sans-serif;
 }
 
 .btnposflip {
-  transform: rotate(-45deg);
+  transform: rotate(-225deg);
 }
 // slide-class
 $white: #fff;
@@ -471,11 +471,11 @@ $DeletebtnColor: #CD1E1E;
 		display: flex;
 		flex-direction: column;
 	}
-	.btnpos {
-		position: absolute;
-	    right: calc(50vw - 50px);
-	    bottom: auto;
-	    margin-top: 10px;
-	    width: 100px;
-	}
+	// .btnpos {
+	// 	position: absolute;
+	//     right: calc(50vw - 50px);
+	//     bottom: auto;
+	//     margin-top: 10px;
+	//     width: 100px;
+	// }
 }

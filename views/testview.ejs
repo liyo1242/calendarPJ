@@ -17,7 +17,7 @@
 				<div id="calendarContainer"></div>
 				<div id="organizerContainer"></div>
 			</div>
-			<button class="btn btn-info btnpos" data-toggle="modal" data-target="#exampleModal"> 
+			<button class="btn btn-info btnpos" data-toggle="modal" data-target="#exampleModal">
 				<svg id="4plus" viewBox="0 0 5 5">
 			    	<path d="M2 1.5 h1 v1 h1 v1 h-1 v1 h-1 v-1 h-1 v-1 h1 z"></path>
 				</svg>
@@ -26,8 +26,15 @@
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel">Add something</h5>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			        <div class="input-group input-group-lg">
+					  <div class="input-group-prepend">
+					  </div>
+					  <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="BB#####">
+					</div>
+					<button id="gg" type="button" class="btn" data-dismiss="modal" aria-label="Close">
+						GG
+					</button>
+			        <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
@@ -51,8 +58,12 @@
 				      </div>
 			          <div class="form-group">
 			            <label for="message-text" class="col-form-label">Message:</label>
-			            <textarea class="form-control" id="message-text"></textarea>
+			            <textarea class="form-control" id="message-text" placeholder="write something ..."></textarea>
 			          </div>
+			          <div class="form-group">
+					    <label for="inputAddress">Address</label>
+					    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+					  </div>
 			        </form>
 			      </div>
 			      <div class="modal-footer">
