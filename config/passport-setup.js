@@ -23,8 +23,8 @@ var strategy = new GoogleStrategy({
     	passReqToCallback: true
 	},(req, accessToken, refreshToken, params, profile, done) => {
 		// console.log("params: " + JSON.stringify(params, null, 4));
-		console.log("accessToken: " + accessToken);
-		console.log("refreshToken: " + refreshToken);
+		//console.log("accessToken: " + accessToken);
+		//console.log("refreshToken: " + refreshToken);
 		// console.log("profile: " + JSON.stringify(profile, null, 4));
 		//CalendarList(accessToken);
 		User.findOne({googleId:profile.id}).then((currentUser) => {
@@ -64,7 +64,7 @@ function CalendarList(accessToken){
 	    if (err) return console.log('The API returned an error: ' + err);
 	    // console.log(calendarList.summary);
 
-	    console.log(calendarList.items[2]);
+	    //console.log(calendarList.items[2]);
 	    return calendarList.items[2];
 	});
 }
@@ -72,8 +72,8 @@ function CalendarList(accessToken){
 function RefreshToken(refreshToken){
 	refresh.requestNewAccessToken('google', refreshToken, function(err, accessToken, refreshToken) {
 		  	if (err) return console.log('The refreshToken returned an error: ' + err);
-		  	console.log("new accessToken: " + accessToken);
-			console.log("new refreshToken: " + refreshToken);
+		  	//console.log("new accessToken: " + accessToken);
+			//console.log("new refreshToken: " + refreshToken);
 			CalendarList(accessToken);
 	});
 }

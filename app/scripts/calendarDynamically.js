@@ -66,7 +66,7 @@ $('#exampleModal').on('hidden.bs.modal', function () {
 			calendar, // defining the calendar that the organizer is related
 			data // small part of the data of type object
 		);
-	}); 
+	});
 })
 
 //=================================

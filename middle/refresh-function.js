@@ -75,8 +75,9 @@ module.exports.calendarEventUpdate = (req, res, next) => {
 }
 
 module.exports.calendarEventDelete = (req, res, next) => {
+	console.log(req.body.id);
 	console.log('calendarEventdelete middleware coming');
-	google_calendar.events.delete('primary', eventId
+	google_calendar.events.delete('primary', req.body.id
 		, (err, newCal) => {
 	    if (err) {
 	    	console.log('The API returned an error: ' + JSON.stringify(err));
