@@ -38,7 +38,7 @@ $font_2: sans-serif;
 		}
 	}
 	&.medium {
-		width: 50vw;
+		width: 100vw;
 		height: 100vh;
 		.day.active::before {
 			width: 18px;
@@ -150,7 +150,7 @@ $font_2: sans-serif;
 	width: 100%;
 	flex: 1;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 }
 .day {
 	flex: 1;
@@ -226,7 +226,7 @@ $font_2: sans-serif;
 		height: 400px;
 	}
 	&.medium {
-		width: 50vw;
+		width: 100vw;
 		height: 100vh;
 	}
 	&.large {
