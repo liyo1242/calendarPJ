@@ -42,20 +42,20 @@ var calendar, organizer;
 
 //============================================
 
-// $(function() {
-//     $(".days").swipe({
-//         threshold: 0,
-//         swipe:function(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
-//             //console.log([event, direction, distance, duration, fingerCount, fingerData, currentDirection]);
-//             console.log("fuckfuckfuck4+ direction " + direction );
-//             if(direction == "left"){
-//             	$("#calendarContainer-month-next").click();
-//             }else if (direction == "right"){
-//             	$("#calendarContainer-month-back").click();
-//             }
-//         }
-//     });
-// });
+$(function() {
+    $(".days").swipe({
+        threshold: 0,
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
+            //console.log([event, direction, distance, duration, fingerCount, fingerData, currentDirection]);
+            console.log("fuckfuckfuck4+ direction " + direction );
+            if(direction == "left"){
+            	$("#calendarContainer-month-next").click();
+            }else if (direction == "right"){
+            	$("#calendarContainer-month-back").click();
+            }
+        }
+    });
+});
 
 $('#gg').click(function(){
 		console.log('ff4');
