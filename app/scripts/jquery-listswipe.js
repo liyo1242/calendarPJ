@@ -42,10 +42,12 @@
 			}).on('touchmove', settings.itemSelector, function (e) {
 				console.log("in touch move")
 				var $item = $(this);
+
 				var data = $item.data('listSwipe');
 				var touch = getTouchPosition(e);
 
 				if (data.maxYDeltaReached) {
+					console.log('max');
 					return;
 				}
 
@@ -73,28 +75,7 @@
 				var $item = $(this);
 				var data = $item.data('listSwipe');
 				var touch = getTouchPosition(e);
-				if(e.target.id.substr(0,6) == 'delete'){
-					console.log('fuckfuck4');
 
-					if(confirm("確定要刪除嗎?")){
-						console.log('fuckfuckyouoyoyouo4');
-						var dataa = {
-							id: e.target.id.substr(7)
-						};
-						fetch('/profile/delete', {
-						  method: 'POST', // or 'PUT'
-						  body: JSON.stringify(dataa), // data can be `string` or {object}!
-						  headers: new Headers({
-					  	  	'Content-Type': 'application/json'
-					  	  })
-						})
-						alert("已經刪除！");
-
-					}
-					else{
-						alert("已經取消了刪除操作");
-					}
-				}
 
 				if (data.maxYDeltaReached) {
 					return;
@@ -132,7 +113,6 @@
 	function getTouchDelta(touch, data, settings) {
 		var xDelta = touch.x - data.touchStart.x + data.startLeft;
 		var yDelta = touch.y - data.touchStart.y;
-
 		if (!settings.rightAction && xDelta < 0) {
 			xDelta = 0;
 		}

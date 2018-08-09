@@ -29,10 +29,10 @@
 			        <div class="input-group input-group-lg">
 					  <div class="input-group-prepend">
 					  </div>
-					  <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="BB#####">
+					  <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="活動的標題">
 					</div>
-					<button id="gg" type="button" class="btn" data-dismiss="modal" aria-label="Close">
-						GG
+					<button id="gg" type="button" class="btn" button-data="" data-dismiss="modal" aria-label="Close">
+						刪除
 					</button>
 			        <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
@@ -43,27 +43,26 @@
 			          <div class="form-group">
 			          	<div class="input-group mb-3">
 				            <div class="input-group-prepend">
-							    <span class="input-group-text">START</span>
+							    <span class="input-group-text">活動開始時間</span>
 							</div>
-							<input id="startDate"type="text" class="form-control js-date-picker" value="2018/10/24">
-							<input id="startTime" type="text" class="form-control js-time-picker" value="02:56">
+							<input id="startDate" type="text" class="form-control js-date-picker timeInput margin-tb-10" value="2018/10/24">
+							<input id="startTime" type="text" class="form-control js-time-picker timeInput margin-tb-10" value="02:56">
 				        </div>
 				        <div class="input-group mb-3">
 				            <div class="input-group-prepend">
-							    <span class="input-group-text">END</span>
+							    <span class="input-group-text">活動結束時間</span>
 							</div>
-							<input id="endDate" type="text" class="form-control js-date-picker" value="2018/10/24">
-							<input id="endTime" type="text" class="form-control js-time-picker" value="02:56">
+							<input id="endDate" type="text" class="form-control js-date-picker timeInput margin-tb-10" value="2018/10/24">
+							<input id="endTime" type="text" class="form-control js-time-picker timeInput margin-tb-10" value="02:56">
 				        </div>
 				      </div>
 			          <div class="form-group">
 			            <label for="message-text" class="col-form-label">Message:</label>
-			            <textarea class="form-control" id="message-text" placeholder="write something ..."></textarea>
+			            <input type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="30分鐘前提醒">
+			            <input type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="新增活動地點">
+			            <textarea class="form-control margin-tb-10" id="message-text" placeholder="新增活動內容"></textarea>
+			            <input type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="偏好的交通工具">
 			          </div>
-			          <div class="form-group">
-					    <label for="inputAddress">Address</label>
-					    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-					  </div>
 			        </form>
 			      </div>
 			      <div class="modal-footer">
@@ -79,6 +78,7 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 		<script src="/picker/picker.js"></script>
 		<script src="/scripts/jquery-listswipe.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
 		<script src="/scripts/calendarorganizer.min.js"></script>
 		<script src="/scripts/calendarDynamically.js"></script>
 	</body>

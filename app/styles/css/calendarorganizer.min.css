@@ -39,9 +39,6 @@
   display: flex;
   float: left;
   height: 100%;
-  background-image: url(list.svg);
-  background-repeat: no-repeat;
-  background-position: center;
   justify-content: center;
   padding: 5px;
   font-size: 14px; }
@@ -330,6 +327,13 @@
         right: -80px; }
     .item-list .item .action-d::before {
       background: #CD1E1E; }
+
+.margin-tb-10 {
+  margin: 10px 0; }
+
+.timeInput {
+  display: inline;
+  width: 40%; }
 
 .dayEvent {
   height: 65%;

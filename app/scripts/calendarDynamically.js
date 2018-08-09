@@ -42,14 +42,55 @@ var calendar, organizer;
 
 //============================================
 
+$(function() {
+    $(".days").swipe({
+        threshold: 0,
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
+            //console.log([event, direction, distance, duration, fingerCount, fingerData, currentDirection]);
+            console.log("fuckfuckfuck4+ direction " + direction );
+            if(direction == "left"){
+            	$("#calendarContainer-month-next").click();
+            }else if (direction == "right"){
+            	$("#calendarContainer-month-back").click();
+            }
+        }
+    });
+});
+
+$('#gg').click(function(){
+		console.log('ff4');
+		if($('#gg').attr('button-data') != ""){
+			if(confirm("確定要刪除嗎?")){
+				console.log('ffffo4');
+				var data = {
+					id: $('#gg').attr('button-data')
+				};
+				fetch('/profile/delete', {
+			    	method: 'POST', // or 'PUT'
+				    body: JSON.stringify(data), // data can be `string` or {object}!
+				    headers: new Headers({
+						'Content-Type': 'application/json'
+					})
+				})
+				$('#gg').attr('button-data',"");
+				alert("已經刪除！");
+			}
+			else{
+				alert("已經取消了刪除操作");
+			}
+		}
+})
+
 $('#exampleModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
+  console.log(button.data('whatever')); // Extract info from data-* attributes
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this);
-  modal.find('#message-text').text(recipient);
-  //modal.find('.modal-body input').val(recipient)
+  if(button.data('whatever') != undefined){
+	  var modal = $(this);
+	  modal.find('#message-text').text(button.data('whatever').text);
+	  $('#gg').attr('button-data',button.data('whatever').id);
+	}
 })
 
 // circle plus btn ===============
