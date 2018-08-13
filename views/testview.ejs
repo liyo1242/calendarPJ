@@ -29,7 +29,7 @@
 			        <div class="input-group input-group-lg">
 					  <div class="input-group-prepend">
 					  </div>
-					  <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="活動的標題">
+					  <input id="message-title" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="活動的標題">
 					</div>
 					<button id="gg" type="button" class="btn" button-data="" data-dismiss="modal" aria-label="Close">
 						刪除
@@ -45,29 +45,29 @@
 				            <div class="input-group-prepend">
 							    <span class="input-group-text">活動開始時間</span>
 							</div>
-							<input id="startDate" type="text" class="form-control js-date-picker timeInput margin-tb-10" value="2018/10/24">
-							<input id="startTime" type="text" class="form-control js-time-picker timeInput margin-tb-10" value="02:56">
+							<input id="startDate" type="text" class="form-control js-date-picker timeInput margin-tb-10" value="">
+							<input id="startTime" type="text" class="form-control js-time-picker timeInput margin-tb-10" value="">
 				        </div>
 				        <div class="input-group mb-3">
 				            <div class="input-group-prepend">
 							    <span class="input-group-text">活動結束時間</span>
 							</div>
-							<input id="endDate" type="text" class="form-control js-date-picker timeInput margin-tb-10" value="2018/10/24">
-							<input id="endTime" type="text" class="form-control js-time-picker timeInput margin-tb-10" value="02:56">
+							<input id="endDate" type="text" class="form-control js-date-picker timeInput margin-tb-10" value="">
+							<input id="endTime" type="text" class="form-control js-time-picker timeInput margin-tb-10" value="">
 				        </div>
 				      </div>
 			          <div class="form-group">
 			            <label for="message-text" class="col-form-label">Message:</label>
-			            <input type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="30分鐘前提醒">
-			            <input type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="新增活動地點">
-			            <textarea class="form-control margin-tb-10" id="message-text" placeholder="新增活動內容"></textarea>
-			            <input type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="偏好的交通工具">
+			            <input id="message-reminder" type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="30分鐘前提醒">
+			            <input id="message-location" type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="新增活動地點">
+			            <textarea id="message-text" class="form-control margin-tb-10" placeholder="新增活動內容"></textarea>
+			            <input  id="message-transportation" type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="偏好的交通工具">
 			          </div>
 			        </form>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" data-dismiss="modal" id="woofbtn">submit</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+			        <button type="button" disabled="disabled" class="btn btn-primary" data-dismiss="modal" id="woofbtn">確認</button>
 			      </div>
 			    </div>
 			  </div>

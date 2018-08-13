@@ -56,8 +56,10 @@ module.exports.dataFormat = (req, res, next) => {
                     newdata[y][m][d].push({
                         startTime: (d == bufferDate.start.Day) ? (bufferDate.start.Time) : ("00:00"),
                         endTime: (d == bufferDate.end.Day) ? (bufferDate.end.Time) : ("23:59"),
-                        text: element.summary,
-                        id:element.id
+                        title: element.summary,
+                        text: element.description,
+                        id: element.id,
+                        location: element.location
                     });
                 }
             }

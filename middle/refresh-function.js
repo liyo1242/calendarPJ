@@ -51,7 +51,9 @@ module.exports.calendarEventInsert = (req, res, next) => {
 	google_calendar.events.insert('primary',{
         'end': { 'dateTime': req.body.end },
     	'start': { 'dateTime': req.body.start },
-        'summary': req.body.summary
+        'summary': req.body.summary,
+        'location': req.body.location,
+        'description': req.body.description
     }, (err, newCal) => {
 	    if (err) {
 	    	console.log('The API returned an error: ' + JSON.stringify(err));

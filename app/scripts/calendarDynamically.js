@@ -1,61 +1,25 @@
 "use strict";
-
-// function that creates dummy data for demonstration
-function createDummyData() {
-	var date = new Date();
-	var data = {};
-
-	for (var i = 0; i < 10; i++) {
-		data[date.getFullYear() + i] = {};
-		for (var j = 0; j < 12; j++) {
-			data[date.getFullYear() + i][j + 1] = {};
-			for (var k = 0; k < Math.ceil(Math.random() * 10); k++) {
-				var l = Math.ceil(Math.random() * 28);
-
-				try {
-						data[date.getFullYear() + i][j + 1][l].push({
-							startTime: "10:00",
-							endTime: "12:00",
-							text: "Some Event Here"
-						});
-					} catch (e) {
-						data[date.getFullYear() + i][j + 1][l] = [];
-						data[date.getFullYear() + i][j + 1][l].push({
-							startTime: "10:00",
-							endTime: "12:00",
-							text: "Some Event Here"
-						});
-					}
-			}
-		}
-	}
-	return data;
-}
-
-			// INSTEAD OF GRABBING THE DATA FROM AN AJAX REQUEST
-			// I WILL BE DEMONSTRATING THE SAME EFFECT THROUGH MEMORY
-			// THIS DEFEATS THE PURPOSE BUT IS SIMPLER TO UNDERSTAND
-var serverData = createDummyData(); // use to test ajax
-
-// stating variables in order for them to be global
 var calendar, organizer;
 
 //============================================
 
-// $(function() {
-//     $(".days").swipe({
-//         threshold: 0,
-//         swipe:function(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
-//             //console.log([event, direction, distance, duration, fingerCount, fingerData, currentDirection]);
-//             console.log("fuckfuckfuck4+ direction " + direction );
-//             if(direction == "left"){
-//             	$("#calendarContainer-month-next").click();
-//             }else if (direction == "right"){
-//             	$("#calendarContainer-month-back").click();
-//             }
+// $(".days").swipe({
+//     threshold: 0,
+//     swipe:function(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
+//         //console.log([event, direction, distance, duration, fingerCount, fingerData, currentDirection]);
+// 	    console.log("fuckfuckfuck4+ direction " + direction );
+//         if(direction == "left"){
+//     	  	$("#calendarContainer-month-next").click();
+//         }else if (direction == "right"){
+//            	$("#calendarContainer-month-back").click();
 //         }
-//     });
+//     }
 // });
+
+$('.list-placeholder').click(function() {
+	console.log($('#organizerContainer-date').html());
+});
+
 
 $('#gg').click(function(){
 		console.log('ff4');
@@ -83,24 +47,26 @@ $('#gg').click(function(){
 
 $('#exampleModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
+  $(".btnpos").toggleClass('btnposflip');
   console.log(button.data('whatever')); // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   if(button.data('whatever') != undefined){
 	  var modal = $(this);
+	  modal.find('#message-title').val(button.data('whatever').title);
 	  modal.find('#message-text').text(button.data('whatever').text);
+	  modal.find('#message-location').val(button.data('whatever').location);
 	  $('#gg').attr('button-data',button.data('whatever').id);
 	}
 })
 
-// circle plus btn ===============
-
-$( ".btnpos" ).click(function() {
-    $(".btnpos").toggleClass('btnposflip');
-});
+// modal disppear refresh calendar page
 
 $('#exampleModal').on('hidden.bs.modal', function () {
     $(".btnpos").toggleClass('btnposflip');
+    var modal = $(this);
+    modal.find('#message-title').val("");
+	modal.find('#message-text').text("");
+	modal.find('#message-location').val("");
+	$('#gg').attr('button-data',"");
     dataWithAjax(function(data) {
 		// initializing a new organizer object, that will use an html container to create itself
 		organizer = new Organizer("organizerContainer", // id of html container for calendar
@@ -110,12 +76,27 @@ $('#exampleModal').on('hidden.bs.modal', function () {
 	});
 })
 
-//=================================
+// ================================
+$(".btnpos").click(function(){
+	var d = new Date();
+	$('#startTime').val(d.getHours() + ':' + d.getMinutes());
+	$('#startDate').val(d.getFullYear()	+ '/' + (d.getMonth() + 1) + '/' + d.getDate());
+	// === === === ===
+	// === === === ===
+	$('#endTime').val(d.getHours() + ':' + d.getMinutes());
+	$('#endDate').val(d.getFullYear()	+ '/' + (d.getMonth() + 1) + '/' + d.getDate());
+})
+
+// ================================
 
 const woofbtn = document.getElementById('woofbtn');
 
 woofbtn.addEventListener('click', (e) => {
+	const eventTitle = document.getElementById('message-title');
 	const eventtext = document.getElementById('message-text');
+	const eventLocation = document.getElementById('message-location');
+	const eventreMinder = document.getElementById('message-reminder');
+	const eventreTransport = document.getElementById('message-transportation');
 
 	var c1 = Datepick1.getDate(true).replace("/","-").replace("/","-").replace("/","-");
 	var startT = c1 + "T" + Timepick1.getDate(true) + ":00+08:00";
@@ -126,11 +107,13 @@ woofbtn.addEventListener('click', (e) => {
 	var data = {
 		start: startT,
 		end: endT,
-		summary: eventtext.value,
+		summary: eventTitle.value, //title
+		location: eventLocation.value,
+		description: eventtext.value
 	};
 	console.log('button inside');
 
-	if(eventtext.value != "" && endT > startT ){
+	if(eventTitle.value != "" && endT > startT ){
 		console.log('right');
 		fetch('/profile/quickAdd', {
 		  method: 'POST', // or 'PUT'
@@ -157,7 +140,10 @@ woofbtn.addEventListener('click', (e) => {
 			console.log(err);
 		});
 	}
-
+	eventTitle.value = "";
+	eventLocation.value = "";
+	eventreTransport.value = "";
+	eventreMinder.value = "";
 	eventtext.value = "";
 })
 // initializing a new calendar object, that will use an html container to create itself
