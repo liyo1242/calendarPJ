@@ -313,7 +313,7 @@ $font_2: sans-serif;
 	align-content: center;
 	align-items: center;
 	color: $color_tapa_approx;
-	pointer-events: none;
+	// pointer-events: none;
 }
 .time {
 	font-size: 14px;
@@ -360,6 +360,8 @@ $DeletebtnColor: #CD1E1E;
 
 
 .item-list {
+	display: flex;
+    flex-flow: column;
 	overflow: hidden;
 	.item {
 		position: relative;
@@ -437,6 +439,13 @@ $DeletebtnColor: #CD1E1E;
 .timeInput {
 	display: inline;
 	width: 40%
+}
+
+.appointDayAdd {
+	flex: 1;
+    align-items: center;
+    justify-content: center;
+    left: 0px;
 }
 
 .dayEvent {

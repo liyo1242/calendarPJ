@@ -15,10 +15,9 @@ var calendar, organizer;
 //         }
 //     }
 // });
-
-$('.list-placeholder').click(function() {
-	console.log($('#organizerContainer-date').html());
-});
+    $('.appointDayAdd').click(function() {
+        console.log($('#organizerContainer-date').html());
+    });
 
 
 $('#gg').click(function(){
@@ -55,6 +54,15 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 	  modal.find('#message-text').text(button.data('whatever').text);
 	  modal.find('#message-location').val(button.data('whatever').location);
 	  $('#gg').attr('button-data',button.data('whatever').id);
+
+	var time = button.data('whatever').time;
+	var d = new Date();
+	$('#startTime').val(d.getHours() + ':' + d.getMinutes());
+	$('#startDate').val(time.slice(0,4) + '/' + time.slice(5,7) + '/' + time.slice(9));
+	// === === === ===
+	// === === === ===
+	$('#endTime').val(d.getHours() + ':' + d.getMinutes());
+	$('#endDate').val(time.slice(0,4) + '/' + time.slice(5,7) + '/' + time.slice(9));
 	}
 })
 
