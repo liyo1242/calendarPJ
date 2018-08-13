@@ -55,7 +55,16 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 	  modal.find('#message-location').val(button.data('whatever').location);
 	  $('#gg').attr('button-data',button.data('whatever').id);
 
-	  	if(button.data('whatever').time != undefined){
+	  	if(button.data('whatever').startTime != undefined && button.data('whatever').endTime != undefined ){
+			var time = button.data('whatever').time;
+			var d = new Date();
+			$('#startTime').val(button.data('whatever').startTime);
+			$('#startDate').val(time.slice(0,4) + '/' + time.slice(5,7) + '/' + time.slice(9));
+			// === === === ===
+			// === === === ===
+			$('#endTime').val(button.data('whatever').endTime);
+			$('#endDate').val(time.slice(0,4) + '/' + time.slice(5,7) + '/' + time.slice(9));
+		}else if(button.data('whatever').time != undefined){
 			var time = button.data('whatever').time;
 			var d = new Date();
 			$('#startTime').val(d.getHours() + ':' + d.getMinutes());
