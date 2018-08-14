@@ -15,10 +15,9 @@ var calendar, organizer;
 //         }
 //     }
 // });
-    $('.appointDayAdd').click(function() {
-        console.log($('#organizerContainer-date').html());
-    });
-
+$('.appointDayAdd').click(function() {
+    console.log($('#organizerContainer-date').html());
+});
 
 $('#gg').click(function(){
 		console.log('ff4');
@@ -44,16 +43,59 @@ $('#gg').click(function(){
 		}
 })
 
+
+$('#uu').click(function(){
+	const eventTitle = document.getElementById('message-title');
+	const eventtext = document.getElementById('message-text');
+	const eventLocation = document.getElementById('message-location');
+	const eventreMinder = document.getElementById('message-reminder');
+	const eventreTransport = document.getElementById('message-transportation');
+
+	var c1 = Datepick1.getDate(true).replace("/","-").replace("/","-").replace("/","-");
+	var startT = c1 + "T" + Timepick1.getDate(true) + ":00+08:00";
+
+	var c2 = Datepick2.getDate(true).replace("/","-").replace("/","-").replace("/","-");
+	var endT = c2 + "T" + Timepick2.getDate(true) + ":00+08:00";
+
+	var data = {
+		start: startT,
+		end: endT,
+		summary: eventTitle.value, //title
+		location: eventLocation.value,
+		description: eventtext.value,
+		id: $('#uu').attr('button-data')
+	};
+		if($('#uu').attr('button-data') != ""){
+			if(confirm("確定要更新嗎?")){
+				console.log('ffffo4');
+				fetch('/profile/update', {
+			    	method: 'POST', // or 'PUT'
+				    body: JSON.stringify(data), // data can be `string` or {object}!
+				    headers: new Headers({
+						'Content-Type': 'application/json'
+					})
+				}).then((data) => {console.log(data)})
+				$('#uu').attr('button-data',"");
+				alert("已經更新！");
+			}
+			else{
+				alert("已經取消更新操作");
+			}
+		}
+})
+
 $('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  $(".btnpos").toggleClass('btnposflip');
-  console.log(button.data('whatever')); // Extract info from data-* attributes
-  if(button.data('whatever') != undefined){
-	  var modal = $(this);
-	  modal.find('#message-title').val(button.data('whatever').title);
-	  modal.find('#message-text').text(button.data('whatever').text);
-	  modal.find('#message-location').val(button.data('whatever').location);
-	  $('#gg').attr('button-data',button.data('whatever').id);
+	console.log('fuck you show');
+  	var button = $(event.relatedTarget) // Button that triggered the modal
+  	$(".btnpos").toggleClass('btnposflip');
+  	console.log(button.data('whatever')); // Extract info from data-* attributes
+  	if(button.data('whatever') != undefined){
+	  	var modal = $(this);
+	  	modal.find('#message-title').val(button.data('whatever').title);
+	  	modal.find('#message-text').val(button.data('whatever').text);
+	  	modal.find('#message-location').val(button.data('whatever').location);
+	  	$('#gg').attr('button-data',button.data('whatever').id);
+	  	$('#uu').attr('button-data',button.data('whatever').id);
 
 	  	if(button.data('whatever').startTime != undefined && button.data('whatever').endTime != undefined ){
 			var time = button.data('whatever').time;
@@ -74,18 +116,20 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 			$('#endTime').val(d.getHours() + ':' + d.getMinutes());
 			$('#endDate').val(time.slice(0,4) + '/' + time.slice(5,7) + '/' + time.slice(9));
 		}
+		Timepick1.update();
+		Datepick1.update();
+		Timepick2.update();
+		Datepick2.update();
 	}
 })
 
 // modal disppear refresh calendar page
 
 $('#exampleModal').on('hidden.bs.modal', function () {
+	console.log('fuck you hidden');
     $(".btnpos").toggleClass('btnposflip');
-    var modal = $(this);
-    modal.find('#message-title').val("");
-	modal.find('#message-text').text("");
-	modal.find('#message-location').val("");
-	$('#gg').attr('button-data',"");
+	// $('#gg').attr('button-data',"");
+	// $('#uu').attr('button-data',"");
     dataWithAjax(function(data) {
 		// initializing a new organizer object, that will use an html container to create itself
 		organizer = new Organizer("organizerContainer", // id of html container for calendar
@@ -98,12 +142,23 @@ $('#exampleModal').on('hidden.bs.modal', function () {
 // ================================
 $(".btnpos").click(function(){
 	var d = new Date();
+	var sendData = {
+        id: "",
+        title: "",
+        text: "",
+        location: ""
+    }
+    $(".btnpos").attr("data-whatever",JSON.stringify(sendData));
 	$('#startTime').val(d.getHours() + ':' + d.getMinutes());
 	$('#startDate').val(d.getFullYear()	+ '/' + (d.getMonth() + 1) + '/' + d.getDate());
 	// === === === ===
 	// === === === ===
 	$('#endTime').val(d.getHours() + ':' + d.getMinutes());
 	$('#endDate').val(d.getFullYear()	+ '/' + (d.getMonth() + 1) + '/' + d.getDate());
+	Timepick1.update();
+	Datepick1.update();
+	Timepick2.update();
+	Datepick2.update();
 })
 
 // ================================
@@ -193,6 +248,10 @@ const Timepick2 = new Picker(document.querySelector('#endTime'), {
 const Datepick2 = new Picker(document.querySelector('#endDate'), {
   format: 'YYYY/MM/DD',
 });
+
+// const notifiy = new Picker(document.querySelector('#notifiy'), {
+//   format: 'HH:mm',
+// });
 
 function dataWithAjax(callback) {
 	fetch('/profile/askEvent', {method: 'GET'})

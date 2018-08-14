@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<title>Dynamic</title>
-
 		<meta charset="utf-8">
-    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    	<link rel="stylesheet" type="text/css" href="/styles/css/main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" type="text/css" href="/styles/css/main.css">
 		<link href="/styles/css/calendarorganizer.min.css" rel="stylesheet" />
 		<link href="/picker/picker.css" rel="stylesheet">
 	</head>
-
 	<body>
 		<div>
 			<div class="container">
@@ -18,69 +15,117 @@
 				<div id="organizerContainer"></div>
 			</div>
 			<button class="btn btn-info btnpos" data-toggle="modal" data-target="#exampleModal">
-				<svg id="4plus" viewBox="0 0 5 5">
-			    	<path d="M2 1.5 h1 v1 h1 v1 h-1 v1 h-1 v-1 h-1 v-1 h1 z"></path>
-				</svg>
-			</button>
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <div class="input-group input-group-lg">
-					  <div class="input-group-prepend">
-					  </div>
-					  <input id="message-title" type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="活動的標題">
+			<svg id="4plus" viewBox="0 0 5 5">
+			<path d="M2 1.5 h1 v1 h1 v1 h-1 v1 h-1 v-1 h-1 v-1 h1 z"></path>
+		</svg>
+		</button>
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="input-group input-group-lg" style="display:  flex;">
+							<div class="input-group-prepend">
+							</div>
+							<input id="message-title" type="text" class="cs-form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="活動的標題">
+							<button id="gg" type="button" class="btn" button-data="" data-dismiss="modal" aria-label="Close" style="height: 100%;margin-top: 10px;margin-left: 10px;">
+							刪除
+							</button>
+							<button id="uu" type="button" class="btn" button-data="" data-dismiss="modal" style="height: 100%;margin-top: 10px;margin-left: 10px;">
+							編輯
+							</button>
+						</div>
+						<button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
 					</div>
-					<button id="gg" type="button" class="btn" button-data="" data-dismiss="modal" aria-label="Close">
-						刪除
-					</button>
-			        <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-			      </div>
-			      <div class="modal-body">
-			        <form>
-			          <div class="form-group">
-			          	<div class="input-group mb-3">
-				            <div class="input-group-prepend">
-							    <span class="input-group-text">活動開始時間</span>
+					<div class="modal-body">
+						<form>
+							<div class="form-group">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text">活動開始時間</span>
+									</div>
+									<input id="startDate" type="text" class="cs-form-control js-date-picker timeInput margin-tb-10" value="">
+									<input id="startTime" type="text" class="cs-form-control js-time-picker timeInput margin-tb-10" value="">
+								</div>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text">活動結束時間</span>
+									</div>
+									<input id="endDate" type="text" class="cs-form-control js-date-picker timeInput margin-tb-10" value="">
+									<input id="endTime" type="text" class="cs-form-control js-time-picker timeInput margin-tb-10" value="">
+								</div>
 							</div>
-							<input id="startDate" type="text" class="form-control js-date-picker timeInput margin-tb-10" value="">
-							<input id="startTime" type="text" class="form-control js-time-picker timeInput margin-tb-10" value="">
-				        </div>
-				        <div class="input-group mb-3">
-				            <div class="input-group-prepend">
-							    <span class="input-group-text">活動結束時間</span>
+							<div class="form-group">
+								<label for="message-text" class="col-form-label">Message:</label>
+								<input id="message-location" type="text" class="cs-form-control margin-tb-10"  placeholder="新增活動地點">
+								<input id="message-text" class="cs-form-control margin-tb-10" placeholder="新增活動內容">
+								<div class="select animated zoomIn">
+									<input type="radio" name="option">
+									<span class="placeholder">30分鐘前提醒</span>
+									<label class="option">
+										<input type="radio" name="option">
+										<span class="title animated fadeIn">30分鐘</span>
+									</label>
+									<label class="option">
+										<input type="radio" name="option">
+										<span class="title animated fadeIn">60分鐘</span>
+									</label>
+									<label class="option">
+										<input type="radio" name="option" disabled>
+										<span class="title animated fadeIn">1秒鐘</span>
+									</label>
+									<label class="option">
+										<input type="radio" name="option">
+										<span class="title animated fadeIn">自訂</span>
+									</label>
+								</div>
+								<div class="select animated zoomIn">
+									<input type="radio" name="option2">
+									<span class="placeholder">偏好的交通工具</span>
+									<label class="option">
+										<input type="radio" name="option2">
+										<span class="title animated fadeIn">捷運</span>
+									</label>
+									<label class="option">
+										<input type="radio" name="option2">
+										<span class="title animated fadeIn">計程車</span>
+									</label>
+									<label class="option">
+										<input type="radio" name="option2">
+										<span class="title animated fadeIn">老司機</span>
+									</label>
+									<label class="option">
+										<input type="radio" name="option2">
+										<span class="title animated fadeIn">南瓜馬車</span>
+									</label>
+									<label class="option">
+										<input type="radio" name="option2">
+										<span class="title animated fadeIn">火車/高鐵</span>
+									</label>
+									<label class="option">
+										<input type="radio" name="option">
+										<span class="title animated fadeIn">汽車</span>
+									</label>
+								</div>
 							</div>
-							<input id="endDate" type="text" class="form-control js-date-picker timeInput margin-tb-10" value="">
-							<input id="endTime" type="text" class="form-control js-time-picker timeInput margin-tb-10" value="">
-				        </div>
-				      </div>
-			          <div class="form-group">
-			            <label for="message-text" class="col-form-label">Message:</label>
-			            <input id="message-reminder" type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="30分鐘前提醒">
-			            <input id="message-location" type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="新增活動地點">
-			            <textarea id="message-text" class="form-control margin-tb-10" placeholder="新增活動內容"></textarea>
-			            <input  id="message-transportation" type="text" class="form-control margin-tb-10" id="inputAddress" placeholder="偏好的交通工具">
-			          </div>
-			        </form>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-			        <button type="button" disabled="disabled" class="btn btn-primary" data-dismiss="modal" id="woofbtn">確認</button>
-			      </div>
-			    </div>
-			  </div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" id="woofbtn">確認</button>
+					</div>
+				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-		<script src="/picker/picker.js"></script>
-		<script src="/scripts/jquery-listswipe.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
-		<script src="/scripts/calendarorganizer.min.js"></script>
-		<script src="/scripts/calendarDynamically.js"></script>
-	</body>
-
+	</div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+	<script src="/picker/picker.js"></script>
+	<script src="/scripts/jquery-listswipe.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
+	<script src="/scripts/calendarorganizer.min.js"></script>
+	<script src="/scripts/calendarDynamically.js"></script>
+</body>
 </html>

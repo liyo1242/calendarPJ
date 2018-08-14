@@ -40,7 +40,7 @@ router.post('/delete', refreshTokenMiddle.calendarEventDelete, (req, res) => {
 router.post('/update', refreshTokenMiddle.calendarEventUpdate, (req, res) => {
 
   console.log('backend get data = ' + req.body.event);
-  console.log("success click server ");
+  console.log("success update server ");
   // insert eventdata to google server !!!!
   res.sendStatus(200); //sucess in
 });

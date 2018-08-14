@@ -64,10 +64,12 @@ module.exports.calendarEventInsert = (req, res, next) => {
 
 module.exports.calendarEventUpdate = (req, res, next) => {
 	console.log('calendarEventupdate middleware coming');
-	google_calendar.events.update('primary', eventId, {
+	google_calendar.events.update('primary', req.body.id, {
         'end': { 'dateTime': req.body.end },
     	'start': { 'dateTime': req.body.start },
-        'summary': req.body.summary
+        'summary': req.body.summary,
+        'location': req.body.location,
+        'description': req.body.description
     }, (err, newCal) => {
 	    if (err) {
 	    	console.log('The API returned an error: ' + JSON.stringify(err));

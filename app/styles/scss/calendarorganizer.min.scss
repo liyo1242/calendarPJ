@@ -475,6 +475,40 @@ $DeletebtnColor: #CD1E1E;
 	}
 }
 
+input {
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #f1f1f1;
+    border: none;
+    outline: none;
+    font-size: 14px !important;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#startDate, #endDate {
+	display: inline-block;
+	width: 50%;
+}
+#startTime, #endTime {
+	display: inline-block;
+	width: 40%;
+}
+
+#message-title {
+	height: 38px;
+}
+
+.cs-form-control {
+	display: block;
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
 // ================================
 
 @media only screen and(max-width: 620px) {
@@ -497,4 +531,203 @@ $DeletebtnColor: #CD1E1E;
 	//     margin-top: 10px;
 	//     width: 100px;
 	// }
+}
+
+// ======= dropdown =====
+.select {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    border-bottom: 0px;
+    border-radius: 3px;
+    font-size: 12px;
+    box-shadow: 0px 1em 2em -1.5em rgba(0, 0, 0, .5);
+    .title,
+    .placeholder {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 1.5em 2em;
+        background: rgba(255, 255, 255, 1);
+        border-top: 1px solid rgba(0, 0, 0, .05);
+        cursor: pointer;
+    }
+    &>input {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        display: block;
+        opacity: 0;
+        cursor: pointer;
+        &:checked {
+            div.options label.option .title {
+                display: none!important;
+            }
+        }
+        &:not(:checked) {
+            z-index: 4;
+            ~label.option {
+                >span.title {
+                    display: none;
+                }
+            }
+        }
+        &:disabled {
+            cursor: no-drop;
+        }
+    }
+    &>span.placeholder {
+        position: relative;
+        z-index: 0;
+        display: inline-block;
+        width: 100%;
+        color: #999;
+        border-top: 0px;
+    }
+    label.option {
+        display: block;
+        overflow: hidden;
+        z-index: 1;
+        width: 100%;
+        transition: all 1s ease-out;
+        span.title {
+            position: relative;
+            z-index: 2;
+            transition: background .3s ease-out;
+            &:hover {
+                color: #dc3545;
+                background: #aaa;
+                box-shadow: inset 0px 1px 0px rgba(0, 0, 0, .1);
+            }
+        }
+        input {
+            display: none;
+            &:checked~span.title {
+                position: absolute;
+                display: block;
+                z-index: 3;
+                top: 0px;
+                font-size: 12px;
+                background: #fff;
+                border-top: 0px;
+                box-shadow: none;
+                color: inherit;
+                width: 100%;
+            }
+            &:disabled {
+                &~span.title {
+                    background: #f9f9f9!important;
+                    color: #aaa;
+                    &:hover {
+                        color: #aaa;
+                        background: none;
+                        cursor: no-drop;
+                    }
+                }
+            }
+        }
+    }
+} // Pure css select 2 TOGGLE
+.select2 {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: auto;
+    width: 330px;
+    height: 100%;
+    border-bottom: 0px;
+    border-radius: 3px;
+    font-size: 12px;
+    box-shadow: 0px 1em 2em -1.5em rgba(0, 0, 0, .5);
+    .title,
+    .placeholder {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 1.5em 2em;
+        background: rgba(255, 255, 255, 1);
+        border-top: 1px solid rgba(0, 0, 0, .05);
+        cursor: pointer;
+    }
+    &>label>input {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        display: block;
+        opacity: 0;
+        cursor: pointer;
+        &:checked {
+            z-index: 2;
+        }
+        &:not(:checked) {
+            ~label.option input:not(:checked)~.title {
+                display: none!important;
+            }
+        }
+        &:disabled {
+            cursor: no-drop;
+        }
+    }
+    & label>span.placeholder {
+        position: relative;
+        z-index: 0;
+        display: inline-block;
+        width: 100%;
+        color: #999;
+        border-top: 0px;
+    }
+    label.option {
+        display: block;
+        overflow: hidden;
+        z-index: 1;
+        width: 100%;
+        transition: all 1s ease-out;
+        span.title {
+            position: relative;
+            z-index: 2;
+            transition: background .3s ease-out;
+            &:hover {
+                color: #4CE9E9;
+                background: rgba(146, 168, 209, .5);
+                box-shadow: inset 0px 1px 0px rgba(0, 0, 0, .1);
+            }
+        }
+        input {
+            display: none;
+            &:checked~span.title {
+                position: absolute;
+                display: block;
+                z-index: 1;
+                top: 0px;
+                font-size: 12px;
+                background: #fff;
+                border-top: 0px;
+                box-shadow: none;
+                color: inherit;
+                width: 100%;
+            }
+            &:disabled {
+                &~span.title {
+                    background: #f9f9f9!important;
+                    color: #aaa;
+                    &:hover {
+                        color: #aaa;
+                        background: none;
+                        cursor: no-drop;
+                    }
+                }
+            }
+        }
+    }
 }
