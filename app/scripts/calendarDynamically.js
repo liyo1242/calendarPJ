@@ -88,7 +88,6 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 			var time = button.data('whatever').time;
 			var d = new Date();
 			var dayZero = (parseInt(time.slice(9)) < 10) ? ("0" + time.slice(9)) : time.slice(9);
-			console.log(dayZero);
 			// time gap
 			var offset = 0;
 			var carry = 0;
@@ -136,11 +135,10 @@ $(".btnpos").click(function(){
 	var timeStr ="";
 
 	if(d.getMonth() + 1 >= 10){
-		timeStr = d.getFullYear() + ' ' + (d.getMonth() + 1) + '/' + d.getDate();
+		timeStr = d.getFullYear() + ' ' + (d.getMonth() + 1) + '/ ' + d.getDate();
 	}else{
-		 timeStr = d.getFullYear() + ' 0' + (d.getMonth() + 1) + '/' + d.getDate();
+		 timeStr = d.getFullYear() + ' 0' + (d.getMonth() + 1) + '/ ' + d.getDate();
 	}
-
 	var sendData = {
         id: "",
         title: "",
@@ -153,9 +151,7 @@ $(".btnpos").click(function(){
 
 // ================================
 
-const woofbtn = document.getElementById('woofbtn');
-
-woofbtn.addEventListener('click', (e) => {
+$('#woofbtn').click(() => {
 	const eventTitle = document.getElementById('message-title');
 	const eventtext = document.getElementById('message-text');
 	const eventLocation = document.getElementById('message-location');
@@ -180,7 +176,6 @@ woofbtn.addEventListener('click', (e) => {
 	// the Conditionality needs to be integrated ============================== fix point
 	if($('#woofbtn').attr('button-data') != "" && eventTitle.value != "" && endT > startT ){
 		if(confirm("確定要更新嗎?")){
-			console.log('ffffo4');
 			fetch('/profile/update', {
 		    	method: 'POST', // or 'PUT'
 			    body: JSON.stringify(data), // data can be `string` or {object}!
