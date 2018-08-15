@@ -478,11 +478,17 @@ $DeletebtnColor: #CD1E1E;
 input {
     padding: 10px;
     margin: 10px auto;
-    background-color: #f1f1f1;
+    background-color: #f8f9fa;
     border: none;
     outline: none;
     font-size: 14px !important;
     font-family: 'Open Sans', sans-serif;
+    &:disabled {
+    	border: 0;
+	    background: #aaa!important;
+	    color: #212529;
+	    cursor: not-allowed;
+	}
 }
 
 #startDate, #endDate {
@@ -615,7 +621,7 @@ input {
                 z-index: 3;
                 top: 0px;
                 font-size: 12px;
-                background: #fff;
+                background: #eee;
                 border-top: 0px;
                 box-shadow: none;
                 color: inherit;

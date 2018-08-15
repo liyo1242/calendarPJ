@@ -2,19 +2,22 @@
 var calendar, organizer;
 
 //============================================
+$(function(){
+	$(".days").swipe({
+	fingers:'all', swipeLeft:swipe, swipeRight:swipe, allowPageScroll:"auto"
+});
 
-// $(".days").swipe({
-//     threshold: 0,
-//     swipe:function(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
-//         //console.log([event, direction, distance, duration, fingerCount, fingerData, currentDirection]);
-// 	    console.log("fuckfuckfuck4+ direction " + direction );
-//         if(direction == "left"){
-//     	  	$("#calendarContainer-month-next").click();
-//         }else if (direction == "right"){
-//            	$("#calendarContainer-month-back").click();
-//         }
-//     }
-// });
+function swipe(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
+        //console.log([event, direction, distance, duration, fingerCount, fingerData, currentDirection]);
+	    console.log("fuckfuckfuck4+ direction " + direction );
+        if(direction == "left"){
+    	  	$("#calendarContainer-month-next").click();
+        }else if (direction == "right"){
+           	$("#calendarContainer-month-back").click();
+        }
+    }
+});
+
 $('.appointDayAdd').click(function() {
     console.log($('#organizerContainer-date').html());
 });
@@ -45,46 +48,49 @@ $('#gg').click(function(){
 
 
 $('#uu').click(function(){
-	const eventTitle = document.getElementById('message-title');
-	const eventtext = document.getElementById('message-text');
-	const eventLocation = document.getElementById('message-location');
-	const eventreMinder = document.getElementById('message-reminder');
-	const eventreTransport = document.getElementById('message-transportation');
+	// const eventTitle = document.getElementById('message-title');
+	// const eventtext = document.getElementById('message-text');
+	// const eventLocation = document.getElementById('message-location');
+	// const eventreMinder = document.getElementById('message-reminder');
+	// const eventreTransport = document.getElementById('message-transportation');
 
-	var c1 = Datepick1.getDate(true).replace("/","-").replace("/","-").replace("/","-");
-	var startT = c1 + "T" + Timepick1.getDate(true) + ":00+08:00";
+	$('#exampleModal input').prop('disabled',false);
 
-	var c2 = Datepick2.getDate(true).replace("/","-").replace("/","-").replace("/","-");
-	var endT = c2 + "T" + Timepick2.getDate(true) + ":00+08:00";
+	// var c1 = Datepick1.getDate(true).replace("/","-").replace("/","-").replace("/","-");
+	// var startT = c1 + "T" + Timepick1.getDate(true) + ":00+08:00";
 
-	var data = {
-		start: startT,
-		end: endT,
-		summary: eventTitle.value, //title
-		location: eventLocation.value,
-		description: eventtext.value,
-		id: $('#uu').attr('button-data')
-	};
-		if($('#uu').attr('button-data') != ""){
-			if(confirm("確定要更新嗎?")){
-				console.log('ffffo4');
-				fetch('/profile/update', {
-			    	method: 'POST', // or 'PUT'
-				    body: JSON.stringify(data), // data can be `string` or {object}!
-				    headers: new Headers({
-						'Content-Type': 'application/json'
-					})
-				}).then((data) => {console.log(data)})
-				$('#uu').attr('button-data',"");
-				alert("已經更新！");
-			}
-			else{
-				alert("已經取消更新操作");
-			}
-		}
+	// var c2 = Datepick2.getDate(true).replace("/","-").replace("/","-").replace("/","-");
+	// var endT = c2 + "T" + Timepick2.getDate(true) + ":00+08:00";
+
+	// var data = {
+	// 	start: startT,
+	// 	end: endT,
+	// 	summary: eventTitle.value, //title
+	// 	location: eventLocation.value,
+	// 	description: eventtext.value,
+	// 	id: $('#uu').attr('button-data')
+	// };
+	// 	if($('#uu').attr('button-data') != ""){
+	// 		if(confirm("確定要更新嗎?")){
+	// 			console.log('ffffo4');
+	// 			fetch('/profile/update', {
+	// 		    	method: 'POST', // or 'PUT'
+	// 			    body: JSON.stringify(data), // data can be `string` or {object}!
+	// 			    headers: new Headers({
+	// 					'Content-Type': 'application/json'
+	// 				})
+	// 			}).then((data) => {console.log(data)})
+	// 			$('#uu').attr('button-data',"");
+	// 			alert("已經更新！");
+	// 		}
+	// 		else{
+	// 			alert("已經取消更新操作");
+	// 		}
+	// 	}
 })
 
 $('#exampleModal').on('show.bs.modal', function (event) {
+	$('#exampleModal input').prop('disabled',true);
 	console.log('fuck you show');
   	var button = $(event.relatedTarget) // Button that triggered the modal
   	$(".btnpos").toggleClass('btnposflip');
@@ -96,6 +102,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 	  	modal.find('#message-location').val(button.data('whatever').location);
 	  	$('#gg').attr('button-data',button.data('whatever').id);
 	  	$('#uu').attr('button-data',button.data('whatever').id);
+	  	$('#woofbtn').attr('button-data',button.data('whatever').id);
 
 	  	if(button.data('whatever').startTime != undefined && button.data('whatever').endTime != undefined ){
 			var time = button.data('whatever').time;
@@ -127,9 +134,9 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 
 $('#exampleModal').on('hidden.bs.modal', function () {
 	console.log('fuck you hidden');
+	$('#exampleModal input').prop('disabled',false);
     $(".btnpos").toggleClass('btnposflip');
-	// $('#gg').attr('button-data',"");
-	// $('#uu').attr('button-data',"");
+    // the high frequency operation maybe Waste of web resources =============== fix point
     dataWithAjax(function(data) {
 		// initializing a new organizer object, that will use an html container to create itself
 		organizer = new Organizer("organizerContainer", // id of html container for calendar
@@ -183,37 +190,63 @@ woofbtn.addEventListener('click', (e) => {
 		end: endT,
 		summary: eventTitle.value, //title
 		location: eventLocation.value,
-		description: eventtext.value
+		description: eventtext.value,
+		id: $('#woofbtn').attr('button-data')
 	};
 	console.log('button inside');
-
-	if(eventTitle.value != "" && endT > startT ){
-		console.log('right');
-		fetch('/profile/quickAdd', {
-		  method: 'POST', // or 'PUT'
-		  body: JSON.stringify(data), // data can be `string` or {object}!
-		  headers: new Headers({
-	  	  	'Content-Type': 'application/json'
-	  	  })
-		})
-		.then((res) => {
-			if(res.ok) {
-				console.log('click ok');
-				dataWithAjax(function(data) {
-					// initializing a new organizer object, that will use an html container to create itself
-					organizer = new Organizer("organizerContainer", // id of html container for calendar
-						calendar, // defining the calendar that the organizer is related
-						data // small part of the data of type object
-					);
-				});
-				return;
-			}
-			throw new Error('failed');
-		})
-		.catch((err) => {
-			console.log(err);
-		});
+	// the Conditionality needs to be integrated ============================== fix point
+	if($('#woofbtn').attr('button-data') != "" && eventTitle.value != "" && endT > startT ){
+		if(confirm("確定要更新嗎?")){
+			console.log('ffffo4');
+			fetch('/profile/update', {
+		    	method: 'POST', // or 'PUT'
+			    body: JSON.stringify(data), // data can be `string` or {object}!
+			    headers: new Headers({
+					'Content-Type': 'application/json'
+				})
+			}).then((data) => {console.log(data)})
+			$('#woofbtn').attr('button-data',"");
+			alert("已經更新！");
+		}
+		else{
+			alert("已經取消更新操作");
+		}
+	} else if(eventTitle.value != "" && endT > startT ){
+		if(confirm("確定新增嗎?")){
+			console.log('right');
+			fetch('/profile/quickAdd', {
+			  method: 'POST', // or 'PUT'
+			  body: JSON.stringify(data), // data can be `string` or {object}!
+			  headers: new Headers({
+		  	  	'Content-Type': 'application/json'
+		  	  })
+			})
+			.then((res) => {
+				if(res.ok) {
+					console.log('click ok');
+					dataWithAjax(function(data) {
+						// initializing a new organizer object, that will use an html container to create itself
+						organizer = new Organizer("organizerContainer", // id of html container for calendar
+							calendar, // defining the calendar that the organizer is related
+							data // small part of the data of type object
+						);
+					});
+					return;
+				}
+				throw new Error('failed');
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+		}
+		else{
+			alert("已經新增操作");
+		}
 	}
+	else{
+		alert('資料錯誤 小心火燭');
+	}
+	// ============================================= fix point end
 	eventTitle.value = "";
 	eventLocation.value = "";
 	eventreTransport.value = "";
