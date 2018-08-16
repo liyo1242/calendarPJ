@@ -105,12 +105,13 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 					offset = 15;
 				}
 			}
-
-			$('#startTime').val(d.getHours() + ':' + d.getMinutes());
+			var startMinutes = ((d.getMinutes() > 9) ? (d.getMinutes()) : ("0" + d.getMinutes()));
+			$('#startTime').val(d.getHours() + ':' + startMinutes);
 			$('#startDate').val(time.slice(0,4) + '/' + time.slice(5,7) + '/' + dayZero);
 			// === === === ===
 			// === === === ===
-			$('#endTime').val((d.getHours() + carry) + ':' + (d.getMinutes() + offset));
+			var endMinutes = ((d.getMinutes() + offset) > 9) ? (d.getMinutes() + offset) : ("0" + (d.getMinutes() + offset));
+			$('#endTime').val((d.getHours() + carry) + ':' + endMinutes);
 			$('#endDate').val(time.slice(0,4) + '/' + time.slice(5,7) + '/' + dayZero);
 		}
 
@@ -363,7 +364,6 @@ function dataWithAjax(callback) {
 	    function initialize() {
 		  var input = document.getElementById('message-location');
 		  var options = {
-		  types: ['(cities)'],
 		  componentRestrictions: {country: "tw"}
 		 };
 		  new google.maps.places.Autocomplete(input,options);
