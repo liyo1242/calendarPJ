@@ -413,7 +413,6 @@ input {
   position: relative;
   overflow: hidden;
   display: block;
-  margin: auto;
   width: 100%;
   height: 100%;
   border-bottom: 0px;
@@ -568,3 +567,16 @@ input {
           color: #aaa;
           background: none;
           cursor: no-drop; }
+
+.pac-container {
+  background-color: #FFF;
+  z-index: 20;
+  position: fixed;
+  display: inline-block;
+  float: left; }
+
+.modal {
+  z-index: 20; }
+
+.modal-backdrop {
+  z-index: 10; }

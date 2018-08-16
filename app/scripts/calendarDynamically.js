@@ -174,7 +174,7 @@ $('#woofbtn').click(() => {
 	};
 	console.log('button inside');
 	// the Conditionality needs to be integrated ============================== fix point
-	if($('#woofbtn').attr('button-data') != "" && eventTitle.value != "" && endT > startT ){
+	if($('#woofbtn').attr('button-data') != "" && $('#woofbtn').attr('button-data') != undefined && eventTitle.value != "" && endT > startT ){
 		if(confirm("確定要更新嗎?")){
 			fetch('/profile/update', {
 		    	method: 'POST', // or 'PUT'
@@ -230,7 +230,7 @@ $('#woofbtn').click(() => {
 			});
 		}
 		else{
-			alert("已經新增操作");
+			alert("已經取消新增操作");
 		}
 	}
 	else{
@@ -260,21 +260,91 @@ calendar = new Calendar("calendarContainer", // id of html container for calenda
 
 const Timepick1 = new Picker(document.querySelector('#startTime'), {
   format: 'HH:mm',
+  text: {
+    title: '請輸入活動起始時間',
+    cancel: '取消',
+    confirm: '確認',
+  },
+  translate(type, text) {
+    const suffixes = {
+      hour: '時',
+      minute: '分',
+    };
+
+    return Number(text) + suffixes[type];
+  }
 });
 const Datepick1 = new Picker(document.querySelector('#startDate'), {
   format: 'YYYY/MM/DD',
+  text: {
+    title: '請輸入活動起始日期',
+    cancel: '取消',
+    confirm: '確認',
+  },
+  translate(type, text) {
+    const suffixes = {
+      year: '年',
+      month: '月',
+      day: '日'
+    };
+
+    return Number(text) + suffixes[type];
+  }
 });
 
 const Timepick2 = new Picker(document.querySelector('#endTime'), {
   format: 'HH:mm',
+  text: {
+    title: '請輸入活動結束時間',
+    cancel: '取消',
+    confirm: '確認',
+  },
+  translate(type, text) {
+    const suffixes = {
+      hour: '時',
+      minute: '分',
+    };
+
+    return Number(text) + suffixes[type];
+  }
 });
 const Datepick2 = new Picker(document.querySelector('#endDate'), {
   format: 'YYYY/MM/DD',
+  text: {
+    title: '請輸入活動結束日期',
+    cancel: '取消',
+    confirm: '確認',
+  },
+  translate(type, text) {
+    const suffixes = {
+      year: '年',
+      month: '月',
+      day: '日'
+    };
+
+    return Number(text) + suffixes[type];
+  }
 });
 
-// const notifiy = new Picker(document.querySelector('#notifiy'), {
-//   format: 'HH:mm',
-// });
+const csTime = new Picker(document.querySelector('#csTime'), {
+  format: 'mm',
+  text: {
+    title: '請選擇提醒時間',
+    cancel: '取消',
+    confirm: '確認',
+  },
+  translate(type, text) {
+    const suffixes = {
+      minute: '分',
+    };
+
+    return Number(text) + suffixes[type];
+  }
+});
+
+$("#csTime").change(function(){
+    $('#csTime + span')[0].innerHTML = "自訂 ( " + $('#csTime').val() + "分鐘 )";
+});
 
 function dataWithAjax(callback) {
 	fetch('/profile/askEvent', {method: 'GET'})
@@ -290,8 +360,18 @@ function dataWithAjax(callback) {
 		console.log(error);
 	});
 };
+	    function initialize() {
+		  var input = document.getElementById('message-location');
+		  var options = {
+		  types: ['(cities)'],
+		  componentRestrictions: {country: "tw"}
+		 };
+		  new google.maps.places.Autocomplete(input,options);
+		}
 
 window.onload = function() {
+
+	initialize();
 	dataWithAjax(function(data) {
 		// initializing a new organizer object, that will use an html container to create itself
 		organizer = new Organizer("organizerContainer", // id of html container for calendar
@@ -299,6 +379,4 @@ window.onload = function() {
 			data // small part of the data of type object
 		);
 	});
-				// after initializing the organizer, we need to initialize the onMonthChange
-				// there needs to be a callback parameter, this is what updates the organizer
 };

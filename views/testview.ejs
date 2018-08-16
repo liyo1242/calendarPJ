@@ -10,6 +10,7 @@
 	</head>
 	<body>
 		<div>
+<!-- 			<input id="message-location" type="text" class="cs-form-control margin-tb-10" placeholder="FFFFF"> -->
 			<div class="container">
 				<div id="calendarContainer"></div>
 				<div id="organizerContainer"></div>
@@ -57,55 +58,56 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="message-text" class="col-form-label">Message:</label>
-								<input id="message-location" type="text" class="cs-form-control margin-tb-10"  placeholder="新增活動地點">
+								<label for="message-text" class="col-form-label">活動詳細:</label>
+								<input id="message-location" type="text" class="cs-form-control margin-tb-10" placeholder="新增活動地點">
 								<input id="message-text" class="cs-form-control margin-tb-10" placeholder="新增活動內容">
-								<div class="select animated zoomIn">
+								<label for="message-text" class="col-form-label">提醒及交通方式:</label>
+								<div class="select animated zoomIn margin-tb-10">
 									<input type="radio" name="option">
 									<span class="placeholder">30分鐘前提醒</span>
 									<label class="option">
-										<input type="radio" name="option">
+										<input type="radio" name="option" value="30">
 										<span class="title animated fadeIn">30分鐘</span>
 									</label>
 									<label class="option">
-										<input type="radio" name="option">
+										<input type="radio" name="option" value="10">
+										<span class="title animated fadeIn">10分鐘</span>
+									</label>
+									<label class="option">
+										<input type="radio" name="option" value="60">
 										<span class="title animated fadeIn">60分鐘</span>
 									</label>
 									<label class="option">
-										<input type="radio" name="option" disabled>
-										<span class="title animated fadeIn">1秒鐘</span>
-									</label>
-									<label class="option">
-										<input type="radio" name="option">
+										<input id="csTime" type="radio" name="option">
 										<span class="title animated fadeIn">自訂</span>
 									</label>
 								</div>
-								<div class="select animated zoomIn">
+								<div class="select animated zoomIn margin-tb-10">
 									<input type="radio" name="option2">
 									<span class="placeholder">偏好的交通工具</span>
-									<label class="option">
-										<input type="radio" name="option2">
-										<span class="title animated fadeIn">捷運</span>
-									</label>
 									<label class="option">
 										<input type="radio" name="option2">
 										<span class="title animated fadeIn">計程車</span>
 									</label>
 									<label class="option">
 										<input type="radio" name="option2">
-										<span class="title animated fadeIn">老司機</span>
+										<span class="title animated fadeIn">捷運</span>
 									</label>
 									<label class="option">
 										<input type="radio" name="option2">
-										<span class="title animated fadeIn">南瓜馬車</span>
+										<span class="title animated fadeIn">公車</span>
+									</label>
+									<label class="option">
+										<input type="radio" name="option2">
+										<span class="title animated fadeIn">腳踏車</span>
 									</label>
 									<label class="option">
 										<input type="radio" name="option2">
 										<span class="title animated fadeIn">火車/高鐵</span>
 									</label>
 									<label class="option">
-										<input type="radio" name="option">
-										<span class="title animated fadeIn">汽車</span>
+										<input type="radio" name="option2">
+										<span class="title animated fadeIn">自行開車</span>
 									</label>
 								</div>
 							</div>
@@ -122,6 +124,7 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJj2Wreyszitgd1b3Y09pK__W161VZaIc&libraries=places"></script>
 	<script src="/picker/picker.js"></script>
 	<script src="/scripts/jquery-listswipe.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
