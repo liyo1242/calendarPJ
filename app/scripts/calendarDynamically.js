@@ -367,7 +367,6 @@ var dropdownbtnClick = function(e){
 		);
 	});
 
-    console.log(e.currentTarget.id);
     $('#dropdown button').on('click', dropdownbtnClick);
 }
 
