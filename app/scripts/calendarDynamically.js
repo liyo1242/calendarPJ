@@ -343,6 +343,36 @@ const csTime = new Picker(document.querySelector('#csTime'), {
   }
 });
 
+var dropdownbtnClick = function(e){
+
+	calendar = new Calendar("calendarContainer", // id of html container for calendar
+		"medium", // size of calendar, can be small | medium | large
+		[
+			e.currentTarget.id, // left most day of calendar labels
+			3 // maximum length of the calendar labels
+		],
+		[
+			"#A2A0A0", // primary color
+			"#A2A0A0", // primary dark color
+			"#ffffff", // text color
+			"#ffecb3" // text dark color
+		]
+	);
+
+	dataWithAjax(function(data) {
+		// initializing a new organizer object, that will use an html container to create itself
+		organizer = new Organizer("organizerContainer", // id of html container for calendar
+			calendar, // defining the calendar that the organizer is related
+			data // small part of the data of type object
+		);
+	});
+
+    console.log(e.currentTarget.id);
+    $('#dropdown button').on('click', dropdownbtnClick);
+}
+
+$('#dropdown button').on('click', dropdownbtnClick);
+
 $("#csTime").change(function(){
     $('#csTime + span')[0].innerHTML = "自訂 ( " + $('#csTime').val() + "分鐘 )";
 });
@@ -361,13 +391,15 @@ function dataWithAjax(callback) {
 		console.log(error);
 	});
 };
-	    function initialize() {
-		  var input = document.getElementById('message-location');
-		  var options = {
-		  componentRestrictions: {country: "tw"}
-		 };
-		  new google.maps.places.Autocomplete(input,options);
-		}
+
+function initialize() {
+    var input = document.getElementById('message-location');
+    var options = {
+  		componentRestrictions: {country: "tw"}
+	};
+	new google.maps.places.Autocomplete(input,options);
+}
+
 
 window.onload = function() {
 
