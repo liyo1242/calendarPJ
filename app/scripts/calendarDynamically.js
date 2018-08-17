@@ -410,4 +410,5 @@ window.onload = function() {
 			data // small part of the data of type object
 		);
 	});
+	$('#calendarContainer-year').hide();
 };
