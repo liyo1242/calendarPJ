@@ -6,16 +6,16 @@ $(function(){
 	$(".days").swipe({
 		fingers:'all', swipeLeft:swipe, swipeRight:swipe, allowPageScroll:"auto"
 	});
-
-	function swipe(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
-	    console.log("fuckfuckfuck4+ direction " + direction );
-        if(direction == "left"){
-    	  	$("#calendarContainer-month-next").click();
-        }else if (direction == "right"){
-           	$("#calendarContainer-month-back").click();
-        }
-    }
 });
+function swipe(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
+    console.log("fuckfuckfuck4+ direction " + direction );
+    if(direction == "left"){
+ 	  	$("#calendarContainer-month-next").click();
+    }else if (direction == "right"){
+    	$("#calendarContainer-month-back").click();
+    }
+}
+
 
 // delete button click function
 $('#gg').click(function(){
@@ -138,7 +138,7 @@ $(".btnpos").click(function(){
 	if(d.getMonth() + 1 >= 10){
 		timeStr = d.getFullYear() + ' ' + (d.getMonth() + 1) + '/ ' + d.getDate();
 	}else{
-		 timeStr = d.getFullYear() + ' 0' + (d.getMonth() + 1) + '/ ' + d.getDate();
+		timeStr = d.getFullYear() + ' 0' + (d.getMonth() + 1) + '/ ' + d.getDate();
 	}
 	var sendData = {
         id: "",
@@ -343,7 +343,7 @@ const csTime = new Picker(document.querySelector('#csTime'), {
   }
 });
 
-var dropdownbtnClick = function(e){
+var dropdownbtnClick = function(e){ //remake calendar
 
 	calendar = new Calendar("calendarContainer", // id of html container for calendar
 		"medium", // size of calendar, can be small | medium | large
@@ -368,6 +368,9 @@ var dropdownbtnClick = function(e){
 	});
 
     $('#dropdown button').on('click', dropdownbtnClick);
+    $(".days").swipe({
+		fingers:'all', swipeLeft:swipe, swipeRight:swipe, allowPageScroll:"auto"
+	});
 }
 
 $('#dropdown button').on('click', dropdownbtnClick);
