@@ -1,52 +1,86 @@
 <!DOCTYPE html>
 <html>
 <style>
-	nav{
-		background: #ff5252;
-		padding: 20px 10px;
-	}
-	nav ul{
-		max-width: 960px;
-		margin: 0 auto;
-		padding: 0;
-	}
-	nav a{
-		color:#fff;
-		font-size: 18px;
-		background: rgba(255,255,250,0.2);
-		text-decoration: none;
-		padding: 10px;
-		display: block;
-	}
-	nav li{
-		list-style-type:none;
-		display: inline-block;
-		margin:0 10px 0 0; 
-	}
-	.google-btn{
-		color:#fff;
-		text-decoration: none;
-		font-size: 18px;
-		padding: 10px;
-		background: #ff5353;
-	}
-	main,header{
-		max-width: 960px;
-		margin: 30px auto;
-		padding: 0 10px;
-		color:#333;
-	}
+.box{
+  position:relative;
+  
+}
+.box:before{
+  content:'';
+  position:absolute;
+  z-index:2;
+  top:60px;
+  left:50px;
+  width:50px;
+  height:50px;
+  background:#111;
+  border-radius:0;
+  transform: rotate(45deg);
+  -webkit-animation:box .5s linear infinite ; 
+}
+@-webkit-keyframes box{
+  0%{
+    top:50px;
+    transform: rotate(0deg);
+  }
+  20%{
+    border-radius:2px;
+  }
+  50%{
+    top:80px; 
+    transform: rotate(45deg);
+    border-bottom-right-radius:25px;
+  }
+  80%{
+    border-radius:2px;
+  }
+  100%{
+    top:50px;
+    transform: rotate(90deg);
+  }
+}
+.box:after{
+  content:'';
+  position:absolute;
+  z-index:1;
+  top:128px;
+  left:52px;
+  width:44px;
+  height:3px;
+  background:#eee;
+  border-radius:100%;
+  -webkit-animation:shadow .5s linear infinite ; 
+}
+@-webkit-keyframes shadow{
+  0%,100%{
+    left:54px;
+    width:40px;
+    background:#eaeaea;
+  }
+  50%{
+    top:126px;
+    left:50px;
+    width:50px;
+    height:7px;
+    background:#eee;
+  }
+}
 </style>
+
 <head>
 	<title>login Page</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<meta http-equiv="refresh" content="0;url=/auth/google" />
 </head>
 <body>
-
-	<header>Enter Google login</header>
-	<main>
-		<a class="google-btn" href="/auth/google">Google+</a>
-	</main>
-
+	<div class="d-flex justify-content-center align-items-center" style="height: 100vh">
+	<div class="d-flex justify-content-center">
+	<div class="box"></div>
+	<!-- <div> -->
+		<img src="/styles/img/bear.jpg" style="
+    margin: 50px 70px;"">
+	/*</div>*/
+	</div>
+	</div>
 </body>
 </html>
