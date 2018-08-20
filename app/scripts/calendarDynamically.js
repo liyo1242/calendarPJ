@@ -8,7 +8,7 @@ $(function(){
 	});
 });
 function swipe(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
-    console.log("fuckfuckfuck4+ direction " + direction );
+    console.log("fufufuck# direction " + direction );
     if(direction == "left"){
  	  	$("#calendarContainer-month-next").click();
     }else if (direction == "right"){
