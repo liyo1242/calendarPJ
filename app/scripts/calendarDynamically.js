@@ -377,6 +377,7 @@ $("#csTime").change(function(){
 });
 
 function dataWithAjax(callback) {
+	$('#calendarContainer-year').hide();
 	fetch('/profile/askEvent', {method: 'GET'})
 	.then((res) => {
 		if(res.ok) return res.json();

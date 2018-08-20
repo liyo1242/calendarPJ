@@ -35,7 +35,7 @@
   height: calc(10%); }
 
 .year {
-  width: calc(10%);
+  width: calc(20%);
   display: flex;
   float: left;
   height: 100%;
@@ -58,7 +58,7 @@
 
 .month {
   z-index: 1;
-  width: calc(90%);
+  width: calc(80%);
   display: flex;
   float: left;
   height: 100%;
@@ -94,6 +94,10 @@
     padding: 10px; }
 
 .days {
+  background-image: url(/styles/img/finger.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
   background-color: #f6f6f6;
   flex: 1;
   display: flex;
@@ -576,7 +580,14 @@ input {
   font-size: 16px;
   border: none; }
 
+#goToToday {
+  padding: 0;
+  font-size: 14px;
+  width: 20%;
+  height: 5vh; }
+
 .dropdown {
+  height: 10vh;
   position: relative;
   display: inline-block; }
 
