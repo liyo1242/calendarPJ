@@ -48,12 +48,14 @@ module.exports.calendarEventQuickadd = (req, res, next) => {
 
 module.exports.calendarEventInsert = (req, res, next) => {
 	console.log('calendarEventInsert middleware coming');
+	console.log("##" + req.body.recurrence);
 	google_calendar.events.insert('primary',{
-        'end': { 'dateTime': req.body.end },
-    	'start': { 'dateTime': req.body.start },
+        'end': { 'dateTime': req.body.end,"timeZone": "Asia/Taipei" },
+    	'start': { 'dateTime': req.body.start ,"timeZone": "Asia/Taipei"},
         'summary': req.body.summary,
         'location': req.body.location,
-        'description': req.body.description
+        'description': req.body.description,
+        'recurrence': req.body.recurrence
     }, (err, newCal) => {
 	    if (err) {
 	    	console.log('The API returned an error: ' + JSON.stringify(err));
@@ -65,8 +67,8 @@ module.exports.calendarEventInsert = (req, res, next) => {
 module.exports.calendarEventUpdate = (req, res, next) => {
 	console.log('calendarEventupdate middleware coming');
 	google_calendar.events.update('primary', req.body.id, {
-        'end': { 'dateTime': req.body.end },
-    	'start': { 'dateTime': req.body.start },
+        'end': { 'dateTime': req.body.end ,"timeZone": "Asia/Taipei"},
+    	'start': { 'dateTime': req.body.start,"timeZone": "Asia/Taipei" },
         'summary': req.body.summary,
         'location': req.body.location,
         'description': req.body.description

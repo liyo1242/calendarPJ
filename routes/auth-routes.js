@@ -25,7 +25,7 @@ router.get('/google',passport.authenticate('google',{accessType: 'offline',scope
 
 router.get('/google/redirect',passport.authenticate('google'),
   (req, res) => {
-    console.log("google-redirect req = " + JSON.stringify(req.user));
+    //console.log("google-redirect req = " + JSON.stringify(req.user));
     res.redirect('/profile/');
   }
 );

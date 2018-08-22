@@ -94,7 +94,6 @@
     padding: 10px; }
 
 .days {
-  background-image: url(/styles/img/finger.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
@@ -110,7 +109,7 @@
   display: flex;
   flex-direction: row; }
 
-.container {
+.fscContainer {
   width: 100%;
   flex: 1;
   display: flex;
@@ -415,7 +414,6 @@ input {
 
 .select {
   position: relative;
-  overflow: hidden;
   display: block;
   width: 100%;
   height: 100%;
@@ -429,7 +427,7 @@ input {
     display: block;
     width: 100%;
     height: 100%;
-    padding: 1.5em 2em;
+    padding: 1em 2em;
     background: white;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     cursor: pointer; }
@@ -459,6 +457,7 @@ input {
     color: #999;
     border-top: 0px; }
   .select label.option {
+    margin: 0;
     display: block;
     overflow: hidden;
     z-index: 1;
@@ -510,7 +509,7 @@ input {
     display: block;
     width: 100%;
     height: 100%;
-    padding: 1.5em 2em;
+    padding: 1em 2em;
     background: white;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     cursor: pointer; }

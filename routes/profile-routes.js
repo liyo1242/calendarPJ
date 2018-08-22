@@ -23,7 +23,7 @@ router.get('/askEvent', refreshTokenMiddle.calendarAskEventList, parseDataFormat
 
 router.post('/quickAdd', refreshTokenMiddle.calendarEventInsert, (req, res) => {
 
-  console.log('backend get data = ' + req.body.event);
+  //console.log('backend get data = ' + req.body.event);
   console.log("success click server ");
   // insert eventdata to google server !!!!
   res.sendStatus(200); //sucess in
@@ -31,7 +31,7 @@ router.post('/quickAdd', refreshTokenMiddle.calendarEventInsert, (req, res) => {
 
 router.post('/delete', refreshTokenMiddle.calendarEventDelete, (req, res) => {
 
-  console.log('backend get data = ' + req.body.event);
+  //console.log('backend get data = ' + req.body.event);
   console.log("success click server ");
   // insert eventdata to google server !!!!
   res.sendStatus(200); //sucess in
@@ -39,7 +39,7 @@ router.post('/delete', refreshTokenMiddle.calendarEventDelete, (req, res) => {
 
 router.post('/update', refreshTokenMiddle.calendarEventUpdate, (req, res) => {
 
-  console.log('backend get data = ' + req.body.event);
+  //console.log('backend get data = ' + req.body.event);
   console.log("success update server ");
   // insert eventdata to google server !!!!
   res.sendStatus(200); //sucess in

@@ -24,7 +24,8 @@
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
     "passport-oauth2-refresh": "^1.0.0",
-    "pickerjs": "^1.0.0-beta"
+    "pickerjs": "^1.0.0-beta",
+    "rrule": "^2.4.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

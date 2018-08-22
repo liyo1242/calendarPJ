@@ -1,5 +1,6 @@
 "use strict";
 var calendar, organizer;
+var RRule = rrule.RRule
 
 // calendar days layout swipe function
 $(function(){
@@ -165,15 +166,46 @@ $('#woofbtn').click(() => {
 	var c2 = Datepick2.getDate(true).replace("/","-").replace("/","-").replace("/","-");
 	var endT = c2 + "T" + Timepick2.getDate(true) + ":00+08:00";
 
+    // the RRule type =======================
+	var count, until, interval;
+	var rule;
+
+		if($('input[name=period]:checked').val().length == 2){
+			count = parseInt($('input[name=period]:checked').val());
+			until = undefined;
+			interval = undefined;
+		}else if($('input[name=period]:checked').val().length == 10){
+			count = undefined;
+			until = Gandalf.getDate();
+			interval = undefined;
+		}else if($('input[name=period]:checked').val() == "forever"){
+			count = undefined;
+			until = undefined;
+			interval = 1;
+		}
+
+	if($('input[name=rule]:checked').val() != "shit" && $('input[name=rule]:checked').val() != undefined){
+		rule = new RRule({
+		 	freq: eval($('input[name=rule]:checked').val()),
+			until: until,
+			count: count,
+			interval: interval
+		})
+		console.log(rule.toString());
+	}
+	var recurrence = rule ? [("RRULE:" + rule.toString())] : "";
+	console.log(recurrence);
+	// the RRule type =======================  end
+
 	var data = {
 		start: startT,
 		end: endT,
 		summary: eventTitle.value, //title
 		location: eventLocation.value,
 		description: eventtext.value,
-		id: $('#woofbtn').attr('button-data')
+		id: $('#woofbtn').attr('button-data'),
+		recurrence: recurrence
 	};
-	console.log('button inside');
 	// the Conditionality needs to be integrated ============================== fix point
 	if($('#woofbtn').attr('button-data') != "" && $('#woofbtn').attr('button-data') != undefined && eventTitle.value != "" && endT > startT ){
 		if(confirm("確定要更新嗎?")){
@@ -222,6 +254,7 @@ $('#woofbtn').click(() => {
 							data // small part of the data of type object
 						);
 					});
+					alert("已經更新！");
 					return;
 				}
 				throw new Error('failed');
@@ -343,6 +376,38 @@ const csTime = new Picker(document.querySelector('#csTime'), {
   }
 });
 
+const Gandalf = new Picker(document.querySelector('#Gandalf'), {
+  format: 'YYYY:MM:DD',
+  text: {
+    title: '請選擇重複事件結束日期',
+    cancel: '取消',
+    confirm: '確認',
+  },
+  translate(type, text) {
+    const suffixes = {
+      year: '年',
+      month: '月',
+      day: '日'
+    };
+    return Number(text) + suffixes[type];
+  }
+});
+
+const Mithrandir = new Picker(document.querySelector('#Mithrandir'), {
+  format: 'YY',
+  text: {
+    title: '請選擇重複事件次數',
+    cancel: '取消',
+    confirm: '確認',
+  },
+  translate(type, text) {
+    const suffixes = {
+      year: '次'
+    };
+    return Number(text) + suffixes[type];
+  }
+});
+
 var dropdownbtnClick = function(e){ //remake calendar
 
 	calendar = new Calendar("calendarContainer", // id of html container for calendar
@@ -377,6 +442,14 @@ $('#dropdown button').on('click', dropdownbtnClick);
 
 $("#csTime").change(function(){
     $('#csTime + span')[0].innerHTML = "自訂 ( " + $('#csTime').val() + "分鐘 )";
+});
+
+$("#Gandalf").change(function(){
+    $('#Gandalf + span')[0].innerHTML = " 於 " + $('#Gandalf').val() + " 結束 ";
+});
+
+$("#Mithrandir").change(function(){
+    $('#Mithrandir + span')[0].innerHTML = " 重複 " + $('#Mithrandir').val() + " 次 ";
 });
 
 function dataWithAjax(callback) {
