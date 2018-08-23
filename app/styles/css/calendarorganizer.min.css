@@ -353,18 +353,38 @@
   bottom: 0px;
   left: 0; }
   .dayEvent > div {
+    padding: 0 2px;
     height: 30%;
     margin: 2px;
-    background-color: #D6ABD6;
     text-overflow: ellipsis;
     overflow: hidden;
-    color: #FFFFFF; }
+    color: #009fff; }
   .dayEvent > button {
     height: 30%;
     width: 100%;
     text-align: left;
     font-size: 8px;
     padding: 0; }
+
+.gandalfBall {
+  display: inline-block;
+  border-radius: 8px;
+  border: 4px solid;
+  height: 0;
+  width: 0;
+  margin-right: 4px; }
+
+.timePresent {
+  display: inline-block;
+  margin-right: 1px;
+  white-space: nowrap;
+  color: #111; }
+
+.titlePresent {
+  width: 45%;
+  display: inline-block;
+  white-space: nowrap;
+  color: #111; }
 
 input {
   padding: 10px;
@@ -400,6 +420,10 @@ input {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
+
+@media only screen and (max-width: 770px) {
+  .timePresent {
+    display: none; } }
 
 @media only screen and (max-width: 620px) {
   .calendar.medium {

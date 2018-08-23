@@ -57,6 +57,8 @@ function GandalfWhiteArts(element,newdata){
                 bufferDate.end.Time = element.end.dateTime.slice(11, 16);
             }
 
+            var holyfire = false;
+
             for(var y = bufferDate.start.Year; y <= bufferDate.end.Year; y++){
                 if(!newdata[y])
                     newdata[y] = {};
@@ -68,6 +70,10 @@ function GandalfWhiteArts(element,newdata){
                     for(var d = bufferDate.start.Day; d <= bufferDate.end.Day; d++){
                         // console.log('woof');
                         // console.log(`date = ${y} / ${m} / ${d} `);
+                        if(d != bufferDate.end.Day){
+                            holyfire = true;
+                        }
+
                         if(!newdata[y][m][d])
                             newdata[y][m][d] = [];
                         newdata[y][m][d].push({
@@ -76,7 +82,8 @@ function GandalfWhiteArts(element,newdata){
                             title: element.summary,
                             text: element.description,
                             id: element.id,
-                            location: element.location
+                            location: element.location,
+                            holyfire:holyfire
                         });
                     }
                 }
@@ -85,17 +92,11 @@ function GandalfWhiteArts(element,newdata){
 
 function GandalfDarkArts(recurrenceEvent){
 
-    // var options = RRule.parseString('FREQ=DAILY;INTERVAL=6')
-    // options.dtstart = new Date(Date.UTC(2000, 1, 1))
-    // var rule = new RRule(options)
-
     var Gandalf = [];
-    // console.log(recurrenceEvent.recurrence);
     console.log(recurrenceEvent.recurrence[0].slice(6));
     var options = RRule.parseString(recurrenceEvent.recurrence[0].slice(6));
 
     var start = new Date(recurrenceEvent.start.dateTime);
-    console.log("DT = " + recurrenceEvent.start.dateTime);
     var end = new Date(recurrenceEvent.end.dateTime);
 
     var helmDeep = Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate(), end.getUTCHours(), end.getUTCMinutes()) - Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate(), start.getUTCHours(), start.getUTCMinutes());
@@ -114,7 +115,6 @@ function GandalfDarkArts(recurrenceEvent){
         // console.log("Aware Gandal " + JSON.stringify(GandalfData));
         Gandalf.push(JSON.parse(JSON.stringify(GandalfData)));
     })
-    console.log(Gandalf);
     return Gandalf;
 }
 
