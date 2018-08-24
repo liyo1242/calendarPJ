@@ -550,7 +550,7 @@ input {
 // ================================
 @media only screen and(max-width: 770px) {
 	.timePresent {
-		display: none;
+		display: none !important;
 	}
 }
 @media only screen and(max-width: 620px) {
