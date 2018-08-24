@@ -346,6 +346,8 @@
   left: 0px; }
 
 .dayEvent {
+  display: flex;
+  flex-direction: column;
   height: 65%;
   width: 100%;
   position: absolute;
@@ -355,7 +357,7 @@
   .dayEvent > div {
     padding: 0 2px;
     height: 30%;
-    margin: 2px;
+    margin: 1px;
     text-overflow: ellipsis;
     overflow: hidden;
     color: #009fff; }
@@ -364,7 +366,10 @@
     width: 100%;
     text-align: left;
     font-size: 8px;
-    padding: 0; }
+    padding: 0;
+    bottom: 0;
+    position: absolute;
+    display: inline !important; }
 
 .gandalfBall {
   display: inline-block;

@@ -482,7 +482,6 @@ function initialize() {
 
 window.onload = function() {
 
-	initialize();
 	dataWithAjax(function(data) {
 		// initializing a new organizer object, that will use an html container to create itself
 		organizer = new Organizer("organizerContainer", // id of html container for calendar

@@ -456,6 +456,8 @@ $DeletebtnColor: #CD1E1E;
 // present on calendar ==========================
 .dayEvent {
 	// background-color: rgba(0, 123, 255, 0.5);
+	display: flex;
+    flex-direction: column;
     height: 65%;
     width: 100%;
     position: absolute;
@@ -466,7 +468,7 @@ $DeletebtnColor: #CD1E1E;
     > div {
     	padding: 0 2px;
     	height:30%;
-		margin: 2px;
+		margin: 1px;
 	    // background-color: #D6ABD6;
 	    text-overflow: ellipsis;
 	    overflow: hidden;
@@ -479,6 +481,9 @@ $DeletebtnColor: #CD1E1E;
 	    text-align: left;
 	    font-size: 8px;
 	    padding:0;
+	    bottom: 0;
+    	position: absolute;
+		display:inline !important;
 	}
 }
 .gandalfBall {
