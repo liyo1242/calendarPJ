@@ -55,6 +55,7 @@ $('#uu').click(function(){
 
 // The moment of Modal appearance will trigger
 $('#exampleModal').on('show.bs.modal', function (event) {
+	initialize();
 
 	console.log('4+ appear');
 	var button = $(event.relatedTarget) // Button that triggered the modal
@@ -476,6 +477,7 @@ function initialize() {
     var options = {
   		componentRestrictions: {country: "tw"}
 	};
+	console.log('auto');
 	new google.maps.places.Autocomplete(input,options);
 }
 

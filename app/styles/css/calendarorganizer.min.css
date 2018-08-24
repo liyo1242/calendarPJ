@@ -147,7 +147,6 @@
     position: absolute;
     box-shadow: 0 2px 4px rgba(21, 21, 21, 0.21); }
   .day.today > span {
-    padding-bottom: 3px;
     border-bottom: 2px solid;
     border-radius: 1px; }
 

@@ -201,7 +201,7 @@ $font_2: sans-serif;
 		box-shadow: 0 2px 4px $color_bunker_21_approx;
 	}
 	&.today > span {
-		padding-bottom: 3px;
+		// padding-bottom: 3px;
 		border-bottom: 2px solid;
 		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
 		border-radius: 1px;
