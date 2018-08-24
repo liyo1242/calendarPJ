@@ -781,10 +781,28 @@ input {
 }
 
 #goToToday {
+	background-image: url(/styles/img/ccc.png);
+    background-repeat: no-repeat;
+    background-color: #a2a0a0;
+    background-position: center;
 	padding: 0;
+	opacity:0.4;
     font-size: 14px;
-    width: 20%;
-    height: 5vh;
+    width: 32px;
+    height: 32px;
+}
+
+#refreshBtn {
+	background-image: url(/styles/img/refresh.png);
+    background-repeat: no-repeat;
+    background-color: #a2a0a0;
+    background-position: center;
+	padding: 0;
+	opacity:0.4;
+	margin-left: 5px;
+    font-size: 14px;
+    width: 32px;
+    height: 32px;
 }
 
 .dropdown {

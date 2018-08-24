@@ -169,6 +169,7 @@ $('#woofbtn').click(() => {
     // the RRule type =======================
 	var count, until, interval;
 	var rule;
+	if($('input[name=period]:checked').val() != undefined && $('input[name=rule]:checked').val() != undefined){
 
 		if($('input[name=period]:checked').val().length == 2){
 			count = parseInt($('input[name=period]:checked').val());
@@ -184,15 +185,17 @@ $('#woofbtn').click(() => {
 			interval = 1;
 		}
 
-	if($('input[name=rule]:checked').val() != "shit" && $('input[name=rule]:checked').val() != undefined){
-		rule = new RRule({
-		 	freq: eval($('input[name=rule]:checked').val()),
-			until: until,
-			count: count,
-			interval: interval
-		})
-		console.log(rule.toString());
+		if($('input[name=rule]:checked').val() != "shit" && $('input[name=rule]:checked').val() != undefined){
+			rule = new RRule({
+			 	freq: eval($('input[name=rule]:checked').val()),
+				until: until,
+				count: count,
+				interval: interval
+			})
+			console.log(rule.toString());
+		}
 	}
+
 	var recurrence = rule ? [("RRULE:" + rule.toString())] : "";
 	console.log(recurrence);
 	// the RRule type =======================  end
