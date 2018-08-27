@@ -9,7 +9,7 @@ $(function(){
 	});
 });
 function swipe(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
-    console.log("fufufuck# direction " + direction );
+    // console.log("fufufuck# direction " + direction );
     if(direction == "left"){
  	  	$("#calendarContainer-month-next").click();
     }else if (direction == "right"){
@@ -59,7 +59,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 
 	console.log('4+ appear');
 	var button = $(event.relatedTarget) // Button that triggered the modal
-  	console.log(button.data('whatever')); // Extract info from data-* attributes
+  	// console.log(button.data('whatever')); // Extract info from data-* attributes
 
 	$(".btnpos").toggleClass('btnposflip');
 
@@ -193,12 +193,12 @@ $('#woofbtn').click(() => {
 				count: count,
 				interval: interval
 			})
-			console.log(rule.toString());
+			// console.log(rule.toString());
 		}
 	}
 
 	var recurrence = rule ? [("RRULE:" + rule.toString())] : "";
-	console.log(recurrence);
+	// console.log(recurrence);
 	// the RRule type =======================  end
 
 	var data = {
@@ -208,8 +208,11 @@ $('#woofbtn').click(() => {
 		location: eventLocation.value,
 		description: eventtext.value,
 		id: $('#woofbtn').attr('button-data'),
-		recurrence: recurrence
+		recurrence: recurrence,
+		transportation: $('input[name=transportation]:checked').val(),
+		option: $('input[name=option]:checked').val()
 	};
+
 	// the Conditionality needs to be integrated ============================== fix point
 	if($('#woofbtn').attr('button-data') != "" && $('#woofbtn').attr('button-data') != undefined && eventTitle.value != "" && endT > startT ){
 		if(confirm("確定要更新嗎?")){
@@ -222,6 +225,16 @@ $('#woofbtn').click(() => {
 			})
 			.then((res) => {
 				if(res.ok){
+					if($('input[name=option]:checked').val() != undefined && $('input[name=transportation]:checked').val() != undefined){
+						console.log('message to line');
+						fetch('/profile/lineMessage', {
+					    	method: 'POST', // or 'PUT'
+						    body: JSON.stringify(data), // data can be `string` or {object}!
+						    headers: new Headers({
+								'Content-Type': 'application/json'
+							})
+						})
+					}
 					dataWithAjax(function(data) {
 						// initializing a new organizer object, that will use an html container to create itself
 						organizer = new Organizer("organizerContainer", // id of html container for calendar
@@ -251,6 +264,16 @@ $('#woofbtn').click(() => {
 			})
 			.then((res) => {
 				if(res.ok) {
+					if($('input[name=option]:checked').val() != undefined && $('input[name=transportation]:checked').val() != undefined){
+						console.log('message to line');
+						fetch('/profile/lineMessage', {
+					    	method: 'POST', // or 'PUT'
+						    body: JSON.stringify(data), // data can be `string` or {object}!
+						    headers: new Headers({
+								'Content-Type': 'application/json'
+							})
+						})
+					}
 					dataWithAjax(function(data) {
 						// initializing a new organizer object, that will use an html container to create itself
 						organizer = new Organizer("organizerContainer", // id of html container for calendar
@@ -449,7 +472,11 @@ $("#csTime").change(function(){
 });
 
 $("#Gandalf").change(function(){
-    $('#Gandalf + span')[0].innerHTML = " 於 " + $('#Gandalf').val() + " 結束 ";
+	if($('#Gandalf').val() == 'on'){
+    	$('#Gandalf + span')[0].innerHTML = " 於 " + '某時' + " 結束 ";
+    }else {
+    	$('#Gandalf + span')[0].innerHTML = " 於 " + $('#Gandalf').val() + " 結束 ";
+    }
 });
 
 $("#Mithrandir").change(function(){

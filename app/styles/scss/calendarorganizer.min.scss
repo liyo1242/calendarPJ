@@ -466,8 +466,10 @@ $DeletebtnColor: #CD1E1E;
     left: 0;
 
     > div {
+    	position:absolute;
     	padding: 0 2px;
     	height:30%;
+    	width: 100%;
 		margin: 1px;
 	    // background-color: #D6ABD6;
 	    text-overflow: ellipsis;
@@ -482,6 +484,7 @@ $DeletebtnColor: #CD1E1E;
 	    font-size: 8px;
 	    padding:0;
 	    bottom: 0;
+	    top: 66% !important;
     	position: absolute;
 		display:inline !important;
 	}

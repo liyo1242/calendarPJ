@@ -354,8 +354,10 @@
   bottom: 0px;
   left: 0; }
   .dayEvent > div {
+    position: absolute;
     padding: 0 2px;
     height: 30%;
+    width: 100%;
     margin: 1px;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -367,6 +369,7 @@
     font-size: 8px;
     padding: 0;
     bottom: 0;
+    top: 66% !important;
     position: absolute;
     display: inline !important; }
 

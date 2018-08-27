@@ -5,7 +5,7 @@ module.exports.dataFormat = (req, res, next) => {
   var newdata = {};
     // req.calendarList
   req.calendarList.forEach(function(element, index) {
-    console.log(`number ${index} element `);
+    // console.log(`number ${index} element `);
     //console.log(element);
     if(element.recurrence){
         GandalfDarkArts(element).forEach(function(element, index){
@@ -93,7 +93,7 @@ function GandalfWhiteArts(element,newdata){
 function GandalfDarkArts(recurrenceEvent){
 
     var Gandalf = [];
-    console.log(recurrenceEvent.recurrence[0].slice(6));
+    // console.log(recurrenceEvent.recurrence[0].slice(6));
     var options = RRule.parseString(recurrenceEvent.recurrence[0].slice(6));
 
     var start = new Date(recurrenceEvent.start.dateTime);
@@ -105,7 +105,7 @@ function GandalfDarkArts(recurrenceEvent){
     var sealCrystal = new RRule(options);
 
     sealCrystal.all().forEach(function(dstime, index){
-        console.log('dstime ========================= ' + dstime);
+        // console.log('dstime ========================= ' + dstime);
         var GandalfData = recurrenceEvent;
         var startTime = new Date(dstime);
         var startkTime = new Date(dstime).toISOString();
