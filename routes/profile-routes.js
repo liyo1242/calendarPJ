@@ -279,7 +279,7 @@ router.post('/lineMessage', (req, res) => {
             'Content-Type' : 'application/json'
           },
           json:{
-            "userid":"Ue2b706a7936e38a777f4d946c88c482a",
+            "userid": req.body.userid,
             "messageType":"fuck",
             "forUserMessage": gandalfText
           }

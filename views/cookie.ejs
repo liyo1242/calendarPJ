@@ -13,8 +13,8 @@
         // $.cookie('accessKey', accessKey);
         console.log('fuckfuck = ' + data);
         console.log(data);
-        $.cookie('userID', data.userID);
-        // window.location.replace('https://bn-calendar.herokuapp.com');
+        $.cookie('userID', data.userId, {path: '/'});
+        window.location.replace('https://bn-calendar.herokuapp.com/login');
         // window.location.replace('http://localhost:8080/html/orderList/main.html');
     });
     </script>

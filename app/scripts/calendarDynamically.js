@@ -210,7 +210,8 @@ $('#woofbtn').click(() => {
 		id: $('#woofbtn').attr('button-data'),
 		recurrence: recurrence,
 		transportation: $('input[name=transportation]:checked').val(),
-		option: $('input[name=option]:checked').val()
+		option: $('input[name=option]:checked').val(),
+		userid: $.cookie('userID');
 	};
 
 	// the Conditionality needs to be integrated ============================== fix point
