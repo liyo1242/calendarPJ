@@ -207,6 +207,11 @@ $font_2: sans-serif;
 		border-radius: 1px;
 	}
 }
+
+.today {
+	border: 1px solid #09b0fb;
+}
+
 .day-radios {
 	display: none;
 	&:checked + .day {

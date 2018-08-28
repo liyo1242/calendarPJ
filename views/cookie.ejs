@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="/js/orderList/user.js"></script>
+    <script src="/js/api.js"></script>
+    <script>
+    BNprofile().then((data) => {
+        // $.cookie('guestKey', guestKey);
+        // $.cookie('accessKey', accessKey);
+        console.log('fuckfuck = ' + data);
+        $.cookie('userID', data.userID);
+        // window.location.replace('https://bn-calendar.herokuapp.com');
+        // window.location.replace('http://localhost:8080/html/orderList/main.html');
+    });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script>
+    (function LineAuth() {
+        var URL = 'https://access.line.me/oauth2/v2.1/authorize?';
+        URL += 'response_type=code';
+        URL += '&client_id=1573908688';
+        URL += '&redirect_uri=https://dev-bluenet.herokuapp.com/html/orderList/cookie.html';
+        // URL += '&redirect_uri=http://localhost:8080/html/orderList/cookie.html';
+        URL += '&state=none';
+        URL += '&scope=profile';
+        window.location.href = URL;
+    })();
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

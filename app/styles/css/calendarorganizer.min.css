@@ -150,6 +150,9 @@
     border-bottom: 2px solid;
     border-radius: 1px; }
 
+.today {
+  border: 1px solid #09b0fb; }
+
 .day-radios {
   display: none; }
   .day-radios:checked + .day {
