@@ -1,5 +1,5 @@
 const grant_type = "authorization_code";
-const redirect_uri = "https://dev-bluenet.herokuapp.com/html/orderList/cookie.html";
+const redirect_uri = "http://bn-calendar.herokuapp.com/cookie";
 // const redirect_uri = "http://localhost:8080/html/orderList/cookie.html";
 const client_id = "1573908688";
 const client_secret = "d50d33bfcd8e8709e045e6dce3a183ae";
