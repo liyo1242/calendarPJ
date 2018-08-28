@@ -244,7 +244,7 @@ router.post('/lineMessage', (req, res) => {
       },
       {
         "type": "text",
-        "text": "fuckfuckfuckfuckfuckfuckfuckfuckfuckfuckfuck",
+        "text": "BlueNet Cubee 關心您",
         "wrap": true,
         "color": "#aaaaaa",
         "size": "xxs"
