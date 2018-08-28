@@ -5,6 +5,7 @@ const app = express();
 const passportSetup = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const key = require('./config/key');
+const request = require('request');
 const cookiesSession = require('cookie-session');
 const passport = require('passport');
 // var expressVue = require("express-vue");
