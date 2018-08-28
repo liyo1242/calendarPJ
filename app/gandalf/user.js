@@ -16,7 +16,7 @@ function BNprofile() {
         client_id: client_id,
         client_secret: client_secret
     }
-     getAccessToken(lineBody).then((token) => {
+    return getAccessToken(lineBody).then((token) => {
            return getLineId(token);
         });
 };
