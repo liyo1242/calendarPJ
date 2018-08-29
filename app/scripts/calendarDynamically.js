@@ -130,6 +130,8 @@ $('#exampleModal').on('hidden.bs.modal', function () {
 	console.log('4+ hidden');
 	$('#exampleModal input').prop('disabled',false);
     $(".btnpos").toggleClass('btnposflip');
+    $('#Mithrandir + span')[0].innerHTML = "重複次數";
+    $('#Gandalf + span')[0].innerHTML = "截止日期";
 })
 
 // ================================
@@ -180,10 +182,6 @@ $('#woofbtn').click(() => {
 			count = undefined;
 			until = Gandalf.getDate();
 			interval = undefined;
-		}else if($('input[name=period]:checked').val() == "forever"){
-			count = undefined;
-			until = undefined;
-			interval = 1;
 		}
 
 		if($('input[name=rule]:checked').val() != "shit" && $('input[name=rule]:checked').val() != undefined){
@@ -474,14 +472,19 @@ $("#csTime").change(function(){
 
 $("#Gandalf").change(function(){
 	if($('#Gandalf').val() == 'on'){
-    	$('#Gandalf + span')[0].innerHTML = " 於 " + '某時' + " 結束 ";
+    	$('#Gandalf + span')[0].innerHTML = "截止日期";
     }else {
     	$('#Gandalf + span')[0].innerHTML = " 於 " + $('#Gandalf').val() + " 結束 ";
     }
 });
 
 $("#Mithrandir").change(function(){
-    $('#Mithrandir + span')[0].innerHTML = " 重複 " + $('#Mithrandir').val() + " 次 ";
+    if($('#Gandalf').val() == 'on'){
+    	$('#Mithrandir + span')[0].innerHTML = "重複次數";
+    }else{
+   		$('#Mithrandir + span')[0].innerHTML = " 重複 " + $('#Mithrandir').val() + " 次 ";
+    }
+
 });
 
 function dataWithAjax(callback) {
