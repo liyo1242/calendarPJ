@@ -36,6 +36,13 @@ $('#gg').click(function(){
 			.then(data => {
 				if(data.status == 200){
 					$('#gg').attr('button-data',"");
+					dataWithAjax(function(data) {
+						// initializing a new organizer object, that will use an html container to create itself
+						organizer = new Organizer("organizerContainer", // id of html container for calendar
+							calendar, // defining the calendar that the organizer is related
+							data // small part of the data of type object
+						);
+					});
 					alert("已經刪除！");
 				}else{
 					alert('King Arthur was assassinated')
