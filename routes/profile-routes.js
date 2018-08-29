@@ -274,7 +274,7 @@ router.post('/lineMessage', (req, res) => {
 }
 }
 
-  request.post("https://evilwhite.herokuapp.com/api",{
+  request.post("https://bn-bot.herokuapp.com/api",{
           headers: {
             'Content-Type' : 'application/json'
           },
