@@ -102,7 +102,7 @@ router.post('/lineMessage', (req, res) => {
             "contents": [
               {
                 "type": "icon",
-                "url": "https://i.imgur.com/opV3f3t.jpg"
+                "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/hellocubee.png"
               },
               {
                 "type": "text",
@@ -150,7 +150,7 @@ router.post('/lineMessage', (req, res) => {
             "contents": [
               {
                 "type": "icon",
-                "url": "https://i.imgur.com/opV3f3t.jpg"
+                "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/hellocubee.png"
               },
               {
                 "type": "text",
@@ -174,7 +174,7 @@ router.post('/lineMessage', (req, res) => {
             "contents": [
               {
                 "type": "icon",
-                "url": "https://i.imgur.com/opV3f3t.jpg"
+                "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/hellocubee.png"
               },
               {
                 "type": "text",
@@ -198,7 +198,7 @@ router.post('/lineMessage', (req, res) => {
             "contents": [
               {
                 "type": "icon",
-                "url": "https://i.imgur.com/opV3f3t.jpg"
+                "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/hellocubee.png"
               },
               {
                 "type": "text",
@@ -222,7 +222,7 @@ router.post('/lineMessage', (req, res) => {
             "contents": [
               {
                 "type": "icon",
-                "url": "https://i.imgur.com/opV3f3t.jpg"
+                "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/hellocubee.png"
               },
               {
                 "type": "text",
@@ -266,7 +266,7 @@ router.post('/lineMessage', (req, res) => {
         "action": {
           "type": "uri",
           "label": "叫計程車",
-          "uri": "https://linecorp.com"
+          "uri": "https://dev-bluenet.herokuapp.com/html/callTaxi/login.html"
         }
       }
     ]
