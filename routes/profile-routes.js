@@ -65,209 +65,201 @@ router.post('/lineMessage', (req, res) => {
       "altText": "Flex Message",
       "contents": {
   "type": "bubble",
-  "hero": {
-    "type": "image",
-    "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/surprisecubee.png",
-    "size": "sm",
-    "aspectRatio": "1:1",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "uri": "https://linecorp.com"
+  "styles": {
+    "footer": {
+      "separator": true
     }
   },
   "body": {
     "type": "box",
     "layout": "vertical",
-    "spacing": "md",
-    "action": {
-      "type": "uri",
-      "uri": "https://linecorp.com"
-    },
     "contents": [
       {
         "type": "text",
-        "text": "活動將在" + req.body.option + "分後開始",
-        "size": "xl",
-        "weight": "bold"
+        "text": "活動提醒",
+        "weight": "bold",
+        "color": "#1879e2",
+        "size": "sm"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "icon",
+            "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/hellocubee.png",
+            "size":"xl"
+          },
+          {
+            "type": "text",
+            "text": req.body.option + "分後提醒",
+            "weight": "bold",
+            "margin": "xl",
+            "flex": 0,
+            "size":"xl",
+            "color": "#aaaaaa"
+          }
+        ]
+      },
+      {
+        "type": "separator",
+        "margin": "xxl"
       },
       {
         "type": "box",
         "layout": "vertical",
+        "margin": "xxl",
         "spacing": "sm",
         "contents": [
           {
             "type": "box",
-            "layout": "baseline",
+            "layout": "horizontal",
             "contents": [
               {
-                "type": "icon",
-                "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/hellocubee.png"
-              },
-              {
                 "type": "text",
-                "text": "活動名稱",
-                "weight": "bold",
-                "margin": "sm",
-                "flex": 0
+                "text": "活動名稱 :",
+                "size": "sm",
+                "color": "#555555",
+                "flex": 2
               },
               {
                 "type": "text",
                 "text": req.body.summary,
                 "size": "sm",
-                "align": "end",
-                "color": "#aaaaaa"
+                "wrap": true,
+                "color": "#111111",
+                "flex": 4
               }
             ]
           },
           {
             "type": "box",
-            "layout": "baseline",
+            "layout": "horizontal",
             "contents": [
               {
-                "type": "icon",
-                "url": "https://i.imgur.com/opV3f3t.jpg"
-              },
-              {
                 "type": "text",
-                "text": "活動開始時間",
-                "weight": "bold",
-                "margin": "sm",
-                "flex": 0
-              },
-              {
-                "type": "text",
-                "text": req.body.start,
+                "text": "開始時間 :",
                 "size": "sm",
-                "align": "end",
-                "color": "#aaaaaa"
-              }
-            ]
-          },
-          {
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-              {
-                "type": "icon",
-                "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/hellocubee.png"
+                "color": "#555555",
+                "flex": 2
               },
               {
                 "type": "text",
-                "text": "活動結束時間",
-                "weight": "bold",
-                "margin": "sm",
-                "flex": 0
-              },
-              {
-                "type": "text",
-                "text": req.body.end,
+                "text": new Date(req.body.start).toLocaleString(),
                 "size": "sm",
-                "align": "end",
-                "color": "#aaaaaa"
+                "color": "#111111",
+                "wrap": true,
+                "flex": 4
               }
             ]
           },
           {
             "type": "box",
-            "layout": "baseline",
+            "layout": "horizontal",
             "contents": [
               {
-                "type": "icon",
-                "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/hellocubee.png"
+                "type": "text",
+                "text": "結束時間 :",
+                "size": "sm",
+                "color": "#555555",
+                "flex": 2
               },
               {
                 "type": "text",
-                "text": "活動地點",
-                "weight": "bold",
-                "margin": "sm",
-                "flex": 0
+                "text": new Date(req.body.end).toLocaleString(),
+                "size": "sm",
+                "color": "#111111",
+                "flex": 4,
+                "wrap": true
+              }
+            ]
+          },
+          {
+            "type": "separator",
+            "margin": "xxl"
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "text",
+                "text": "活動地點 :",
+                "size": "sm",
+                "color": "#555555",
+                "flex": 2
               },
               {
                 "type": "text",
                 "text": req.body.location,
                 "size": "sm",
-                "align": "end",
-                "color": "#aaaaaa"
+                "color": "#111111",
+                "wrap": true,
+                "flex": 4
               }
             ]
           },
           {
             "type": "box",
-            "layout": "baseline",
+            "layout": "horizontal",
             "contents": [
               {
-                "type": "icon",
-                "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/hellocubee.png"
-              },
-              {
                 "type": "text",
-                "text": "活動內容",
-                "weight": "bold",
-                "margin": "sm",
-                "flex": 0
+                "text": "活動內容 :",
+                "size": "sm",
+                "color": "#555555",
+                "flex": 2
               },
               {
                 "type": "text",
                 "text": req.body.description,
                 "size": "sm",
-                "align": "end",
-                "color": "#aaaaaa"
+                "color": "#111111",
+                "wrap": true,
+                "flex": 4
               }
             ]
           },
           {
             "type": "box",
-            "layout": "baseline",
+            "layout": "horizontal",
             "contents": [
               {
-                "type": "icon",
-                "url": "https://www.bluenet-ride.com/images/drawable/cubeegroup/hellocubee.png"
-              },
-              {
                 "type": "text",
-                "text": "偏好",
-                "weight": "bold",
-                "margin": "sm",
-                "flex": 0
+                "text": "偏好 : ",
+                "size": "sm",
+                "color": "#555555",
+                "flex": 2
               },
               {
                 "type": "text",
                 "text": req.body.transportation,
                 "size": "sm",
-                "align": "end",
-                "color": "#aaaaaa"
+                "color": "#111111",
+                "wrap": true,
+                "flex": 4
               }
             ]
           }
         ]
       },
       {
-        "type": "text",
-        "text": "BlueNet Cubee 關心您",
-        "wrap": true,
-        "color": "#aaaaaa",
-        "size": "xxs"
-      }
-    ]
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "spacer",
-        "size": "xxl"
+        "type": "separator",
+        "margin": "xxl"
       },
       {
-        "type": "button",
-        "style": "primary",
-        "color": "#905c44",
-        "action": {
-          "type": "uri",
-          "label": "叫計程車",
-          "uri": "https://dev-bluenet.herokuapp.com/html/callTaxi/login.html"
-        }
+        "type": "box",
+        "layout": "horizontal",
+        "margin": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "cubee bear",
+            "color": "#aaaaaa",
+            "size": "xs",
+            "align": "end"
+          }
+        ]
       }
     ]
   }
