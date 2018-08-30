@@ -137,8 +137,6 @@ $('#exampleModal').on('hidden.bs.modal', function () {
 	console.log('4+ hidden');
 	$('#exampleModal input').prop('disabled',false);
     $(".btnpos").toggleClass('btnposflip');
-    $('#Mithrandir + span')[0].innerHTML = "重複次數";
-    $('#Gandalf + span')[0].innerHTML = "截止日期";
 })
 
 // ================================
@@ -486,7 +484,7 @@ $("#Gandalf").change(function(){
 });
 
 $("#Mithrandir").change(function(){
-    if($('#Gandalf').val() == 'on'){
+    if($('#Mithrandir').val() == 'on'){
     	$('#Mithrandir + span')[0].innerHTML = "重複次數";
     }else{
    		$('#Mithrandir + span')[0].innerHTML = " 重複 " + $('#Mithrandir').val() + " 次 ";
