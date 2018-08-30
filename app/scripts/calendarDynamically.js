@@ -472,7 +472,11 @@ var dropdownbtnClick = function(e){ //remake calendar
 $('#dropdown button').on('click', dropdownbtnClick);
 
 $("#csTime").change(function(){
-    $('#csTime + span')[0].innerHTML = "自訂 ( " + $('#csTime').val() + "分鐘 )";
+	if($('#csTime').val() == 'on'){
+		$('#csTime + span')[0].innerHTML = "自訂";
+	}else{
+    	$('#csTime + span')[0].innerHTML = "自訂 ( " + $('#csTime').val() + "分鐘 )";
+    }
 });
 
 $("#Gandalf").change(function(){
