@@ -12,7 +12,9 @@ router.get('/login',(req,res)=>{
 // })
 //
 router.get('/deleteCookie',(req, res) => {
+	console.log(req.session);
 	req.logOut();
+	console.log(req.session);
 	req.session = null
 	res.redirect('/auth/google');
 });
