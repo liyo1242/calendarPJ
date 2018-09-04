@@ -161,6 +161,13 @@ $(".btnpos").click(function(){
 
 // ================================
 
+$('#tr').click(() => {
+
+	window.location.href = "/auth/deleteCookie"
+})
+
+// ================================
+
 $('#woofbtn').click(() => {
 	const eventTitle = document.getElementById('message-title');
 	const eventtext = document.getElementById('message-text');
