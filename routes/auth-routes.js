@@ -17,7 +17,7 @@ router.get('/deleteCookie',(req, res) => {
 	res.redirect('/auth/google');
 });
 
-router.get('/google',passport.authenticate('google',{accessType: 'offline',scope: SCOPES})
+router.get('/google',(req, res, next) => {console.log(req.session);next();} ,passport.authenticate('google',{accessType: 'offline',scope: SCOPES})
 );
 
 // access_type: 'offline', this will generate refreshToken
