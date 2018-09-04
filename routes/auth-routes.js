@@ -10,9 +10,10 @@ router.get('/login',(req,res)=>{
 // router.get('/logout',(req,res) => {
 // 	res.send("logging out");
 // })
-// 
+//
 router.get('/deleteCookie',(req, res) => {
-	req.session = null;
+	req.logOut();
+	req.session = null
 	res.redirect('/auth/google');
 });
 
