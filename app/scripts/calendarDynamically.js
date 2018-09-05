@@ -162,8 +162,11 @@ $(".btnpos").click(function(){
 // ================================
 
 $('#tr').click(() => {
-
-	window.location.href = "/auth/deleteCookie"
+	if(confirm("確定要切換帳戶嗎?")){
+		window.location.href = "/auth/deleteCookie";
+	} else {
+		alert('取消操作');
+	}
 })
 
 // ================================
