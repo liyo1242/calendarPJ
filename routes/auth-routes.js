@@ -15,7 +15,7 @@ router.get('/deleteCookie',(req, res) => {
 	console.log(req.session);
 	req.logout();
 	console.log(req.session);
-	req.session = null
+	// req.session = null
 	res.redirect('/auth/login');
 });
 
