@@ -1,5 +1,27 @@
 const request = require('request');
 module.exports.reply = (req, res, next) => {
+  var gandalfUrl = "";
+  switch(req.body.transportation){
+    case "計程車":
+      gandalfUrl = "https://dev-bluenet.herokuapp.com/html/callTaxi/login.html";
+    break;
+    case "捷運":
+      gandalfUrl = "https://www.bluenet-ride.com/html/BluNet_MRT.html";
+    break;
+    case "公車":
+      gandalfUrl = "https://www.bluenet-ride.com/html/BluNet_BUS.html";
+    break;
+    case "腳踏車":
+      gandalfUrl = "https://www.bluenet-ride.com/html/BluNet_BIKE.html";
+    break;
+    case "火車/高鐵":
+      gandalfUrl = "https://www.bluenet-ride.com/html/BluNet_TRAIN.html";
+    break;
+    case "自行開車":
+      gandalfUrl = "https://www.bluenet-ride.com/html/Travel_plan.html";
+    break;
+  }
+
 
   var gandalfText = {
     "type": "flex",
@@ -189,18 +211,16 @@ module.exports.reply = (req, res, next) => {
         "margin": "xxl"
       },
       {
-        "type": "box",
-        "layout": "horizontal",
-        "margin": "md",
-        "contents": [
-          {
-            "type": "text",
-            "text": "cubee bear",
-            "color": "#aaaaaa",
-            "size": "xs",
-            "align": "end"
-          }
-        ]
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "轉乘資訊",
+          "uri": gandalfUrl
+        },
+        "style": "link",
+        "color": "#1879e2",
+        "flex": 0,
+        "gravity": "bottom"
       }
     ]
   }
