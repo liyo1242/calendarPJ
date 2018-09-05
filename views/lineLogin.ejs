@@ -3,8 +3,35 @@
 <head>
     <title></title>
     <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script>
     (function LineAuth() {
+        var url = window.location.href; //?id=U001&name=jojo
+        if(url.indexOf('?')!=-1)
+        {
+            var title = "";
+            var start = "";
+            var end = "";
+            var location = "";
+            var ary = url.split('?')[1].split('&');
+            for(i=0;i<=ary.length-1;i++)
+            {
+                if(ary[i].split('=')[0] == 'title'){
+                    title = ary[i].split('=')[1];
+                    $.cookie('title', title, {path: '/'});
+                }else if (ary[i].split('=')[0] == 'start'){
+                    start = ary[i].split('=')[1];
+                    $.cookie('start', start, {path: '/'});
+                }else if (ary[i].split('=')[0] == 'end'){
+                    end = ary[i].split('=')[1];
+                    $.cookie('end', end, {path: '/'});
+                }else if (ary[i].split('=')[0] == 'location'){
+                    location = ary[i].split('=')[1];
+                    $.cookie('location', location, {path: '/'});
+                }
+            }
+        }
         var URL = 'https://access.line.me/oauth2/v2.1/authorize?';
         URL += 'response_type=code';
         URL += '&client_id=1603688403';

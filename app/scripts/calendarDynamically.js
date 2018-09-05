@@ -156,6 +156,20 @@ $(".btnpos").click(function(){
         location: "",
         time: timeStr
     }
+    if($.cookie('title')&& $.cookie('start')&& $.cookie('end')&& $.cookie('location')){
+		sendData = {
+	        id: "",
+	        title: $.cookie('title'),
+	        text: "",
+	        location: $.cookie('location'),
+	        startTime: $.cookie('start'),
+	        endTime: $.cookie('end')
+	    };
+	    $.cookie('title', null);
+	    $.cookie('start', null);
+	    $.cookie('end', null);
+	    $.cookie('location', null);
+	}
     $(".btnpos").attr("data-whatever",JSON.stringify(sendData));
 })
 
@@ -541,5 +555,8 @@ window.onload = function() {
 			data // small part of the data of type object
 		);
 	});
+	if($.cookie('title') != "" && $.cookie('start') != "" && $.cookie('end') != "" && $.cookie('location') != ""){
+		$('.btnpos').click();
+	}
 	$('#calendarContainer-year').hide();
 };
