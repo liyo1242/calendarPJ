@@ -16,7 +16,7 @@ router.get('/deleteCookie',(req, res) => {
 	req.logout();
 	console.log(req.session);
 	// req.session = null
-	res.redirect('/auth/login');
+	res.redirect('https://accounts.google.com/logout');
 });
 
 router.get('/google',(req, res, next) => {console.log(req.session);next();} ,passport.authenticate('google',{accessType: 'offline',scope: SCOPES})
