@@ -72,7 +72,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 
   	if(button.data('whatever') != undefined){
   		console.log('change data');
-  		console.log((button.data('whatever'));
+  		console.log(button.data('whatever'));
   		if(button.data('whatever').id != "" && button.data('whatever').id != undefined){
 			$('#exampleModal input').prop('disabled',true);
 			$('#gg').attr('button-data',button.data('whatever').id);
