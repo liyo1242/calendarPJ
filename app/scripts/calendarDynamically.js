@@ -154,10 +154,13 @@ $(".btnpos").click(function(){
         id: "",
         title: "",
         text: "",
+        startTime:"",
+        endTime:"",
         location: "",
         time: timeStr
     }
     if($.cookie().title != "null" && $.cookie().start != "null" && $.cookie().end != "null"&& $.cookie().location != "null"){
+		console.log('fufufufufuf');
 		var titlec = $.cookie().title;
 		var startc = $.cookie().start;
 		var endc = $.cookie().end;
@@ -177,6 +180,7 @@ $(".btnpos").click(function(){
         $.cookie('location', null, {path: '/'});
         console.log('asdsadas' +  $.cookie().title);
 	}
+	console.log(sendData);
     $(".btnpos").attr("data-whatever",JSON.stringify(sendData));
 })
 
