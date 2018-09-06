@@ -66,8 +66,6 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 
 	console.log('4+ appear');
 	var button = $(event.relatedTarget); // Button that triggered the modal
-	const buttonA = $(event.relatedTarget);
-	let buttonB = $(event.relatedTarget)
   	// console.log(button.data('whatever')); // Extract info from data-* attributes
 
 	$(".btnpos").toggleClass('btnposflip');
@@ -75,8 +73,6 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   	if(button.data('whatever') != undefined){
   		console.log('change data');
   		console.log(button.data('whatever'));
-  		console.log(buttonA.data('whatever'));
-  		console.log(buttonB.data('whatever'));
   		if(button.data('whatever').id != "" && button.data('whatever').id != undefined){
 			$('#exampleModal input').prop('disabled',true);
 			$('#gg').attr('button-data',button.data('whatever').id);
@@ -144,6 +140,33 @@ $('#exampleModal').on('hidden.bs.modal', function () {
 	$('#exampleModal input').prop('disabled',false);
     $(".btnpos").toggleClass('btnposflip');
 })
+
+$('#vis').click(function() {
+	console.log('sadsdadas');
+	if($.cookie().title != "null" && $.cookie().start != "null" && $.cookie().end != "null"&& $.cookie().location != "null"){
+		console.log('fufufufufuf');
+		var titlec = $.cookie().title;
+		var startc = $.cookie().start;
+		var endc = $.cookie().end;
+		var locationc = $.cookie().location;
+		var sendData = {
+	        id: "",
+	        title: titlec,
+	        text: "",
+	        location: locationc,
+	        startTime: startc.slice(startc.indexOf('日') + 1),
+	        endTime: endc.slice(endc.indexOf('日') + 1),
+	        time: startc.slice(0,4) + " " + startc.slice(4, startc.indexOf('月') + 1) + " " + startc.slice(startc.indexOf('月') + 1, startc.indexOf('日'))// qqqq
+	    };
+	    $.cookie('title',null, {path: '/'});
+        $.cookie('start', null, {path: '/'});
+        $.cookie('end', null, {path: '/'});
+        $.cookie('location', null, {path: '/'});
+        console.log('asdsadas' +  $.cookie().title);
+	}
+	console.log(sendData);
+    $("#vis").attr("data-whatever",JSON.stringify(sendData));
+});
 
 // ================================
 $(".btnpos").click(function(){
@@ -577,7 +600,7 @@ window.onload = function() {
 		console.log($.cookie().start);
 		console.log($.cookie().end);
 		console.log($.cookie().location);
-		$('.btnpos').click();
+		$('#vis').click();
 	}
 	$('#calendarContainer-year').hide();
 };
