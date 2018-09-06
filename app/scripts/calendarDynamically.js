@@ -555,8 +555,12 @@ window.onload = function() {
 			data // small part of the data of type object
 		);
 	});
-	if($.cookie('title')&& $.cookie('start')&& $.cookie('end')&& $.cookie('location')){
-		$('.btnpos').click();
+	if($.cookie('title') && $.cookie('start')&& $.cookie('end')&& $.cookie('location')){
+		console.log($.cookie('title'));
+		console.log($.cookie('start'));
+		console.log($.cookie('end'));
+		console.log($.cookie('location'));
+		// $('.btnpos').click();
 	}
 	$('#calendarContainer-year').hide();
 };
