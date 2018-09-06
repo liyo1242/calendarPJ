@@ -39,10 +39,10 @@
             console.log($.cookie('end'));
             console.log($.cookie('location'));
         }else{
-            $.cookie('title', null);
-            $.cookie('start', null);
-            $.cookie('end', null);
-            $.cookie('location', null);
+            $.cookie('title',null, {path: '/'});
+            $.cookie('start', null, {path: '/'});
+            $.cookie('end', null, {path: '/'});
+            $.cookie('location', null, {path: '/'});
         }
         var URL = 'https://access.line.me/oauth2/v2.1/authorize?';
         URL += 'response_type=code';
