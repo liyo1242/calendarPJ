@@ -65,7 +65,9 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 	initialize();
 
 	console.log('4+ appear');
-	var button = $(event.relatedTarget) // Button that triggered the modal
+	var button = $(event.relatedTarget); // Button that triggered the modal
+	const buttonA = $(event.relatedTarget);
+	let buttonB = $(event.relatedTarget)
   	// console.log(button.data('whatever')); // Extract info from data-* attributes
 
 	$(".btnpos").toggleClass('btnposflip');
@@ -73,6 +75,8 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   	if(button.data('whatever') != undefined){
   		console.log('change data');
   		console.log(button.data('whatever'));
+  		console.log(buttonA.data('whatever'));
+  		console.log(buttonB.data('whatever'));
   		if(button.data('whatever').id != "" && button.data('whatever').id != undefined){
 			$('#exampleModal input').prop('disabled',true);
 			$('#gg').attr('button-data',button.data('whatever').id);
