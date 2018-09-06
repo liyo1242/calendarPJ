@@ -156,15 +156,19 @@ $(".btnpos").click(function(){
         location: "",
         time: timeStr
     }
-    if($.cookie('title') != "null" && $.cookie('start') != "null" && $.cookie('end') != "null"&& $.cookie('location') != "null" && $.cookie('title') != undefined && $.cookie('start') != undefined && $.cookie('end') != undefined&& $.cookie('location') != undefined){
+    if($.cookie().title != "null" && $.cookie().start != "null" && $.cookie().end != "null"&& $.cookie().location != "null"){
+		var titlec = $.cookie().title;
+		var startc = $.cookie().start;
+		var endc = $.cookie().end;
+		var locationc = $.cookie().location;
 		sendData = {
 	        id: "",
-	        title: $.cookie('title'),
+	        title: titlec,
 	        text: "",
-	        location: $.cookie('location'),
-	        startTime: $.cookie('start').slice($.cookie('start').indexOf('日') + 1),
-	        endTime: $.cookie('end').slice($.cookie('end').indexOf('日') + 1),
-	        time: $.cookie('start').slice(0,4) + " " + $.cookie('start').slice(4, $.cookie('start').indexOf('月') + 1) + " " + $.cookie('start').slice($.cookie('start').indexOf('月'), $.cookie('start').indexOf('日'))// qqqq
+	        location: locationc,
+	        startTime: startc.slice(startc.indexOf('日') + 1),
+	        endTime: endc.slice(endc.indexOf('日') + 1),
+	        time: startc.slice(0,4) + " " + startc.slice(4, startc.indexOf('月') + 1) + " " + startc.slice(startc.indexOf('月'), startc.indexOf('日'))// qqqq
 	    };
 	    $.cookie('title', null);
 	    $.cookie('start', null);
@@ -556,11 +560,11 @@ window.onload = function() {
 			data // small part of the data of type object
 		);
 	});
-	if($.cookie('title') != "null" && $.cookie('start') != "null" && $.cookie('end') != "null"&& $.cookie('location') != "null" && $.cookie('title') != undefined && $.cookie('start') != undefined && $.cookie('end') != undefined&& $.cookie('location') != undefined){
-		console.log($.cookie('title'));
-		console.log($.cookie('start'));
-		console.log($.cookie('end'));
-		console.log($.cookie('location'));
+	if($.cookie().title != "null" && $.cookie().start != "null" && $.cookie().end != "null"&& $.cookie().location != "null"){
+		console.log($.cookie().title);
+		console.log($.cookie().start);
+		console.log($.cookie().end);
+		console.log($.cookie().location);
 		$('.btnpos').click();
 	}
 	$('#calendarContainer-year').hide();
