@@ -561,7 +561,7 @@ window.onload = function() {
 		console.log($.cookie('start'));
 		console.log($.cookie('end'));
 		console.log($.cookie('location'));
-		// $('.btnpos').click();
+		$('.btnpos').click();
 	}
 	$('#calendarContainer-year').hide();
 };
