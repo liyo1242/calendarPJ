@@ -8,8 +8,10 @@
     <script>
     (function LineAuth() {
         var url = window.location.href; //?id=U001&name=jojo
+        console.log(url);
         if(url.indexOf('?')!=-1)
         {
+            console.log('fuckfuck4')
             var title = "";
             var start = "";
             var end = "";
@@ -17,20 +19,25 @@
             var ary = url.split('?')[1].split('&');
             for(i=0;i<=ary.length-1;i++)
             {
+                console.log(ary[i].split('='));
                 if(ary[i].split('=')[0] == 'title'){
                     title = ary[i].split('=')[1];
-                    $.cookie('title', title, {path: '/'});
+                    $.cookie('title', decodeURIComponent(title), {path: '/'});
                 }else if (ary[i].split('=')[0] == 'start'){
                     start = ary[i].split('=')[1];
-                    $.cookie('start', start, {path: '/'});
+                    $.cookie('start', decodeURIComponent(start), {path: '/'});
                 }else if (ary[i].split('=')[0] == 'end'){
                     end = ary[i].split('=')[1];
-                    $.cookie('end', end, {path: '/'});
+                    $.cookie('end', decodeURIComponent(end), {path: '/'});
                 }else if (ary[i].split('=')[0] == 'location'){
                     location = ary[i].split('=')[1];
-                    $.cookie('location', location, {path: '/'});
+                    $.cookie('location', decodeURIComponent(location), {path: '/'});
                 }
             }
+            console.log($.cookie('title'));
+            console.log($.cookie('start'));
+            console.log($.cookie('end'));
+            console.log($.cookie('location'));
         }else{
             $.cookie('title', null);
             $.cookie('start', null);

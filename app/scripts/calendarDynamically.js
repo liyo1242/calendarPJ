@@ -162,8 +162,9 @@ $(".btnpos").click(function(){
 	        title: $.cookie('title'),
 	        text: "",
 	        location: $.cookie('location'),
-	        startTime: $.cookie('start'),
-	        endTime: $.cookie('end')
+	        startTime: $.cookie('start').slice($.cookie('start').indexOf('日') + 1),
+	        endTime: $.cookie('end').slice($.cookie('end').indexOf('日') + 1),
+	        time: $.cookie('start').slice(0,4) + " " + $.cookie('start').slice(4, $.cookie('start').indexOf('月') + 1) + " " + $.cookie('start').slice($.cookie('start').indexOf('月'), $.cookie('start').indexOf('日'))// qqqq
 	    };
 	    $.cookie('title', null);
 	    $.cookie('start', null);
