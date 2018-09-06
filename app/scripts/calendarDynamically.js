@@ -168,12 +168,12 @@ $(".btnpos").click(function(){
 	        location: locationc,
 	        startTime: startc.slice(startc.indexOf('日') + 1),
 	        endTime: endc.slice(endc.indexOf('日') + 1),
-	        time: startc.slice(0,4) + " " + startc.slice(4, startc.indexOf('月') + 1) + " " + startc.slice(startc.indexOf('月'), startc.indexOf('日'))// qqqq
+	        time: startc.slice(0,4) + " " + startc.slice(4, startc.indexOf('月') + 1) + " " + startc.slice(startc.indexOf('月') + 1, startc.indexOf('日'))// qqqq
 	    };
-	    $.cookie('title', null);
-	    $.cookie('start', null);
-	    $.cookie('end', null);
-	    $.cookie('location', null);
+	    $.cookie().title = null;
+		$.cookie().start = null;
+		$.cookie().end = null;
+		$.cookie().location = null;
 	}
     $(".btnpos").attr("data-whatever",JSON.stringify(sendData));
 })
