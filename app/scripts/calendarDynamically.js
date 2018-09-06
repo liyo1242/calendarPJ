@@ -1,6 +1,7 @@
 "use strict";
 var calendar, organizer;
-var RRule = rrule.RRule
+var RRule = rrule.RRule;
+var cookiesflag = true;
 
 // calendar days layout swipe function
 $(function(){
@@ -156,7 +157,8 @@ $(".btnpos").click(function(){
         location: "",
         time: timeStr
     }
-    if($.cookie().title != "null" && $.cookie().start != "null" && $.cookie().end != "null"&& $.cookie().location != "null"){
+    if(cookiesflag && $.cookie().title != "null" && $.cookie().start != "null" && $.cookie().end != "null"&& $.cookie().location != "null"){
+		cookiesflag = false;
 		var titlec = $.cookie().title;
 		var startc = $.cookie().start;
 		var endc = $.cookie().end;
@@ -170,10 +172,10 @@ $(".btnpos").click(function(){
 	        endTime: endc.slice(endc.indexOf('日') + 1),
 	        time: startc.slice(0,4) + " " + startc.slice(4, startc.indexOf('月') + 1) + " " + startc.slice(startc.indexOf('月') + 1, startc.indexOf('日'))// qqqq
 	    };
-	    $.cookie('title',null, {path: '/'});
-        $.cookie('start', null, {path: '/'});
-        $.cookie('end', null, {path: '/'});
-        $.cookie('location', null, {path: '/'});
+	    // $.cookie('title',null, {path: '/'});
+     //    $.cookie('start', null, {path: '/'});
+     //    $.cookie('end', null, {path: '/'});
+     //    $.cookie('location', null, {path: '/'});
 	}
     $(".btnpos").attr("data-whatever",JSON.stringify(sendData));
 })
