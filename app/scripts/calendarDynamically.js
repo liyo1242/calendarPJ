@@ -170,10 +170,10 @@ $(".btnpos").click(function(){
 	        endTime: endc.slice(endc.indexOf('日') + 1),
 	        time: startc.slice(0,4) + " " + startc.slice(4, startc.indexOf('月') + 1) + " " + startc.slice(startc.indexOf('月') + 1, startc.indexOf('日'))// qqqq
 	    };
-	    $.cookie().title = null;
-		$.cookie().start = null;
-		$.cookie().end = null;
-		$.cookie().location = null;
+	    $.cookie('title',null, {path: '/'});
+        $.cookie('start', null, {path: '/'});
+        $.cookie('end', null, {path: '/'});
+        $.cookie('location', null, {path: '/'});
 	}
     $(".btnpos").attr("data-whatever",JSON.stringify(sendData));
 })
