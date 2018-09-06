@@ -143,13 +143,14 @@ $('#exampleModal').on('hidden.bs.modal', function () {
 $(".btnpos").click(function(){
 	var d = new Date();
 	var timeStr ="";
+	var sendData;
 
 	if(d.getMonth() + 1 >= 10){
 		timeStr = d.getFullYear() + ' ' + (d.getMonth() + 1) + '/ ' + d.getDate();
 	}else{
 		timeStr = d.getFullYear() + ' 0' + (d.getMonth() + 1) + '/ ' + d.getDate();
 	}
-	var sendData = {
+	sendData = {
         id: "",
         title: "",
         text: "",
