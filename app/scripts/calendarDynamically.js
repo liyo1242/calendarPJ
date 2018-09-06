@@ -156,7 +156,7 @@ $(".btnpos").click(function(){
         location: "",
         time: timeStr
     }
-    if($.cookie('title')&& $.cookie('start')&& $.cookie('end')&& $.cookie('location')){
+    if($.cookie('title') != null && $.cookie('start') != null && $.cookie('end') != null&& $.cookie('location') != null && $.cookie('title') != undefined && $.cookie('start') != undefined && $.cookie('end') != undefined&& $.cookie('location') != undefined){
 		sendData = {
 	        id: "",
 	        title: $.cookie('title'),
@@ -555,7 +555,7 @@ window.onload = function() {
 			data // small part of the data of type object
 		);
 	});
-	if($.cookie('title') && $.cookie('start')&& $.cookie('end')&& $.cookie('location')){
+	if($.cookie('title') != null && $.cookie('start') != null && $.cookie('end') != null&& $.cookie('location') != null && $.cookie('title') != undefined && $.cookie('start') != undefined && $.cookie('end') != undefined&& $.cookie('location') != undefined){
 		console.log($.cookie('title'));
 		console.log($.cookie('start'));
 		console.log($.cookie('end'));
