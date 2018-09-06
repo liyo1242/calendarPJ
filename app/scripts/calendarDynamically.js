@@ -71,6 +71,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 	$(".btnpos").toggleClass('btnposflip');
 
   	if(button.data('whatever') != undefined){
+  		console.log('change data');
   		if(button.data('whatever').id != "" && button.data('whatever').id != undefined){
 			$('#exampleModal input').prop('disabled',true);
 			$('#gg').attr('button-data',button.data('whatever').id);
@@ -83,7 +84,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 	  	modal.find('#message-text').val(button.data('whatever').text);
 	  	modal.find('#message-location').val(button.data('whatever').location);
 
-	  	if(button.data('whatever').startTime != undefined && button.data('whatever').endTime != undefined ){
+	  	if(button.data('whatever').startTime != undefined && button.data('whatever').endTime != undefined && button.data('whatever').startTime != "" && button.data('whatever').endTime != "" ){
 	  		// the days trigger modal have already exists data
 			var time = button.data('whatever').time;
 			$('#startTime').val(button.data('whatever').startTime);
