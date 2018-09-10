@@ -3,7 +3,7 @@ module.exports.reply = (req, res, next) => {
   var gandalfUrl = "";
   switch(req.body.transportation){
     case "計程車":
-      gandalfUrl = "https://dev-bluenet.herokuapp.com/html/callTaxi/login.html";
+      gandalfUrl = `https://dev-bluenet.herokuapp.com/html/callTaxi/login.html?getoff=${req.body.location}`;
     break;
     case "捷運":
       gandalfUrl = "https://www.bluenet-ride.com/html/BluNet_MRT.html";
@@ -229,10 +229,10 @@ module.exports.reply = (req, res, next) => {
 
   request.post("https://bn-bot.herokuapp.com/api",{
           headers: {
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json' 
           },
           json:{
-            "userid": req.body.userid,
+            "userid": 'U67fa89a67d92f2fd9090a513c68f6a52',
             "messageType":"fuck",
             "forUserMessage": gandalfText
           }
