@@ -6,19 +6,19 @@ module.exports.reply = (req, res, next) => {
       gandalfUrl = `https://dev-bluenet.herokuapp.com/html/callTaxi/login.html?getoff=${req.body.location}`;
     break;
     case "捷運":
-      gandalfUrl = "https://www.bluenet-ride.com/html/BluNet_MRT.html";
+      gandalfUrl = `https://www.bluenet-ride.com/html/BluNet_MRT.html?from=line&location=${req.body.location}`;
     break;
     case "公車":
-      gandalfUrl = "https://www.bluenet-ride.com/html/BluNet_BUS.html";
-    break;
+      gandalfUrl = `https://www.bluenet-ride.com/html/BluNet_BUS.html?from=line&location=${req.body.location}`;
+    break;2
     case "腳踏車":
-      gandalfUrl = "https://www.bluenet-ride.com/html/BluNet_BIKE.html";
+      gandalfUrl = `https://www.bluenet-ride.com/html/BluNet_BIKE.html?from=line&location=${req.body.location}`;
     break;
     case "火車/高鐵":
-      gandalfUrl = "https://www.bluenet-ride.com/html/BluNet_TRAIN.html";
+      gandalfUrl = `https://www.bluenet-ride.com/html/BluNet_TRAIN.html?from=line&location=${req.body.location}`;
     break;
     case "自行開車":
-      gandalfUrl = "https://www.bluenet-ride.com/html/Travel_plan.html";
+      gandalfUrl = `https://www.bluenet-ride.com/html/Travel_plan.html?from=line&location=${req.body.location}`;
     break;
   }
 
