@@ -232,7 +232,7 @@ module.exports.reply = (req, res, next) => {
             'Content-Type' : 'application/json' 
           },
           json:{
-            "userid": req.body.userID,
+            "userid": req.body.userid,
             "messageType":"fuck",
             "forUserMessage": gandalfText
           }
