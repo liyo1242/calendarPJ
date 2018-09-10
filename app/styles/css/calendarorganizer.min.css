@@ -151,7 +151,8 @@
     border-radius: 1px; }
 
 .today {
-  border: 1px solid #09b0fb; }
+  border: 1px solid #09b0fb;
+  background-color: #c5c3c3 !important; }
 
 .day-radios {
   display: none; }
