@@ -483,12 +483,12 @@ const Mithrandir = new Picker(document.querySelector('#Mithrandir'), {
 });
 
 var dropdownbtnClick = function(e){ //remake calendar
-	if(e.currentTarget.id == "一" || e.currentTarget.id == "日"){
+	if(e.currentTarget.id == "we"){
 		// change week start
 		calendar = new Calendar("calendarContainer", // id of html container for calendar
 			"medium", // size of calendar, can be small | medium | large
 			[
-				e.currentTarget.id, // left most day of calendar labels
+				e.currentTarget.innerHTML.slice(1, 2), // left most day of calendar labels
 				3 // maximum length of the calendar labels
 			],
 			[
@@ -523,6 +523,9 @@ var dropdownbtnClick = function(e){ //remake calendar
     $(".days").swipe({
 		fingers:'all', swipeLeft:swipe, swipeRight:swipe, allowPageScroll:"auto"
 	});
+	if(e.currentTarget.innerHTML.slice(1, 2) == "一"){
+		$("#we").html('以日開始');
+	}
 }
 
 $('#dropdown button').on('click', dropdownbtnClick);
