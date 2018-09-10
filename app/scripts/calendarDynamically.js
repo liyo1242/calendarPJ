@@ -164,7 +164,8 @@ $('#vis').click(function() {
         $.cookie('location', null, {path: '/'});
         console.log('asdsadas' +  $.cookie().title);
 	}
-	console.log(sendData);
+	console.log(
+		);
     $("#vis").attr("data-whatever",JSON.stringify(sendData));
 });
 
@@ -193,13 +194,13 @@ $(".btnpos").click(function(){
 
 // ================================
 
-$('#tr').click(() => {
-	if(confirm("確定要切換帳戶嗎?")){
-		window.location.href = "/auth/deleteCookie";
-	} else {
-		alert('取消操作');
-	}
-})
+// $('#tr').click(() => {
+// 	if(confirm("確定要切換帳戶嗎?")){
+// 		window.location.href = "/auth/deleteCookie";
+// 	} else {
+// 		alert('取消操作');
+// 	}
+// })
 
 // ================================
 
@@ -482,28 +483,41 @@ const Mithrandir = new Picker(document.querySelector('#Mithrandir'), {
 });
 
 var dropdownbtnClick = function(e){ //remake calendar
-
-	calendar = new Calendar("calendarContainer", // id of html container for calendar
-		"medium", // size of calendar, can be small | medium | large
-		[
-			e.currentTarget.id, // left most day of calendar labels
-			3 // maximum length of the calendar labels
-		],
-		[
-			"#A2A0A0", // primary color
-			"#A2A0A0", // primary dark color
-			"#ffffff", // text color
-			"#ffecb3" // text dark color
-		]
-	);
-
-	dataWithAjax(function(data) {
-		// initializing a new organizer object, that will use an html container to create itself
-		organizer = new Organizer("organizerContainer", // id of html container for calendar
-			calendar, // defining the calendar that the organizer is related
-			data // small part of the data of type object
+	if(e.currentTarget.id == "一" || e.currentTarget.id == "日"){
+		// change week start
+		calendar = new Calendar("calendarContainer", // id of html container for calendar
+			"medium", // size of calendar, can be small | medium | large
+			[
+				e.currentTarget.id, // left most day of calendar labels
+				3 // maximum length of the calendar labels
+			],
+			[
+				"#A2A0A0", // primary color
+				"#A2A0A0", // primary dark color
+				"#ffffff", // text color
+				"#ffecb3" // text dark color
+			]
 		);
-	});
+
+		dataWithAjax(function(data) {
+			// initializing a new organizer object, that will use an html container to create itself
+			organizer = new Organizer("organizerContainer", // id of html container for calendar
+				calendar, // defining the calendar that the organizer is related
+				data // small part of the data of type object
+			);
+		});
+	//=================
+	} else if (e.currentTarget.id == "tr") {
+		// account switch
+		if(confirm("確定要切換帳戶嗎?")){
+			window.location.href = "/auth/deleteCookie";
+		} else {
+			alert('取消操作');
+		}
+	//================
+	} else {
+		console.log('what happen');
+	}
 
     $('#dropdown button').on('click', dropdownbtnClick);
     $(".days").swipe({
