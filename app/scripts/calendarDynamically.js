@@ -145,10 +145,10 @@ $('#vis').click(function() {
 	console.log('sadsdadas');
 	if($.cookie().title != "null" && $.cookie().start != "null" && $.cookie().end != "null"&& $.cookie().location != "null"){
 		console.log('fufufufufuf');
-		var titlec = $.cookie().title;
-		var startc = $.cookie().start;
-		var endc = $.cookie().end;
-		var locationc = $.cookie().location;
+		var titlec = $.cookie().title || "";
+		var startc = $.cookie().start || "";
+		var endc = $.cookie().end || "";
+		var locationc = $.cookie().location || "" ;
 		var sendData = {
 	        id: "",
 	        title: titlec,
