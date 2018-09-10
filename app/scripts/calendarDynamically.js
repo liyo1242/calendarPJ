@@ -506,6 +506,13 @@ var dropdownbtnClick = function(e){ //remake calendar
 				data // small part of the data of type object
 			);
 		});
+		$('#dropdown button').on('click', dropdownbtnClick);
+	    $(".days").swipe({
+			fingers:'all', swipeLeft:swipe, swipeRight:swipe, allowPageScroll:"auto"
+		});
+		if(e.currentTarget.innerHTML.slice(1, 2) == "一"){
+			$("#we").html('以日開始');
+		}
 	//=================
 	} else if (e.currentTarget.id == "tr") {
 		// account switch
@@ -517,14 +524,6 @@ var dropdownbtnClick = function(e){ //remake calendar
 	//================
 	} else {
 		console.log('what happen');
-	}
-
-    $('#dropdown button').on('click', dropdownbtnClick);
-    $(".days").swipe({
-		fingers:'all', swipeLeft:swipe, swipeRight:swipe, allowPageScroll:"auto"
-	});
-	if(e.currentTarget.innerHTML.slice(1, 2) == "一"){
-		$("#we").html('以日開始');
 	}
 }
 
