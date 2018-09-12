@@ -73,6 +73,7 @@
     align-items: center;
     text-transform: uppercase; }
   .month > div {
+    width: calc((100%-32px)/3);
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -152,12 +153,12 @@
 
 .today {
   border: 1px solid #09b0fb;
-  background-color: rgba(21, 21, 21, 0.21) !important; }
+  background-color: rgba(21, 21, 21, 0.11) !important; }
 
 .day-radios {
   display: none; }
   .day-radios:checked + .day {
-    background-color: rgba(21, 21, 21, 0.012);
+    background-color: rgba(21, 21, 21, 0.39);
     box-shadow: inset 0 0 4px rgba(21, 21, 21, 0.21); }
 
 .events {
