@@ -105,24 +105,24 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 			if(d.getHours() < 23){
 				if(d.getMinutes() >= 45){
 					carry = 1;
-					offset = -45;
+					offset = -30;
 				}else {
-					offset = 15;
+					offset = 30;
 				}
 			}else if (d.getHours() == 23) {
 				if(d.getMinutes() >= 45){
 					offset = 0;
 				}else {
-					offset = 15;
+					offset = 30;
 				}
 			}
 			var startMinutes = ((d.getMinutes() > 9) ? (d.getMinutes()) : ("0" + d.getMinutes()));
-			$('#startTime').val(d.getHours() + ':' + startMinutes);
+			$('#startTime').val(d.getHours() + ':' + "00");//startMinutes
 			$('#startDate').val(time.slice(0,4) + '/' + time.slice(5,7) + '/' + dayZero);
 			// === === === ===
 			// === === === ===
 			var endMinutes = ((d.getMinutes() + offset) > 9) ? (d.getMinutes() + offset) : ("0" + (d.getMinutes() + offset));
-			$('#endTime').val((d.getHours() + carry) + ':' + endMinutes);
+			$('#endTime').val((d.getHours() + carry) + ':' + "30");//endMinutes
 			$('#endDate').val(time.slice(0,4) + '/' + time.slice(5,7) + '/' + dayZero);
 		}
 
@@ -239,12 +239,10 @@ $('#woofbtn').click(() => {
 				count: count,
 				interval: interval
 			})
-			// console.log(rule.toString());
 		}
 	}
 
 	var recurrence = rule ? [("RRULE:" + rule.toString())] : "";
-	// console.log(recurrence);
 	// the RRule type =======================  end
 
 	var data = {
@@ -367,7 +365,11 @@ calendar = new Calendar("calendarContainer", // id of html container for calenda
 );
 
 const Timepick1 = new Picker(document.querySelector('#startTime'), {
-  format: 'HH:mm',
+  format: "HH:mm",
+	increment: {
+	    minute: 30
+	  },
+	  rows: 3,
   text: {
     title: '請輸入活動起始時間',
     cancel: '取消',
@@ -399,22 +401,26 @@ const Datepick1 = new Picker(document.querySelector('#startDate'), {
     return Number(text) + suffixes[type];
   }
 });
-
+// exchange~~~~~~~~~~~~~~
 const Timepick2 = new Picker(document.querySelector('#endTime'), {
-  format: 'HH:mm',
-  text: {
-    title: '請輸入活動結束時間',
-    cancel: '取消',
-    confirm: '確認',
-  },
+	format: "HH:mm",
+	increment: {
+	    minute: 30
+	  },
+	  rows: 3,
+	text: {
+	    title: '請輸入活動結束時間',
+	    cancel: '取消',
+	    confirm: '確認',
+	  },
   translate(type, text) {
-    const suffixes = {
+	const suffixes = {
       hour: '時',
       minute: '分',
     };
 
     return Number(text) + suffixes[type];
-  }
+  },
 });
 const Datepick2 = new Picker(document.querySelector('#endDate'), {
   format: 'YYYY/MM/DD',
