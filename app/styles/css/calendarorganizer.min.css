@@ -73,7 +73,7 @@
     align-items: center;
     text-transform: uppercase; }
   .month > div {
-    width: calc((100%-32px)/3);
+    width: calc((100%-32px)/4);
     cursor: pointer;
     display: flex;
     justify-content: center;
