@@ -79,8 +79,8 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 
 	  	var modal = $(this);
 	  	modal.find('#message-title').val(button.data('whatever').title);
-	  	modal.find('#message-text').val(button.data('whatever').text);
-	  	modal.find('#message-location').val(button.data('whatever').location);
+	  	modal.find('#message-text').val((button.data('whatever').text != undefined) ? button.data('whatever').text : "");
+	  	modal.find('#message-location').val((button.data('whatever').location != undefined) ? button.data('whatever').location : "");
 
 	  	if(button.data('whatever').startTime != undefined && button.data('whatever').endTime != undefined && button.data('whatever').startTime != "" && button.data('whatever').endTime != "" ){
 	  		// the days trigger modal have already exists data
