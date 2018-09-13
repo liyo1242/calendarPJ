@@ -417,6 +417,22 @@ input {
   input:focus {
     border-bottom: 1px solid #1077E4; }
 
+textarea {
+  resize: none;
+  font-size: 14px !important;
+  padding: 10px;
+  margin: 10px auto;
+  font-family: 'Open Sans', sans-serif;
+  transition: 1s ease-in-out;
+  -webkit-transition: 1s ease-in-out; }
+  textarea:disabled {
+    border: 0;
+    background: #aaa !important;
+    color: #212529;
+    cursor: not-allowed; }
+  textarea:focus {
+    border-bottom: 1px solid #1077E4; }
+
 #startDate, #endDate {
   display: inline-block;
   width: 50%; }

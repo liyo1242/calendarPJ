@@ -9,7 +9,6 @@ $(function(){
 	});
 });
 function swipe(event, direction, distance, duration, fingerCount, fingerData, currentDirection) {
-    // console.log("fufufuck# direction " + direction );
     if(direction == "left"){
  	  	$("#calendarContainer-month-next").click();
     }else if (direction == "right"){
@@ -63,16 +62,12 @@ $('#uu').click(function(){
 // The moment of Modal appearance will trigger
 $('#exampleModal').on('show.bs.modal', function (event) {
 	initialize();
-
-	console.log('4+ appear');
 	var button = $(event.relatedTarget); // Button that triggered the modal
-  	// console.log(button.data('whatever')); // Extract info from data-* attributes
 
-	$(".btnpos").toggleClass('btnposflip');
+	$(".btnpos").toggleClass('btnposflip'); // Button animation
 
   	if(button.data('whatever') != undefined){
   		console.log('change data');
-  		console.log(button.data('whatever'));
   		if(button.data('whatever').id != "" && button.data('whatever').id != undefined){
 			$('#exampleModal input').prop('disabled',true);
 			$('#gg').attr('button-data',button.data('whatever').id);
@@ -191,16 +186,6 @@ $(".btnpos").click(function(){
     }
     $(".btnpos").attr("data-whatever",JSON.stringify(sendData));
 })
-
-// ================================
-
-// $('#tr').click(() => {
-// 	if(confirm("確定要切換帳戶嗎?")){
-// 		window.location.href = "/auth/deleteCookie";
-// 	} else {
-// 		alert('取消操作');
-// 	}
-// })
 
 // ================================
 
@@ -367,7 +352,7 @@ calendar = new Calendar("calendarContainer", // id of html container for calenda
 const Timepick1 = new Picker(document.querySelector('#startTime'), {
   format: "HH:mm",
 	increment: {
-	    minute: 30
+	    minute: 15
 	  },
 	  rows: 3,
   text: {
@@ -405,7 +390,7 @@ const Datepick1 = new Picker(document.querySelector('#startDate'), {
 const Timepick2 = new Picker(document.querySelector('#endTime'), {
 	format: "HH:mm",
 	increment: {
-	    minute: 30
+	    minute: 15
 	  },
 	  rows: 3,
 	text: {

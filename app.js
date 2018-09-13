@@ -37,8 +37,8 @@ app.use('/auth',authRoutes);
 app.use('/profile',profileRoutes);
 
 app.get('/',(req,res) => {
-    // res.render('login');
-	res.render('lineLogin');
+    res.render('login');
+	// res.render('lineLogin');
 });
 
 app.get('/cookie',(req,res) => {
