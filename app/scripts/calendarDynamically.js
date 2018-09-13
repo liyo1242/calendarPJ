@@ -520,6 +520,17 @@ var dropdownbtnClick = function(e){ //remake calendar
 
 $('#dropdown button').on('click', dropdownbtnClick);
 
+$("#startTime,#startDate").change(function(){// picker+15
+	console.log('change');
+	const newEnd = moment(`${Datepick1.getDate(true)} ${Timepick1.getDate(true)}`).add(15,'m').add(1,'M');
+	const newEndTime = (newEnd.get('hour') < 10 ? "0" : "") + newEnd.get('hour') + ":" + (newEnd.get('minute') < 10 ? "0" : "") + newEnd.get('minute');
+	const newEndDate = newEnd.get('year') + "/" + (newEnd.get('month') < 10 ? "0" : "") + newEnd.get('month') + "/" + (newEnd.get('date') < 10 ? "0" : "") + newEnd.get('date');
+	$('#endTime').val(newEndTime);
+	$('#endDate').val(newEndDate);
+	Timepick2.update();
+	Datepick2.update();
+});
+
 $("#csTime").change(function(){
 	if($('#csTime').val() == 'on'){
 		$('#csTime + span')[0].innerHTML = "自訂";
