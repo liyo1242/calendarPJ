@@ -68,8 +68,10 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 
   	if(button.data('whatever') != undefined){
   		console.log('change data');
-  		if(button.data('whatever').id != "" && button.data('whatever').id != undefined){
-			$('#exampleModal input').prop('disabled',true);
+  		if(button.data('whatever').id != undefined){
+  			if(button.data('whatever').id != ""){
+  				$('#exampleModal input').prop('disabled',true);
+  			}
 			$('#gg').attr('button-data',button.data('whatever').id);
 	  		$('#uu').attr('button-data',button.data('whatever').id);
 	  		$('#woofbtn').attr('button-data',button.data('whatever').id);
@@ -166,6 +168,7 @@ $('#vis').click(function() {
 
 // ================================
 $(".btnpos").click(function(){ //press
+	$('#exampleModal input').prop('disabled',false);
 	var d = moment();
 	const newStartTime = (d.get('minute') > 30 ? d.add(1,'h') : d);
 	const disMinute = (d.get('minute') > 30 ? "00" : "30");
@@ -184,11 +187,9 @@ $(".btnpos").click(function(){ //press
 // ================================
 
 $('#woofbtn').click(() => {
-	const eventTitle = document.getElementById('message-title');
-	const eventtext = document.getElementById('message-text');
-	const eventLocation = document.getElementById('message-location');
-	const eventreMinder = document.getElementById('message-reminder');
-	const eventreTransport = document.getElementById('message-transportation');
+	const eventTitle = $('#message-title');
+	const eventtext = $('#message-text');
+	const eventLocation = $('#message-location');
 
 	var c1 = Datepick1.getDate(true).replace("/","-").replace("/","-").replace("/","-");
 	var startT = c1 + "T" + Timepick1.getDate(true) + ":00+08:00";
@@ -227,9 +228,9 @@ $('#woofbtn').click(() => {
 	var data = {
 		start: startT,
 		end: endT,
-		summary: eventTitle.value, //title
-		location: eventLocation.value,
-		description: eventtext.value,
+		summary: (eventTitle.val() == "") ? "新活動" : eventTitle.val(), //title
+		location: eventLocation.val(),
+		description: eventtext.val(),
 		id: $('#woofbtn').attr('button-data'),
 		recurrence: recurrence,
 		transportation: $('input[name=transportation]:checked').val(),
@@ -238,7 +239,7 @@ $('#woofbtn').click(() => {
 	};
 
 	// the Conditionality needs to be integrated ============================== fix point
-	if($('#woofbtn').attr('button-data') != "" && $('#woofbtn').attr('button-data') != undefined && eventTitle.value != "" && endT > startT ){
+	if($('#woofbtn').attr('button-data') != "" && $('#woofbtn').attr('button-data') != undefined && eventTitle.val() != "" && endT > startT ){
 		if(confirm("確定要更新嗎?")){
 			fetch('/profile/update', {
 		    	method: 'POST', // or 'PUT'
@@ -276,7 +277,7 @@ $('#woofbtn').click(() => {
 		else{
 			alert("已經取消更新操作");
 		}
-	} else if(eventTitle.value != "" && endT > startT ){
+	} else if(endT > startT ){
 		if(confirm("確定新增嗎?")){
 			console.log('right');
 			fetch('/profile/quickAdd', {
@@ -322,11 +323,9 @@ $('#woofbtn').click(() => {
 		alert('資料錯誤 小心火燭');
 	}
 	// ============================================= fix point end
-	eventTitle.value = "";
-	eventLocation.value = "";
-	//eventreTransport.value = "";
-	//eventreMinder.value = "";
-	eventtext.value = "";
+	eventTitle.val("");
+	eventLocation.val("");
+	eventtext.val("");
 })
 // initializing a new calendar object, that will use an html container to create itself
 calendar = new Calendar("calendarContainer", // id of html container for calendar
