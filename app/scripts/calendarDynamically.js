@@ -165,25 +165,19 @@ $('#vis').click(function() {
 });
 
 // ================================
-$(".btnpos").click(function(){
-	var d = new Date();
-	var timeStr ="";
-	var sendData;
-
-	if(d.getMonth() + 1 >= 10){
-		timeStr = d.getFullYear() + ' ' + (d.getMonth() + 1) + '/ ' + d.getDate();
-	}else{
-		timeStr = d.getFullYear() + ' 0' + (d.getMonth() + 1) + '/ ' + d.getDate();
-	}
-	sendData = {
+$(".btnpos").click(function(){ //press
+	var d = moment();
+	const newStartTime = (d.get('minute') > 30 ? d.add(1,'h') : d);
+	const disMinute = (d.get('minute') > 30 ? "00" : "30");
+	const sendData = {
         id: "",
         title: "",
         text: "",
-        startTime:"",
-        endTime:"",
+        startTime: (newStartTime.get('hour') < 10 ? "0" : "") + newStartTime.get('hour') + ":" + disMinute,
+        endTime: (newStartTime.add(1,'h').get('hour') < 10 ? "0" : "") + newStartTime.get('hour') + ":" + disMinute,
         location: "",
-        time: timeStr
-    }
+        time: newStartTime.get('year') + ' ' + ((newStartTime.get('month') + 1) < 10 ? '0' : "") + (newStartTime.get('month') + 1) + '/ ' + newStartTime.get('date')
+    };
     $(".btnpos").attr("data-whatever",JSON.stringify(sendData));
 })
 
@@ -522,9 +516,9 @@ $('#dropdown button').on('click', dropdownbtnClick);
 
 $("#startTime,#startDate").change(function(){// picker+15
 	console.log('change');
-	const newEnd = moment(`${Datepick1.getDate(true)} ${Timepick1.getDate(true)}`).add(15,'m').add(1,'M');
+	const newEnd = moment(`${Datepick1.getDate(true)} ${Timepick1.getDate(true)}`).add(15,'m');
 	const newEndTime = (newEnd.get('hour') < 10 ? "0" : "") + newEnd.get('hour') + ":" + (newEnd.get('minute') < 10 ? "0" : "") + newEnd.get('minute');
-	const newEndDate = newEnd.get('year') + "/" + (newEnd.get('month') < 10 ? "0" : "") + newEnd.get('month') + "/" + (newEnd.get('date') < 10 ? "0" : "") + newEnd.get('date');
+	const newEndDate = newEnd.get('year') + "/" + ((newEnd.get('month') + 1) < 10 ? "0" : "") + (newEnd.get('month') + 1) + "/" + (newEnd.get('date') < 10 ? "0" : "") + newEnd.get('date');
 	$('#endTime').val(newEndTime);
 	$('#endDate').val(newEndDate);
 	Timepick2.update();
