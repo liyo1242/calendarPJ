@@ -25,17 +25,23 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<div class="input-group input-group-lg" style="display:  flex;">
+						<div class="input-group input-group-lg" style="display:  flex; width:100%;;">
 							<div class="input-group-prepend">
 							</div>
 							<input id="message-title" type="text" class="cs-form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="活動的標題" value="新活動">
 						</div>
-						<button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
+						<!-- <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
-						</button>
+						</button> -->
 					</div>
 					<div class="modal-body">
 						<form>
+							<div class="form-group">
+<!-- 								<label for="message-text" class="col-form-label">活動內容:</label> -->
+								<textarea id="message-text" class="cs-form-control margin-tb-10" placeholder="新增活動內容" autocomplete="search"></textarea>
+								<!-- <label for="message-text" class="col-form-label">活動地點:</label> -->
+								<input id="message-location" type="text" class="cs-form-control margin-tb-10" placeholder="新增活動地點" required  autocomplete="address">
+							</div>
 							<div class="form-group">
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
@@ -88,7 +94,11 @@
 										height: 50%;
 										">
 										<input type="radio" name="period">
-										<span class="placeholder">自訂週期</span>
+										<span class="placeholder" >自訂週期</span>
+										<label class="option">
+											<input id="Gandalf" type="radio" name="period" checked="true">
+											<span class="title animated fadeIn">無</span>
+										</label>
 										<label class="option">
 											<input id="Gandalf" type="radio" name="period">
 											<span class="title animated fadeIn">截止日期</span>
@@ -101,14 +111,14 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="message-text" class="col-form-label">活動地點:</label>
-								<input id="message-location" type="text" class="cs-form-control margin-tb-10" placeholder="新增活動地點">
-								<label for="message-text" class="col-form-label">活動內容:</label>
-								<textarea id="message-text" class="cs-form-control margin-tb-10" placeholder="新增活動內容"></textarea>
 								<label for="message-text" class="col-form-label">交通方式及提醒:</label>
 								<div class="select animated zoomIn margin-tb-10">
 									<input type="radio" name="transportation">
 									<span class="placeholder">偏好的交通工具</span>
+									<label class="option">
+										<input type="radio" name="transportation" value="計程車" checked="true">
+										<span class="title animated fadeIn">步行</span>
+									</label>
 									<label class="option">
 										<input type="radio" name="transportation" value="計程車" checked="true">
 										<span class="title animated fadeIn">計程車</span>
@@ -146,12 +156,12 @@
 										<span class="title animated fadeIn">30分鐘</span>
 									</label>
 									<label class="option">
-										<input type="radio" name="option" value="10">
-										<span class="title animated fadeIn">10分鐘</span>
-									</label>
-									<label class="option">
 										<input type="radio" name="option" value="60">
 										<span class="title animated fadeIn">60分鐘</span>
+									</label>
+									<label class="option">
+										<input type="radio" name="option" value="90">
+										<span class="title animated fadeIn">90分鐘</span>
 									</label>
 									<label class="option">
 										<input id="csTime" type="radio" name="option">
