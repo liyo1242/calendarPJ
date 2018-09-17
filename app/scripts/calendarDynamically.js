@@ -1,7 +1,7 @@
 "use strict";
 var calendar, organizer;
 var RRule = rrule.RRule;
-
+ 
 // calendar days layout swipe function
 $(function(){
 	$(".days").swipe({
