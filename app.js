@@ -42,7 +42,7 @@ app.get('/',(req,res) => {
 });
 
 app.get('/cookie',(req,res) => {
-    res.render('cookie');
+    res.render('cookie'); 
 });
 
 app.get('/login',(req,res) => {
