@@ -22,6 +22,12 @@ module.exports.reply = (req, res, next) => {
     break;
   }
 
+  var eventStr = `${req.body.summary}%0a開始時間:${new Date(req.body.start).toLocaleString()}%0a結束時間:${new Date(req.body.end).toLocaleString()}%0a地點:${req.body.location}%0a活動內容:${req.body.description}`;
+  var holyEventStr = `${req.body.summary}開始時間:${new Date(req.body.start).toLocaleString()}結束時間:${new Date(req.body.end).toLocaleString()}地點:${req.body.location}活動內容:${req.body.description}`
+  // var UTF8str = encodeURIComponent(eventStr);
+  holyEventStr = holyEventStr.replace(/\s+/g,"");
+  var toBotUrl = `https://line.me/R/oaMessage/@upo7574o/?${holyEventStr}`;
+
 
   var gandalfText = {
     "type": "flex",
@@ -37,13 +43,6 @@ module.exports.reply = (req, res, next) => {
     "type": "box",
     "layout": "vertical",
     "contents": [
-      {
-        "type": "text",
-        "text": "活動提醒",
-        "weight": "bold",
-        "color": "#1879e2",
-        "size": "sm"
-      },
       {
         "type": "box",
         "layout": "baseline",
@@ -189,7 +188,7 @@ module.exports.reply = (req, res, next) => {
             "contents": [
               {
                 "type": "text",
-                "text": "偏好 : ",
+                "text": "交通偏好 : ",
                 "size": "sm",
                 "color": "#555555",
                 "flex": 2
@@ -216,6 +215,30 @@ module.exports.reply = (req, res, next) => {
           "type": "uri",
           "label": "轉乘資訊",
           "uri": gandalfUrl
+        },
+        "style": "link",
+        "color": "#1879e2",
+        "flex": 0,
+        "gravity": "bottom"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "分享好友",
+          "uri": `https://line.me/R/msg/text/?${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}`
+        },
+        "style": "link",
+        "color": "#1879e2",
+        "flex": 0,
+        "gravity": "bottom"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "再次確認",
+          "uri": `http://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${new Date(req.body.start).toLocaleString()}&end=${new Date(req.body.end).toLocaleString()}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}`
         },
         "style": "link",
         "color": "#1879e2",
