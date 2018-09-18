@@ -1,7 +1,7 @@
 "use strict";
 var calendar, organizer;
 var RRule = rrule.RRule;
- 
+
 // calendar days layout swipe function
 $(function(){
 	$(".days").swipe({
@@ -524,7 +524,7 @@ $("#startTime,#startDate").change(function(){// picker+15
 	Datepick2.update();
 });
 
-$("#csTime").change(function(){
+$("#csTime").change(function() {
 	if($('#csTime').val() == 'on'){
 		$('#csTime + span')[0].innerHTML = "自訂";
 	}else{
