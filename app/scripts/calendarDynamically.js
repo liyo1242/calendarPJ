@@ -161,7 +161,7 @@ $('#vis').click(function() {
 	        location: locationc,
 	        startTime: startc.get('hour') + ":" + startc.get('minute'),
 	        endTime: endc.get('hour') + ":" + endc.get('minute'),
-	        time: startc.get('year') + "/" + startc.get('month') + "/" + startc.get('date')// qqqq
+	        time: startc.get('year') + " " + ((startc.get('month') + 1) < 10 ? '0' : "") + (startc.get('month') + 1) + '/ ' + startc.get('date')// qqqq
 	    };
 	    $.cookie('title',null, {path: '/'});
         $.cookie('start', null, {path: '/'});

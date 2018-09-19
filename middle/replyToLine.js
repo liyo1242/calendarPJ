@@ -26,8 +26,8 @@ module.exports.reply = (req, res, next) => {
   var fuckstart = req.body.start;
   var fuckend = req.body.end;
 
-  var fuckyouStart = `${moment(fuckstart).get('year')}%2d${moment(fuckstart).get('month')}%2d${moment(fuckstart).get('date')}%20${moment(fuckstart).get('hour')}%3a${moment(fuckstart).get('minute')}`;
-  var fuckyouEnd = `${moment(fuckend).get('year')}%2d${moment(fuckend).get('month')}%2d${moment(fuckend).get('date')}%20${moment(fuckend).get('hour')}%3a${moment(fuckend).get('minute')}`;
+  var fuckyouStart = `${moment(fuckstart).get('year')}%2d${(moment(fuckstart).get('month')+ 1)}%2d${moment(fuckstart).get('date')}%20${moment(fuckstart).get('hour')}%3a${moment(fuckstart).get('minute')}`;
+  var fuckyouEnd = `${moment(fuckend).get('year')}%2d${(moment(fuckend).get('month') + 1)}%2d${moment(fuckend).get('date')}%20${moment(fuckend).get('hour')}%3a${moment(fuckend).get('minute')}`;
 
   var fuckyoulabUrl = `line://msg/text/?${req.body.summary}%0a開始時間%3a${fuckyouStart}%0a結束時間%3a${fuckyouEnd}%0a活動地點%3a${req.body.location}%0a活動內容%3a${req.body.description}`;
   //${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}
