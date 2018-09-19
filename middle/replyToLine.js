@@ -29,8 +29,8 @@ module.exports.reply = (req, res, next) => {
   var holyEventStr = `${req.body.summary}開始時間:${fuckyouStart}結束時間:${fuckyouEnd}活動地點:${req.body.location}活動內容:${req.body.description}`;
   // var UTF8str = encodeURIComponent(eventStr);
   holyEventStr = holyEventStr.replace(/\s+/g,"");
-  var toBotUrl = `https://line.me/R/oaMessage/@upo7574o/?${holyEventStr}`;
-  var fuckyoulabUrl = `https://line.me/R/msg/text/?${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}`;
+  var toBotUrl = `line://oaMessage/@upo7574o/?${holyEventStr}`;
+  var fuckyoulabUrl = `line://msg/text/?${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}`;
   //${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}
   var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com`;
   //title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}
