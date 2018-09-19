@@ -26,8 +26,8 @@ module.exports.reply = (req, res, next) => {
   var fuckstart = req.body.start;
   var fuckend = req.body.end;
 
-  var fuckyouStart = `${moment(fuckstart).get('year')}${moment(fuckstart).get('month')}${moment(fuckstart).get('date')}${moment(fuckstart).get('hour')}${moment(fuckstart).get('minute')}`;
-  var fuckyouEnd = `${moment(fuckend).get('year')}${moment(fuckend).get('month')}${moment(fuckend).get('date')}${moment(fuckend).get('hour')}${moment(fuckend).get('minute')}`;
+  var fuckyouStart = `${moment(fuckstart).get('year')}%2d${moment(fuckstart).get('month')}%2d${moment(fuckstart).get('date')}%20${moment(fuckstart).get('hour')}%3a${moment(fuckstart).get('minute')}`;
+  var fuckyouEnd = `${moment(fuckend).get('year')}%2d${moment(fuckend).get('month')}%2d${moment(fuckend).get('date')}%20${moment(fuckend).get('hour')}%3a${moment(fuckend).get('minute')}`;
 
   var eventStr = `${req.body.summary}%0a開始時間:${fuckyouStart}%0a結束時間:${fuckyouEnd}%0a活動地點:${req.body.location}%0a活動內容:${req.body.description}`;
   var holyEventStr = `${req.body.summary}開始時間:${fuckyouStart}結束時間:${fuckyouEnd}活動地點:${req.body.location}活動內容:${req.body.description}`;
