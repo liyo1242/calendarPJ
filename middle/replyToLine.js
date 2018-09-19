@@ -31,7 +31,7 @@ module.exports.reply = (req, res, next) => {
 
   var fuckyoulabUrl = `line://msg/text/?${req.body.summary}%0a開始時間%3a${fuckyouStart}%0a結束時間%3a${fuckyouEnd}%0a活動地點%3a${req.body.location}%0a活動內容%3a${req.body.description}`;
   //${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}
-  var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com?title%3d${req.body.summary}&start%3d${fuckyouStart}&end%3d${fuckyouEnd}&location%3d${req.body.location}&content%3d${req.body.description}&transport%3d${req.body.transportation}`;
+  var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}`;
   //title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}
   console.log(fuckyoulabUrl);
   console.log(fuckfuckyoulabUrl);
