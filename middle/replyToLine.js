@@ -36,7 +36,7 @@ module.exports.reply = (req, res, next) => {
     //${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}
     var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}`;
     //title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}
-    console.log(fuckyoulabUrl);
+    // console.log(fuckyoulabUrl);
     console.log(fuckfuckyoulabUrl);
     var gandalfText = {
         "type": "flex",
