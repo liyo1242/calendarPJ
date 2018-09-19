@@ -78,6 +78,9 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 			$('#gg').attr('button-data',button.data('whatever').id);
 	  		$('#uu').attr('button-data',button.data('whatever').id);
 	  		$('#woofbtn').attr('button-data',button.data('whatever').id);
+		}else {
+			$('#gg').css('display','none');
+			$('#uu').css('display','none');
 		}
 
 	  	var modal = $(this);
@@ -169,8 +172,6 @@ $('#vis').click(function() {
         $.cookie('location', null, {path: '/'});
         console.log('asdsadas' +  $.cookie().title);
 	}
-	console.log(
-		);
     $("#vis").attr("data-whatever",JSON.stringify(sendData));
 });
 
