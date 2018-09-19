@@ -33,8 +33,7 @@ module.exports.reply = (req, res, next) => {
   var holyEventStr = `${req.body.summary}開始時間%3a${fuckyouStart}結束時間%3a${fuckyouEnd}活動地點%3a${req.body.location}活動內容%3a${req.body.description}`;
   // var UTF8str = encodeURIComponent(eventStr);
   holyEventStr = holyEventStr.replace(/\s+/g,"");
-  var toBotUrl = `line://oaMessage/@upo7574o/?${holyEventStr}`;
-  var fuckyoulabUrl = `line://msg/text/?${eventStr}%0a%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%0a轉傳到Cubee bot%0a${toBotUrl}`;
+  var fuckyoulabUrl = `line://msg/text/?${eventStr}%0a%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%3d%0a轉傳到Cubee bot%0aline://oaMessage/@upo7574o/?${holyEventStr}`;
   //${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}
   var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com?title%3d${req.body.summary}&start%3d${fuckyouStart}&end%3d${fuckyouEnd}&location%3d${req.body.location}&content%3d${req.body.description}&transport%3d${req.body.transportation}`;
   //title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}
