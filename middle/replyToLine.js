@@ -30,8 +30,10 @@ module.exports.reply = (req, res, next) => {
   // var UTF8str = encodeURIComponent(eventStr);
   holyEventStr = holyEventStr.replace(/\s+/g,"");
   var toBotUrl = `https://line.me/R/oaMessage/@upo7574o/?${holyEventStr}`;
-  var fuckyoulabUrl = `https://line.me/R/msg/text/?${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}`;
-  var fuckfuckyoulabUrl = `http://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}`;
+  var fuckyoulabUrl = `https://line.me/R/msg/text/?textMEG`;
+  //${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}
+  var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com`;
+  //title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}
   console.log(fuckyoulabUrl);
   console.log(fuckfuckyoulabUrl);
   var gandalfText = {
@@ -158,7 +160,7 @@ module.exports.reply = (req, res, next) => {
               },
               {
                 "type": "text",
-                "text": req.body.location,
+                "text": (req.body.location != "" && req.body.location != undefined) ? req.body.location : "無",
                 "size": "sm",
                 "color": "#111111",
                 "wrap": true,
@@ -179,7 +181,7 @@ module.exports.reply = (req, res, next) => {
               },
               {
                 "type": "text",
-                "text": req.body.description,
+                "text": (req.body.description != "" && req.body.description != undefined) ? req.body.description : "無",
                 "size": "sm",
                 "color": "#111111",
                 "wrap": true,
