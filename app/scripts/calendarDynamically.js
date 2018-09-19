@@ -151,17 +151,17 @@ $('#vis').click(function() {
 	if($.cookie().title != "null" && $.cookie().start != "null" && $.cookie().end != "null"&& $.cookie().location != "null"){
 		console.log('fufufufufuf');
 		var titlec = $.cookie().title || "";
-		var startc = $.cookie().start || "";
-		var endc = $.cookie().end || "";
+		var startc = moment($.cookie().start) || "";
+		var endc = moment($.cookie().end) || "";
 		var locationc = $.cookie().location || "" ;
 		var sendData = {
 	        id: "",
 	        title: titlec,
 	        text: "",
 	        location: locationc,
-	        startTime: startc.slice(startc.indexOf('日') + 1),
-	        endTime: endc.slice(endc.indexOf('日') + 1),
-	        time: startc.slice(0,4) + " " + startc.slice(4, startc.indexOf('月') + 1) + " " + startc.slice(startc.indexOf('月') + 1, startc.indexOf('日'))// qqqq
+	        startTime: startc.get('hour') + startc.get('minute'),
+	        endTime: endc.get('hour') + endc.get('minute'),
+	        time: startc.get('year') + " " + startc.get('month') + " " + startc.get('date')// qqqq
 	    };
 	    $.cookie('title',null, {path: '/'});
         $.cookie('start', null, {path: '/'});
