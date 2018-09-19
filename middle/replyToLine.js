@@ -30,8 +30,10 @@ module.exports.reply = (req, res, next) => {
   // var UTF8str = encodeURIComponent(eventStr);
   holyEventStr = holyEventStr.replace(/\s+/g,"");
   var toBotUrl = `https://line.me/R/oaMessage/@upo7574o/?${holyEventStr}`;
-
-
+  var fuckyoulabUrl = `https://line.me/R/msg/text/?${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}`;
+  var fuckfuckyoulabUrl = `http://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}`;
+  console.log(fuckyoulabUrl);
+  console.log(fuckfuckyoulabUrl);
   var gandalfText = {
     "type": "flex",
       "altText": "Flex Message",
@@ -229,7 +231,7 @@ module.exports.reply = (req, res, next) => {
         "action": {
           "type": "uri",
           "label": "分享好友",
-          "uri": `https://line.me/R/msg/text/?${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}`
+          "uri": fuckyoulabUrl
         },
         "style": "link",
         "color": "#1879e2",
@@ -241,7 +243,7 @@ module.exports.reply = (req, res, next) => {
         "action": {
           "type": "uri",
           "label": "再次確認",
-          "uri": `http://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}`
+          "uri": fuckfuckyoulabUrl
         },
         "style": "link",
         "color": "#1879e2",
