@@ -30,9 +30,9 @@ module.exports.reply = (req, res, next) => {
   // var UTF8str = encodeURIComponent(eventStr);
   holyEventStr = holyEventStr.replace(/\s+/g,"");
   var toBotUrl = `line://oaMessage/@upo7574o/?${holyEventStr}`;
-  var fuckyoulabUrl = `line://msg/text/?${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}`;
+  var fuckyoulabUrl = `line://msg/text/?${req.body.summary}`;
   //${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}
-  var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com`;
+  var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com?title=${req.body.summary}`;
   //title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}
   console.log(fuckyoulabUrl);
   console.log(fuckfuckyoulabUrl);
