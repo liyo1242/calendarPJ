@@ -22,8 +22,11 @@ module.exports.reply = (req, res, next) => {
     break;
   }
 
-  var eventStr = `${req.body.summary}%0a開始時間:${new Date(req.body.start).toLocaleString()}%0a結束時間:${new Date(req.body.end).toLocaleString()}%0a地點:${req.body.location}%0a活動內容:${req.body.description}`;
-  var holyEventStr = `${req.body.summary}開始時間:${new Date(req.body.start).toLocaleString()}結束時間:${new Date(req.body.end).toLocaleString()}地點:${req.body.location}活動內容:${req.body.description}`
+  var fuckyouStart = new Date(req.body.start).toLocaleString();
+  var fuckyouEnd = new Date(req.body.end).toLocaleString()
+
+  var eventStr = `${req.body.summary}%0a開始時間:${fuckyouStart}%0a結束時間:${fuckyouEnd}%0a地點:${req.body.location}%0a活動內容:${req.body.description}`;
+  var holyEventStr = `${req.body.summary}開始時間:${fuckyouStart}結束時間:${fuckyouEnd}地點:${req.body.location}活動內容:${req.body.description}`;
   // var UTF8str = encodeURIComponent(eventStr);
   holyEventStr = holyEventStr.replace(/\s+/g,"");
   var toBotUrl = `https://line.me/R/oaMessage/@upo7574o/?${holyEventStr}`;
@@ -238,7 +241,7 @@ module.exports.reply = (req, res, next) => {
         "action": {
           "type": "uri",
           "label": "再次確認",
-          "uri": `http://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${new Date(req.body.start).toLocaleString()}&end=${new Date(req.body.end).toLocaleString()}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}`
+          "uri": `http://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}`
         },
         "style": "link",
         "color": "#1879e2",
