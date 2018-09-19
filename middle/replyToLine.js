@@ -25,8 +25,8 @@ module.exports.reply = (req, res, next) => {
   var fuckyouStart = new Date(req.body.start).toLocaleString();
   var fuckyouEnd = new Date(req.body.end).toLocaleString()
 
-  var eventStr = `${req.body.summary}%0a開始時間:${fuckyouStart}%0a結束時間:${fuckyouEnd}%0a地點:${req.body.location}%0a活動內容:${req.body.description}`;
-  var holyEventStr = `${req.body.summary}開始時間:${fuckyouStart}結束時間:${fuckyouEnd}地點:${req.body.location}活動內容:${req.body.description}`;
+  var eventStr = `${req.body.summary}%0a開始時間:${fuckyouStart}%0a結束時間:${fuckyouEnd}%0a活動地點:${req.body.location}%0a活動內容:${req.body.description}`;
+  var holyEventStr = `${req.body.summary}開始時間:${fuckyouStart}結束時間:${fuckyouEnd}活動地點:${req.body.location}活動內容:${req.body.description}`;
   // var UTF8str = encodeURIComponent(eventStr);
   holyEventStr = holyEventStr.replace(/\s+/g,"");
   var toBotUrl = `https://line.me/R/oaMessage/@upo7574o/?${holyEventStr}`;
