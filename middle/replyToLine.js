@@ -29,14 +29,14 @@ module.exports.reply = (req, res, next) => {
   var fuckyouStart = `${moment(fuckstart).get('year')}%2d${moment(fuckstart).get('month')}%2d${moment(fuckstart).get('date')}%20${moment(fuckstart).get('hour')}%3a${moment(fuckstart).get('minute')}`;
   var fuckyouEnd = `${moment(fuckend).get('year')}%2d${moment(fuckend).get('month')}%2d${moment(fuckend).get('date')}%20${moment(fuckend).get('hour')}%3a${moment(fuckend).get('minute')}`;
 
-  var eventStr = `${req.body.summary}%0a開始時間:${fuckyouStart}%0a結束時間:${fuckyouEnd}%0a活動地點:${req.body.location}%0a活動內容:${req.body.description}`;
-  var holyEventStr = `${req.body.summary}開始時間:${fuckyouStart}結束時間:${fuckyouEnd}活動地點:${req.body.location}活動內容:${req.body.description}`;
+  var eventStr = `${req.body.summary}%0a開始時間%3a${fuckyouStart}%0a結束時間%3a${fuckyouEnd}%0a活動地點%3a${req.body.location}%0a活動內容%3a${req.body.description}`;
+  var holyEventStr = `${req.body.summary}開始時間%3a${fuckyouStart}結束時間%3a${fuckyouEnd}活動地點%3a${req.body.location}活動內容%3a${req.body.description}`;
   // var UTF8str = encodeURIComponent(eventStr);
   holyEventStr = holyEventStr.replace(/\s+/g,"");
   var toBotUrl = `line://oaMessage/@upo7574o/?${holyEventStr}`;
-  var fuckyoulabUrl = `line://msg/text/?${req.body.summary}${fuckyouStart}`;
+  var fuckyoulabUrl = `line://msg/text/?${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}`;
   //${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}
-  var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${fuckyouStart}`;
+  var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}`;
   //title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}
   console.log(fuckyoulabUrl);
   console.log(fuckfuckyoulabUrl);
