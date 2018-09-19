@@ -57,6 +57,8 @@ $('#gg').click(function(){
 // edit button click function
 $('#uu').click(function(){
 	$('#exampleModal input').prop('disabled',false);
+	$('#woofbtn').css('display','inline-block');
+	$('#uu').css('display','none');
 })
 
 // The moment of Modal appearance will trigger
@@ -71,6 +73,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   		if(button.data('whatever').id != undefined){
   			if(button.data('whatever').id != ""){
   				$('#exampleModal input').prop('disabled',true);
+  				$('#woofbtn').css('display','none');
   			}
 			$('#gg').attr('button-data',button.data('whatever').id);
 	  		$('#uu').attr('button-data',button.data('whatever').id);
@@ -93,6 +96,8 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 			$('#endDate').val(time.slice(0,4) + '/' + time.slice(5,7) + '/' + time.slice(9));
 		}else if(button.data('whatever').time != undefined){
 			// the days trigger modal have empty data
+			$('#uu').css('display','none');
+			$('#gg').css('display','none');
 			var time = button.data('whatever').time;
 			var d = new Date();
 			var dayZero = (parseInt(time.slice(9)) < 10) ? ("0" + time.slice(9)) : time.slice(9);
@@ -134,6 +139,9 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 // modal disppear refresh calendar page
 $('#exampleModal').on('hidden.bs.modal', function () {
 	console.log('4+ hidden');
+	$('#uu').css('display','inline-block');
+	$('#gg').css('display','inline-block');
+	$('#woofbtn').css('display','inline-block');
 	$('#exampleModal input').prop('disabled',false);
     $(".btnpos").toggleClass('btnposflip');
 })
@@ -169,6 +177,8 @@ $('#vis').click(function() {
 // ================================
 $(".btnpos").click(function(){ //press
 	$('#exampleModal input').prop('disabled',false);
+	$('#uu').css('display','none');
+	$('#gg').css('display','none');
 	var d = moment();
 	const newStartTime = (d.get('minute') > 30 ? d.add(1,'h') : d);
 	const disMinute = (d.get('minute') > 30 ? "00" : "30");
