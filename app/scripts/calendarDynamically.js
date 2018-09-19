@@ -159,9 +159,9 @@ $('#vis').click(function() {
 	        title: titlec,
 	        text: "",
 	        location: locationc,
-	        startTime: startc.get('hour') + startc.get('minute'),
-	        endTime: endc.get('hour') + endc.get('minute'),
-	        time: startc.get('year') + " " + startc.get('month') + " " + startc.get('date')// qqqq
+	        startTime: startc.get('hour') + ":" + startc.get('minute'),
+	        endTime: endc.get('hour') + ":" + endc.get('minute'),
+	        time: startc.get('year') + "/" + startc.get('month') + "/" + startc.get('date')// qqqq
 	    };
 	    $.cookie('title',null, {path: '/'});
         $.cookie('start', null, {path: '/'});
