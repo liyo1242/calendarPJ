@@ -68,6 +68,9 @@ $('#uu').click(function() {
 $('#exampleModal').on('show.bs.modal', function(event) {
     initialize();
     var button = $(event.relatedTarget); // Button that triggered the modal
+    // there are not the same
+    // console.log(JSON.parse(button[0].dataset.whatever).time);
+    // console.log(button.data('whatever').time);
 
     $(".btnpos").toggleClass('btnposflip'); // Button animation
 
@@ -90,7 +93,7 @@ $('#exampleModal').on('show.bs.modal', function(event) {
 
         if (button.data('whatever').startTime != undefined && button.data('whatever').endTime != undefined && button.data('whatever').startTime != "" && button.data('whatever').endTime != "") {
             // the days trigger modal have already exists data
-            var time = button.data('whatever').time;
+            var time = JSON.parse(button[0].dataset.whatever).time;
             $('#startTime').val(button.data('whatever').startTime);
             $('#startDate').val(time.slice(0, 4) + '/' + time.slice(5, 7) + '/' + time.slice(9));
             // === === === ===
@@ -182,19 +185,19 @@ $(".btnpos").click(function() { //press
     $('#exampleModal input').prop('disabled', false);
     $('#uu').css('display', 'none');
     $('#gg').css('display', 'none');
-    var d = moment();
-    const newStartTime = (d.get('minute') > 30 ? d.add(1, 'h') : d);
-    const disMinute = (d.get('minute') > 30 ? "00" : "30");
-    const sendData = {
-        id: "",
-        title: "",
-        text: "",
-        startTime: (newStartTime.get('hour') < 10 ? "0" : "") + newStartTime.get('hour') + ":" + disMinute,
-        endTime: (newStartTime.add(1, 'h').get('hour') < 10 ? "0" : "") + newStartTime.get('hour') + ":" + disMinute,
-        location: "",
-        time: newStartTime.get('year') + ' ' + ((newStartTime.get('month') + 1) < 10 ? '0' : "") + (newStartTime.get('month') + 1) + '/ ' + newStartTime.get('date')
-    };
-    $(".btnpos").attr("data-whatever", JSON.stringify(sendData));
+    // var d = moment();
+    // const newStartTime = (d.get('minute') > 30 ? d.add(1, 'h') : d);
+    // const disMinute = (d.get('minute') > 30 ? "00" : "30");
+    // const sendData = {
+    //     id: "",
+    //     title: "",
+    //     text: "",
+    //     startTime: (newStartTime.get('hour') < 10 ? "0" : "") + newStartTime.get('hour') + ":" + disMinute,
+    //     endTime: (newStartTime.add(1, 'h').get('hour') < 10 ? "0" : "") + newStartTime.get('hour') + ":" + disMinute,
+    //     location: "",
+    //     time: newStartTime.get('year') + ' ' + ((newStartTime.get('month') + 1) < 10 ? '0' : "") + (newStartTime.get('month') + 1) + '/ ' + newStartTime.get('date')
+    // };
+    // $(".btnpos").attr("data-whatever", JSON.stringify(sendData));
 })
 
 // ================================
@@ -557,8 +560,9 @@ $("#Mithrandir").change(function() {
     } else {
         $('#Mithrandir + span')[0].innerHTML = " 重複 " + $('#Mithrandir').val() + " 次 ";
     }
-
 });
+
+
 
 function dataWithAjax(callback) {
     $('#calendarContainer-year').hide();
