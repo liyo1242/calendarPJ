@@ -39,7 +39,7 @@ module.exports.reply = (req, res, next) => {
     //${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}
     var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}`;
     //title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}
-    var fuckinLabNotifyText = moment(fuckstart).subtract(parseInt(req.body.option),'minute').get('hour') + ":" + moment(fuckstart).get('minute');    
+    var fuckinLabNotifyText = moment(fuckstart).subtract(parseInt(req.body.option), 'minute').get('hour') + ":" + moment(fuckstart).subtract(parseInt(req.body.option), 'minute').get('minute');
     console.log(fuckyoulabUrl);
     console.log(fuckfuckyoulabUrl);
     var gandalfText = {
@@ -65,7 +65,7 @@ module.exports.reply = (req, res, next) => {
                             },
                             {
                                 "type": "text",
-                                "text": fuckinLabNotifyText,
+                                "text": fuckinLabNotifyText + ' 時提醒',
                                 "weight": "bold",
                                 "margin": "xl",
                                 "flex": 0,
@@ -214,40 +214,39 @@ module.exports.reply = (req, res, next) => {
                         "margin": "xxl"
                     },
                     {
-                        "type": "button",
+                        "type": "image",
+                        "url": "https://i.imgur.com/eIja7k8.png",
+                        "size": "3xl",
+                        "align": "start",
+                        "margin": "none",
+                        "aspectRatio": "3:1",
                         "action": {
                             "type": "uri",
-                            "label": "轉乘資訊",
+                            "label": "View details",
                             "uri": gandalfUrl
-                        },
-                        "style": "link",
-                        "color": "#1879e2",
-                        "flex": 0,
-                        "gravity": "bottom"
-                    },
-                    {
-                        "type": "button",
+                        }
+                    }, {
+                        "type": "image",
+                        "url": "https://i.imgur.com/fk4GlCD.png",
+                        "size": "3xl",
+                        "align": "start",
+                        "aspectRatio": "3:1",
                         "action": {
                             "type": "uri",
-                            "label": "分享好友",
+                            "label": "View details",
                             "uri": fuckyoulabUrl
-                        },
-                        "style": "link",
-                        "color": "#1879e2",
-                        "flex": 0,
-                        "gravity": "bottom"
-                    },
-                    {
-                        "type": "button",
+                        }
+                    }, {
+                        "type": "image",
+                        "url": "https://i.imgur.com/EluffLB.png",
+                        "size": "3xl",
+                        "align": "start",
+                        "aspectRatio": "3:1",
                         "action": {
                             "type": "uri",
-                            "label": "再次確認",
+                            "label": "View details",
                             "uri": fuckfuckyoulabUrl
-                        },
-                        "style": "link",
-                        "color": "#1879e2",
-                        "flex": 0,
-                        "gravity": "bottom"
+                        }
                     }
                 ]
             }

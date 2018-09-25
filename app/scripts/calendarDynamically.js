@@ -267,7 +267,6 @@ $('#woofbtn').click(() => {
                 })
                 .then((res) => {
                     if (res.ok) {
-                        
                             console.log('message to fuckin line');
                             fetch('/profile/lineMessage', {
                                 method: 'POST', // or 'PUT'
@@ -276,7 +275,6 @@ $('#woofbtn').click(() => {
                                     'Content-Type': 'application/json'
                                 })
                             })
-                        
                         dataWithAjax(function(data) {
                             // initializing a new organizer object, that will use an html container to create itself
                             organizer = new Organizer("organizerContainer", // id of html container for calendar
@@ -322,7 +320,7 @@ $('#woofbtn').click(() => {
                                 data // small part of the data of type object
                             );
                         });
-                        alert("已經更新！");
+                        alert("已經新增！");
                         return;
                     }
                     throw new Error('failed');
