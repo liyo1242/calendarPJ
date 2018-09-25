@@ -39,6 +39,7 @@ module.exports.reply = (req, res, next) => {
     //${eventStr}%0a=========================%0a轉傳到Cubee bot%0a${toBotUrl}
     var fuckfuckyoulabUrl = `https://bn-calendar.herokuapp.com?title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}`;
     //title=${req.body.summary}&start=${fuckyouStart}&end=${fuckyouEnd}&location=${req.body.location}&content=${req.body.description}&transport=${req.body.transportation}
+    var fuckinLabNotifyText = moment(fuckstart).subtract(parseInt(req.body.option),'minute').get('hour') + ":" + moment(fuckstart).get('minute');    
     console.log(fuckyoulabUrl);
     console.log(fuckfuckyoulabUrl);
     var gandalfText = {
@@ -64,7 +65,7 @@ module.exports.reply = (req, res, next) => {
                             },
                             {
                                 "type": "text",
-                                "text": req.body.option + "分後提醒",
+                                "text": fuckinLabNotifyText,
                                 "weight": "bold",
                                 "margin": "xl",
                                 "flex": 0,

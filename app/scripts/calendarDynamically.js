@@ -268,7 +268,7 @@ $('#woofbtn').click(() => {
                 .then((res) => {
                     if (res.ok) {
                         
-                            console.log('message to line');
+                            console.log('message to fuckin line');
                             fetch('/profile/lineMessage', {
                                 method: 'POST', // or 'PUT'
                                 body: JSON.stringify(data), // data can be `string` or {object}!
