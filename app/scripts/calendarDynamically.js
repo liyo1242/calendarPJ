@@ -267,7 +267,7 @@ $('#woofbtn').click(() => {
                 })
                 .then((res) => {
                     if (res.ok) {
-                        if ($('input[name=option]:checked').val() != undefined && $('input[name=transportation]:checked').val() != undefined) {
+                        
                             console.log('message to line');
                             fetch('/profile/lineMessage', {
                                 method: 'POST', // or 'PUT'
@@ -276,7 +276,7 @@ $('#woofbtn').click(() => {
                                     'Content-Type': 'application/json'
                                 })
                             })
-                        }
+                        
                         dataWithAjax(function(data) {
                             // initializing a new organizer object, that will use an html container to create itself
                             organizer = new Organizer("organizerContainer", // id of html container for calendar

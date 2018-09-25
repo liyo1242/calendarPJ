@@ -21,6 +21,9 @@ module.exports.reply = (req, res, next) => {
         case "自行開車":
             gandalfUrl = `https://www.bluenet-ride.com/html/Travel_plan.html?from=line&location=${req.body.location}`;
             break;
+        default:
+            gandalfUrl = 'https://www.bluenet-ride.com/html/Travel_plan.html?from=line';
+            break;
     }
 
     var fuckstart = req.body.start;
