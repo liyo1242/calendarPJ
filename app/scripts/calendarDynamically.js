@@ -73,7 +73,6 @@ $('#exampleModal').on('show.bs.modal', function(event) {
     // console.log(button.data('whatever').time);
 
     $(".btnpos").toggleClass('btnposflip'); // Button animation
-
     if (button.data('whatever') != undefined) {
         console.log('change data');
         if (button.data('whatever').id != undefined) {
@@ -174,8 +173,10 @@ $('#vis').click(function() {
         $.cookie('end', null, { path: '/' });
         $.cookie('location', null, { path: '/' });
         console.log('asdsadas' + $.cookie().title);
-        $('#gg').css('display', 'none');
-        $('#uu').css('display', 'none');
+        // $('#gg').css('display', 'none');
+        // $('#uu').css('display', 'none');
+        $('#woofbtn').css('display', 'none');
+        $('#exampleModal input').prop('disabled', false);
     }
     $("#vis").attr("data-whatever", JSON.stringify(sendData));
 });
