@@ -176,7 +176,7 @@ $('#vis').click(function() {
         // $('#gg').css('display', 'none');
         // $('#uu').css('display', 'none');
         $('#woofbtn').css('display', 'none');
-        $('#exampleModal input').prop('disabled', false);
+        $('#exampleModal input').prop('disabled', true);
     }
     $("#vis").attr("data-whatever", JSON.stringify(sendData));
 });
